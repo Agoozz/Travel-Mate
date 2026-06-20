@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mate & Travel - Encontrá tu compañere de viaje ideal</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CSS (Only 17 lines of code!) -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(46, 204, 113, 0.08) !important;
+            color: #27ae60 !important;
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light py-3 sticky-top bg-white shadow-sm">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a class="navbar-brand d-flex align-items-center text-decoration-none" href="#">
+                <span class="fw-bold fs-3" style="color: #2ecc71; font-family: 'Outfit';">Mate</span>
+                <span class="fs-4" style="color: #48dbfb;">&nbsp;&amp;&nbsp;</span>
+                <span class="fw-bold fs-3" style="color: #3498db; font-family: 'Outfit';">Travel</span>
+            </a>
+            
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                <!-- Center links -->
+                <ul class="navbar-nav mx-auto gap-2 my-2 my-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link px-3 custom-nav-link active" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3 custom-nav-link text-nowrap" href="#como-funciona">Cómo funciona</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3 custom-nav-link" href="#destinos">Destinos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3 custom-nav-link text-nowrap" href="#" data-bs-toggle="modal" data-bs-target="#travelerTestModal">Test de viajero</a>
+                    </li>
+                </ul>
+                
+                <!-- Right elements -->
+                <div class="d-flex align-items-center gap-3">
+                    <a href="pantallas/iniciar_sesion.html?mode=login" class="text-secondary text-decoration-none fw-semibold hover-link">Ingresar</a>
+                    <a href="pantallas/iniciar_sesion.html?mode=register" class="btn text-white rounded-pill px-4 py-2 fw-semibold btn-verde-light text-decoration-none">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="py-4 py-lg-5">
+        <div class="container-fluid px-lg-5">
+            <div class="row align-items-center g-4">
+                
+                <!-- Left Column (Content) -->
+                <div class="col-lg-4 px-lg-4">
+                    <div class="ps-lg-3">
+                        <h1 class="display-5 fw-bold mb-3" style="font-family: 'Outfit'; line-height: 1.15; color: #2d3436;">
+                            Encontrá tu compañere ideal <span style="color: #2ecc71;">de viaje</span>
+                        </h1>
+                        <p class="text-muted mb-4 fs-5" style="line-height: 1.6;">
+                            Conectamos viajeros con intereses compatibles para que vivas experiencias inolvidables.
+                        </p>
+                        
+                        <!-- CTA Buttons -->
+                        <div class="d-flex flex-wrap gap-2 gap-sm-3 mb-5">
+                            <button class="btn btn-hero-primary" data-bs-toggle="modal" data-bs-target="#travelerTestModal">Comenzar test</button>
+                            <a href="#como-funciona" class="btn btn-hero-secondary text-decoration-none">Cómo funciona</a>
+                        </div>
+                        
+                        <!-- Social Proof -->
+                        <div class="d-flex align-items-center gap-3 mt-4">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-circle" style="background-image: url('images/avatar1.jpg'); background-size: cover; background-position: center;"></div>
+                                <div class="avatar-circle" style="background-image: url('images/avatar2.jpg'); background-size: cover; background-position: center;"></div>
+                                <div class="avatar-circle" style="background-image: url('images/avatar3.jpg'); background-size: cover; background-position: center;"></div>
+                            </div>
+                            <span class="text-muted small fw-semibold">
+                                +10000 viajeros encontraron su viaje ideal
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column (Carousel) -->
+                <div class="col-lg-8 position-relative overflow-hidden px-lg-0">
+                    <div class="position-relative overflow-hidden w-100">
+                        
+                        <!-- Carousel Indicators -->
+                        <div class="carousel-indicators carousel-indicators-custom">
+                            <button type="button" onclick="goToSlide(0)" class="active" aria-label="Slide 1"></button>
+                            <button type="button" onclick="goToSlide(1)" aria-label="Slide 2"></button>
+                            <button type="button" onclick="goToSlide(2)" aria-label="Slide 3"></button>
+                            <button type="button" onclick="goToSlide(3)" aria-label="Slide 4"></button>
+                            <button type="button" onclick="goToSlide(4)" aria-label="Slide 5"></button>
+                        </div>
+                        
+                        <!-- Slider Items Container (Holds 5 originals + 4 clones for loop) -->
+                        <div class="d-flex" id="customSlider" style="transition: transform 0.5s ease-in-out; width: 100%;">
+                            <!-- Original Items -->
+                            <div class="slider-item"><img src="images/lago.jpg" alt="Lago" class="w-100 img-fluid"></div>
+                            <div class="slider-item"><img src="images/vinedo.jpg" alt="Viñedo" class="w-100 img-fluid"></div>
+                            <div class="slider-item"><img src="images/ciudad.jpg" alt="Ciudad" class="w-100 img-fluid"></div>
+                            <div class="slider-item"><img src="images/catedral.jpg" alt="Catedral" class="w-100 img-fluid"></div>
+                            <div class="slider-item"><img src="images/norte.jpg" alt="Norte" class="w-100 img-fluid"></div>
+                            <!-- Cloned Items for loop -->
+                            <div class="slider-item"><img src="images/lago.jpg" alt="Lago" class="w-100 img-fluid"></div>
+                            <div class="slider-item"><img src="images/vinedo.jpg" alt="Viñedo" class="w-100 img-fluid"></div>
+                            <div class="slider-item"><img src="images/ciudad.jpg" alt="Ciudad" class="w-100 img-fluid"></div>
+                            <div class="slider-item"><img src="images/catedral.jpg" alt="Catedral" class="w-100 img-fluid"></div>
+                        </div>
+                        
+                        <!-- Carousel Controls -->
+                        <button class="carousel-control-prev justify-content-start" type="button" onclick="slidePrev()" style="left: 15px; width: auto; opacity: 1; z-index: 20; border: none; background: none;">
+                            <span class="bg-white rounded-circle d-flex align-items-center justify-content-center shadow" style="width: 45px; height: 45px; transition: transform 0.2s;">
+                                <i class="bi bi-chevron-left text-dark fs-5 fw-bold"></i>
+                            </span>
+                        </button>
+                        <button class="carousel-control-next justify-content-end" type="button" onclick="slideNext()" style="right: -25px; width: auto; opacity: 1; z-index: 20; border: none; background: none;">
+                            <span style="color: #e67e22; font-size: 3.5rem; transition: transform 0.2s; display: inline-block;">
+                                <i class="bi bi-arrow-right-short"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+
+    <!-- FEATURES SECTION -->
+    <section class="border-top py-4 mt-4">
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+                
+                <!-- Feature 1 -->
+                <div class="col-xl-3 col-md-6">
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="fs-1 text-success lh-1">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="fs-6 fw-bold mb-1 text-dark">Perfiles Verificados</h3>
+                            <p class="text-muted small mb-0">Viajeros reales como vos</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="col-xl-3 col-md-6">
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="fs-1 text-success lh-1">
+                            <i class="bi bi-bezier2"></i>
+                        </div>
+                        <div>
+                            <h3 class="fs-6 fw-bold mb-1 text-dark">Test de compatibilidad</h3>
+                            <p class="text-muted small mb-0">Encontrá tu match ideal</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="col-xl-3 col-md-6">
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="fs-1 text-success lh-1">
+                            <i class="bi bi-chat-left-text"></i>
+                        </div>
+                        <div>
+                            <h3 class="fs-6 fw-bold mb-1 text-dark">Chat seguro</h3>
+                            <p class="text-muted small mb-0">Conversaciones privadas y seguras.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="col-xl-3 col-md-6">
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="fs-1 text-success lh-1">
+                            <i class="bi bi-geo-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="fs-6 fw-bold mb-1 text-dark">Destinos reales</h3>
+                            <p class="text-muted small mb-0">Explora lugares increíbles.</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section id="como-funciona" class="py-5" style="background-color: #ffffff;">
+        <div class="container py-4">
+            <!-- Header Centered -->
+            <div class="text-center mb-5 mx-auto" style="max-width: 800px;">
+                <h2 class="display-5 fw-bold mb-4" style="font-family: 'Outfit'; color: #2d3436;">¿Como funciona?</h2>
+                <p class="text-dark fs-5 fw-normal px-lg-5" style="line-height: 1.6;">
+                    ¡Regístrate con tu test de afinidad, reserva los viajes que mejor van contigo y empieza a ganar JeviaPuntos para canjearlos por tu próxima gran aventura!
+                </p>
+            </div>
+
+            <!-- Steps Workflow Grid -->
+            <div class="row position-relative my-5 justify-content-center">
+                <!-- Connector Line (Hidden on Mobile) -->
+                <div class="position-absolute d-none d-md-block" style="top: 35px; left: 16%; right: 16%; height: 2px; background-color: #e9ecef; z-index: 1;"></div>
+
+                <!-- Step 1 -->
+                <div class="col-md-3 col-sm-6 text-center mb-5 mb-md-0 position-relative" style="z-index: 2;">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto shadow-sm step-circle" style="width: 70px; height: 70px; background-color: #aae6d5; cursor: pointer;">
+                        <i class="bi bi-pencil-square fs-3 text-dark"></i>
+                    </div>
+                    <p class="mt-4 fw-semibold text-dark fs-6 px-3" style="line-height: 1.4;">
+                        Completa tus datos y crea tu cuenta
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="col-md-3 col-sm-6 text-center mb-5 mb-md-0 position-relative" style="z-index: 2;">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto shadow-sm step-circle" style="width: 70px; height: 70px; background-color: #6ed3a6; cursor: pointer;">
+                        <!-- Connection/User map icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill-add text-dark" viewBox="0 0 16 16">
+                          <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                          <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
+                        </svg>
+                    </div>
+                    <p class="mt-4 fw-semibold text-dark fs-6 px-3" style="line-height: 1.4;">
+                        Descubre que viajeros hay disponibles
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="col-md-3 col-sm-6 text-center mb-5 mb-md-0 position-relative" style="z-index: 2;">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto shadow-sm step-circle" style="width: 70px; height: 70px; background-color: #aae6d5; cursor: pointer;">
+                        <i class="bi bi-calendar3 fs-3 text-dark"></i>
+                    </div>
+                    <p class="mt-4 fw-semibold text-dark fs-6 px-3" style="line-height: 1.4;">
+                        Reserva fecha y lugar
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="col-md-3 col-sm-6 text-center mb-5 mb-md-0 position-relative" style="z-index: 2;">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto shadow-sm step-circle" style="width: 70px; height: 70px; background-color: #27ae60; cursor: pointer;">
+                        <!-- Custom SVG Road Icon representing horizon stretching road -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16" class="text-dark">
+                            <path d="M12 1H4L2 15h12L12 1zM4.88 2h6.24L12.5 14H3.5L4.88 2z"/>
+                            <path d="M7.5 3h1v2h-1zm0 4h1v2h-1zm0 4h1v2h-1z" fill="white"/>
+                        </svg>
+                    </div>
+                    <p class="mt-4 fw-semibold text-dark fs-6 px-3" style="line-height: 1.4;">
+                        Disfruta tu viaje
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTA Empezar Button Centered -->
+            <div class="text-center mt-5">
+                <button class="btn btn-hero-primary px-5 py-3 fw-bold fs-4" data-bs-toggle="modal" data-bs-target="#travelerTestModal" style="letter-spacing: 1px;">
+                    Empezar
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESTINATIONS SECTION -->
+    <section id="destinos" class="py-5" style="background-color: #f8f9fa; border-top: 1px solid #dee2e6;">
+        <div class="container py-4">
+            <!-- Header -->
+            <div class="text-center mb-5 mx-auto" style="max-width: 800px;">
+                <h2 class="display-5 fw-bold mb-3" style="font-family: 'Outfit'; color: #2d3436;">Destinos turísticos</h2>
+                <p class="text-muted fs-5 fw-normal mb-4">
+                    Explorá la belleza natural y cultural de cada rincón de Argentina.
+                </p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-6 col-lg-5">
+                    <div class="input-group shadow-sm rounded-pill overflow-hidden bg-white border border-light">
+                        <span class="input-group-text bg-white border-0 ps-3">
+                            <i class="bi bi-search text-success"></i>
+                        </span>
+                        <input type="text" id="searchProvince" class="form-control border-0 py-2 fs-6" placeholder="Buscar provincia..." style="box-shadow: none;">
+                    </div>
+                </div>
+            </div>
+            <!-- Region Tabs -->
+            <div class="d-flex justify-content-center flex-wrap gap-2 mb-5" id="regionTabs">
+                <button class="btn btn-outline-success region-tab active rounded-pill px-4 py-2 fw-semibold" data-target="destacados">Destacados</button>
+                <button class="btn btn-outline-success region-tab rounded-pill px-4 py-2 fw-semibold" data-target="noa">Noroeste (NOA)</button>
+                <button class="btn btn-outline-success region-tab rounded-pill px-4 py-2 fw-semibold" data-target="nea">Noreste (NEA)</button>
+                <button class="btn btn-outline-success region-tab rounded-pill px-4 py-2 fw-semibold" data-target="cuyo">Cuyo</button>
+                <button class="btn btn-outline-success region-tab rounded-pill px-4 py-2 fw-semibold" data-target="pampeana">Pampeana</button>
+                <button class="btn btn-outline-success region-tab rounded-pill px-4 py-2 fw-semibold" data-target="patagonia">Patagónica</button>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4" id="provincesGrid">
+                <!-- Misiones -->
+                <div class="col province-card" data-name="Misiones" data-region="nea" data-featured="true">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/misiones.png" alt="Misiones" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Misiones</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                Las majestuosas Cataratas del Iguazú, una de las 7 maravillas naturales, tierra colorada y selva paranaense.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mendoza -->
+                <div class="col province-card" data-name="Mendoza" data-region="cuyo" data-featured="true">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/mendoza.png" alt="Mendoza" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Mendoza</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                La capital internacional del vino al pie del Aconcagua. Viñedos de Malbec y turismo de aventura.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Río Negro -->
+                <div class="col province-card" data-name="Río Negro" data-region="patagonia" data-featured="true">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/rio_negro.png" alt="Río Negro" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Río Negro</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                Bariloche y el lago Nahuel Huapi, chocolates artesanales, y las playas atlánticas en Las Grutas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Jujuy -->
+                <div class="col province-card" data-name="Jujuy" data-region="noa" data-featured="true">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/jujuy.png" alt="Jujuy" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Jujuy</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                La Quebrada de Humahuaca con su Cerro de los Siete Colores, las inmensas Salinas Grandes y pueblos andinos de adobe como Tilcara y Purmamarca.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Salta -->
+                <div class="col province-card" data-name="Salta" data-region="noa">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/salta.png" alt="Salta" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Salta</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                Arquitectura colonial, peñas folclóricas, el Tren a las Nubes, y viñedos de altura en Cafayate rodeados de hermosos valles calchaquíes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Formosa -->
+                <div class="col province-card" data-name="Formosa" data-region="nea">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/formosa.png" alt="Formosa" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Formosa</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                El Bañado La Estrella ofrece un espectáculo natural inigualable con sus 'champales' de vegetación acuática inundada.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tucumán -->
+                <div class="col province-card" data-name="Tucumán" data-region="noa">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/tucuman.png" alt="Tucumán" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Tucumán</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                El jardín de la República. Ruinas precolombinas de Quilmes, y Tafí del Valle rodeados de yunga verde.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Catamarca -->
+                <div class="col province-card" data-name="Catamarca" data-region="noa">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/catamarca.png" alt="Catamarca" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Catamarca</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                Paisajes lunares en el Campo de Piedra Pómez, lagunas con flamencos de la puna, y la Ruta del Adobe.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Santiago del Estero -->
+                <div class="col province-card" data-name="Santiago del Estero" data-region="noa">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/santiago_del_estero.png" alt="Santiago del Estero" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Santiago del Estero</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                Las termas de Río Hondo con sus aguas curativas medicinales y hotelería de relax, y cuna de la chacarera.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chaco -->
+                <div class="col province-card" data-name="Chaco" data-region="nea">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/chaco.jpg" alt="Chaco" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Chaco</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                El impenetrable chaqueño ofrece un turismo de aventura salvaje y avistaje de fauna en su selva subtropical.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Corrientes -->
+                <div class="col province-card" data-name="Corrientes" data-region="nea">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/corrientes.png" alt="Corrientes" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Corrientes</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                El portal de acceso a los Esteros del Iberá, uno de los humedales más grandes y biodiversos del planeta.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- La Rioja -->
+                <div class="col province-card" data-name="La Rioja" data-region="noa">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/la_rioja.png" alt="La Rioja" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">La Rioja</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                El Parque Nacional Talampaya con sus inmensos paredones rojizos esculpidos por el viento y el agua.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- San Juan -->
+                <div class="col province-card" data-name="San Juan" data-region="cuyo">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/san_juan.png" alt="San Juan" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">San Juan</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                El Parque Provincial Ischigualasto (Valle de la Luna) con sus fósiles de dinosaurios bajo cielos ultra limpios.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Córdoba -->
+                <div class="col province-card" data-name="Córdoba" data-region="pampeana">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/cordoba.png" alt="Córdoba" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Córdoba</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                Sierras, ríos cristalinos y lagos en Punilla y Calamuchita, combinado con rica historia jesuita.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Santa Fe -->
+                <div class="col province-card" data-name="Santa Fe" data-region="pampeana">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/santa_fe.png" alt="Santa Fe" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Santa Fe</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                El delta del Paraná, paseos costeros en su capital y Rosario, cuna de la bandera nacional.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Entre Ríos -->
+                <div class="col province-card" data-name="Entre Ríos" data-region="pampeana">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/entre_rios.png" alt="Entre Ríos" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Entre Ríos</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                Playas fluviales, termas terapéuticas en todo el territorio y carnavales llenos de brillo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- San Luis -->
+                <div class="col province-card" data-name="San Luis" data-region="cuyo">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/san_luis.png" alt="San Luis" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">San Luis</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                Sierras puntanas con microclima excepcional en Merlo y el hermoso lago de Potrero de los Funes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- La Pampa -->
+                <div class="col province-card" data-name="La Pampa" data-region="pampeana">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/la_pampa.jpg" alt="La Pampa" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">La Pampa</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                El Parque Nacional Lihuel Calel, bosques de caldenes, y la inmensidad de la llanura pampeana de tradición gaucha.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Buenos Aires -->
+                <div class="col province-card" data-name="Buenos Aires" data-region="pampeana">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/buenos_aires.jpg" alt="Buenos Aires" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Buenos Aires</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                Playas atlánticas, lagunas pampeanas e inmensa llanura ideal para escapadas de turismo rural.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- CABA -->
+                <div class="col province-card" data-name="Ciudad Autónoma de Buenos Aires (CABA)" data-region="pampeana">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/caba.jpg" alt="CABA" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">CABA</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                El Obelisco, San Telmo, Caminito en La Boca y una vibrante oferta cultural, teatral y gastronómica.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Neuquén -->
+                <div class="col province-card" data-name="Neuquén" data-region="patagonia">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/neuquen.jpg" alt="Neuquén" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Neuquén</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                Lagos glaciares color turquesa rodeados de bosques de araucarias, San Martín de los Andes y Villa La Angostura.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chubut -->
+                <div class="col province-card" data-name="Chubut" data-region="patagonia">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/chubut.jpg" alt="Chubut" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Chubut</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                Ballenas francas australes en Puerto Madryn, pingüinos de Magallanes en Punta Tombo, y té en Gaiman.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Santa Cruz -->
+                <div class="col province-card" data-name="Santa Cruz" data-region="patagonia">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/santa_cruz.jpg" alt="Santa Cruz" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2">Santa Cruz</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                El imponente Glaciar Perito Moreno en El Calafate y El Chaltén, la capital nacional del trekking.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tierra del Fuego -->
+                <div class="col province-card" data-name="Tierra del Fuego, Antártida e Islas del Atlántico Sur" data-region="patagonia">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white card-destino">
+                        <div style="height: 130px; overflow: hidden;">
+                            <img src="images/tierra_del_fuego.jpg" alt="Tierra del Fuego, Antártida e Islas del Atlántico Sur" class="w-100 h-100" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title fw-bold text-dark mb-2" style="font-size: 0.95rem;">Tierra del Fuego, Antártida e I.A.S.</h5>
+                            <p class="card-text text-secondary small mb-3 flex-grow-1" style="line-height: 1.5;">
+                                Ushuaia, el fin del mundo. Canal de Beagle, el tren del fin del mundo y el Parque Nacional Lapataia.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Close provincesGrid row -->
+        </div> <!-- Close container -->
+    </section> <!-- Close destinos section -->
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonios" class="py-5 bg-white border-top">
+        <div class="container py-4">
+            <!-- Header -->
+            <div class="text-center mb-5 mx-auto" style="max-width: 800px;">
+                <h2 class="display-5 fw-bold mb-3" style="font-family: 'Outfit'; color: #2d3436;">Casos de éxito y mateadas</h2>
+                <p class="text-muted fs-5 fw-normal mb-4">
+                    Miles de compañeres ya se animaron a viajar acompañades. Conocé algunas de sus historias.
+                </p>
+            </div>
+
+            <!-- Grid -->
+            <div class="row g-4">
+                <!-- Testimonial 1 (Mujer-Mujer) -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 p-4 card-destino">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="rounded-circle border border-2 border-success" style="width: 55px; height: 55px; background-image: url('images/avatar1.jpg'); background-size: cover; background-position: center; flex-shrink: 0;"></div>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark">Martina &amp; Sofía</h6>
+                                <span class="badge bg-success-subtle text-success rounded-pill fw-semibold" style="font-size: 0.75rem;">98% Aventura</span>
+                            </div>
+                        </div>
+                        <span class="badge bg-light text-secondary rounded mb-3 text-start w-fit px-2 py-1" style="font-size: 0.8rem; width: max-content;"><i class="bi bi-geo-alt-fill text-danger me-1"></i> Bariloche, Río Negro</span>
+                        <p class="text-secondary small mb-0 flex-grow-1" style="line-height: 1.6;">
+                            "Nos conocimos haciendo el test. Sofi quería hacer trekking de montaña en Bariloche y yo también. Viajar acompañadas nos dio mucha más seguridad y pudimos compartir los gastos de la carpa y la comida. ¡Una experiencia de pura amistad!"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 (Hombre-Hombre) -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 p-4 card-destino">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="rounded-circle border border-2 border-success" style="width: 55px; height: 55px; background-image: url('images/avatar2.jpg'); background-size: cover; background-position: center; flex-shrink: 0;"></div>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark">Facundo &amp; Joaquín</h6>
+                                <span class="badge bg-primary-subtle text-primary rounded-pill fw-semibold" style="font-size: 0.75rem;">94% Confort y Cultura</span>
+                            </div>
+                        </div>
+                        <span class="badge bg-light text-secondary rounded mb-3 text-start w-fit px-2 py-1" style="font-size: 0.8rem; width: max-content;"><i class="bi bi-geo-alt-fill text-danger me-1"></i> Cafayate, Salta</span>
+                        <p class="text-secondary small mb-0 flex-grow-1" style="line-height: 1.6;">
+                            "Buscábamos recorrer las bodegas de Salta y hacer turismo de aventura. Hicimos match con Joaquín, alquilamos un auto a medias y la pasamos espectacular. Compartir los costos hizo que el viaje sea mucho más accesible."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 (Mujer-Mujer) -->
+                <div class="col-lg-4 col-md-12">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 p-4 card-destino">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="rounded-circle border border-2 border-success" style="width: 55px; height: 55px; background-image: url('images/avatar3.jpg'); background-size: cover; background-position: center; flex-shrink: 0;"></div>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark">Camila &amp; Sol</h6>
+                                <span class="badge bg-info-subtle text-info rounded-pill fw-semibold" style="font-size: 0.75rem;">96% Vida Nocturna</span>
+                            </div>
+                        </div>
+                        <span class="badge bg-light text-secondary rounded mb-3 text-start w-fit px-2 py-1" style="font-size: 0.8rem; width: max-content;"><i class="bi bi-geo-alt-fill text-danger me-1"></i> Cataratas, Misiones</span>
+                        <p class="text-secondary small mb-0 flex-grow-1" style="line-height: 1.6;">
+                            "Viajábamos solas y queríamos salir a conocer la noche de Iguazú pero nos daba desconfianza. Hicimos match, compartimos hostel, boliches y caminatas. Mate &amp; Travel te da la tranquilidad de viajar segure y divertirte con amigues."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-5 bg-light border-top">
+        <div class="container py-4">
+            <!-- Header -->
+            <div class="text-center mb-5 mx-auto" style="max-width: 800px;">
+                <h2 class="display-5 fw-bold mb-3" style="font-family: 'Outfit'; color: #2d3436;">Preguntas Frecuentes</h2>
+                <p class="text-muted fs-5 fw-normal mb-4">
+                    Todo lo que necesitas saber antes de cebar el primer mate del viaje.
+                </p>
+            </div>
+
+            <!-- Accordion -->
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion accordion-flush rounded-4 overflow-hidden shadow-sm" id="faqAccordion">
+                        <!-- Item 1 -->
+                        <div class="accordion-item border-bottom border-light">
+                            <h2 class="accordion-header" id="faq-heading-1">
+                                <button class="accordion-button collapsed fw-semibold text-dark py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-1" aria-expanded="false" aria-controls="faq-collapse-1" style="font-size: 0.98rem; box-shadow: none;">
+                                    ¿Es seguro viajar con alguien que conocí acá?
+                                </button>
+                            </h2>
+                            <div id="faq-collapse-1" class="accordion-collapse collapse" aria-labelledby="faq-heading-1" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-secondary" style="font-size: 0.92rem; line-height: 1.6; background-color: #fafafa;">
+                                    ¡Totalmente! En Mate &amp; Travel priorizamos tu seguridad. Todos los usuarios tienen perfiles verificados y podés chatear de forma segura dentro de la plataforma antes de dar tu número o coordinar el viaje. Siempre recomendamos encontrarse en lugares públicos la primera vez.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="accordion-item border-bottom border-light">
+                            <h2 class="accordion-header" id="faq-heading-2">
+                                <button class="accordion-button collapsed fw-semibold text-dark py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-2" aria-expanded="false" aria-controls="faq-collapse-2" style="font-size: 0.98rem; box-shadow: none;">
+                                    ¿Cómo se dividen los gastos de viaje?
+                                </button>
+                            </h2>
+                            <div id="faq-collapse-2" class="accordion-collapse collapse" aria-labelledby="faq-heading-2" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-secondary" style="font-size: 0.92rem; line-height: 1.6; background-color: #fafafa;">
+                                    La división de gastos la coordinan ustedes de forma privada. Lo ideal es ponerse de acuerdo antes de salir: gastos de combustible, comida, alojamiento y entradas. ¡Es la mejor forma de viajar barato y en buena compañía!
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="accordion-item border-bottom border-light">
+                            <h2 class="accordion-header" id="faq-heading-3">
+                                <button class="accordion-button collapsed fw-semibold text-dark py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-3" aria-expanded="false" aria-controls="faq-collapse-3" style="font-size: 0.98rem; box-shadow: none;">
+                                    ¿Tengo que pagar para usar la plataforma?
+                                </button>
+                            </h2>
+                            <div id="faq-collapse-3" class="accordion-collapse collapse" aria-labelledby="faq-heading-3" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-secondary" style="font-size: 0.92rem; line-height: 1.6; background-color: #fafafa;">
+                                    ¡No! Hacer el test de viajere, crear tu cuenta, buscar compañeres y chatear es 100% gratis. También podés ganar JeviaPuntos participando en la comunidad para canjearlos por descuentos en tu próximo viaje.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq-heading-4">
+                                <button class="accordion-button collapsed fw-semibold text-dark py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-4" aria-expanded="false" aria-controls="faq-collapse-4" style="font-size: 0.98rem; box-shadow: none;">
+                                    ¿Qué pasa si mi compañere de viaje no me cae bien?
+                                </button>
+                            </h2>
+                            <div id="faq-collapse-4" class="accordion-collapse collapse" aria-labelledby="faq-heading-4" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-secondary" style="font-size: 0.92rem; line-height: 1.6; background-color: #fafafa;">
+                                    Hacemos el test de compatibilidad justamente para evitar eso, analizando tus afinidades y estilo de viaje. Sin embargo, no tenés ninguna obligación: si chateando notás que no hay onda, podés buscar otro compañere sin compromisos.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-3" style="font-family: 'Outfit'; color: #2ecc71;">Mate &amp; Travel</h5>
+                    <p class="text-secondary small">
+                        Conectamos viajeros con intereses compatibles para recorrer los destinos más increíbles de Argentina. Compartí gastos, anécdotas y momentos inolvidables.
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="fw-bold text-uppercase mb-3" style="font-size: 0.85rem; letter-spacing: 1px;">Enlaces rápidos</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small">
+                        <li><a href="#" class="text-secondary text-decoration-none hover-link">Inicio</a></li>
+                        <li><a href="#como-funciona" class="text-secondary text-decoration-none hover-link">Cómo funciona</a></li>
+                        <li><a href="#destinos" class="text-secondary text-decoration-none hover-link">Destinos</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#travelerTestModal" class="text-secondary text-decoration-none hover-link">Test de viajero</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="fw-bold text-uppercase mb-3" style="font-size: 0.85rem; letter-spacing: 1px;">Contacto</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small text-secondary">
+                        <li><i class="bi bi-envelope-fill text-success me-2"></i> info@mateandtravel.com</li>
+                        <li><i class="bi bi-geo-alt-fill text-success me-2"></i> Buenos Aires, Argentina</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 text-secondary small">
+                <p class="mb-0">&copy; 2026 Mate &amp; Travel. Todos los derechos reservados.</p>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-secondary text-decoration-none hover-link" data-bs-toggle="modal" data-bs-target="#termsModal">Términos</a>
+                    <a href="#" class="text-secondary text-decoration-none hover-link" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TERMS MODAL -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow-lg">
+                <div class="modal-header border-0 bg-light px-4 py-3">
+                    <h5 class="modal-title fw-bold text-dark" id="termsModalLabel" style="font-family: 'Outfit';">Términos y Condiciones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body px-4 py-3 text-secondary" style="font-size: 0.95rem; line-height: 1.6;">
+                    <h6 class="fw-bold text-dark mb-3">Reglas claras para viajar bien:</h6>
+                    <ul class="ps-3 d-flex flex-column gap-2">
+                        <li><strong>Respeto mutuo:</strong> Tratamos a todes con buena onda y respeto. Cero discriminación o violencia.</li>
+                        <li><strong>Datos reales:</strong> Completá tu perfil con información verdadera para que viajar sea seguro para todes.</li>
+                        <li><strong>Compartir gastos:</strong> Si coordinan compartir gastos, pónganse de acuerdo claramente antes de salir. Mate &amp; Travel no interviene en arreglos económicos privados.</li>
+                        <li><strong>Cuidar la comunidad:</strong> Si ves un perfil sospechoso, reportalo. ¡Viajar segures es tarea de todes!</li>
+                    </ul>
+                </div>
+                <div class="modal-footer border-0 px-4 py-3 justify-content-end">
+                    <button type="button" class="btn text-white px-4 py-1.5 fw-semibold rounded-pill btn-verde" style="border: none; font-size: 0.9rem;" data-bs-dismiss="modal">Entendido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRIVACY MODAL -->
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow-lg">
+                <div class="modal-header border-0 bg-light px-4 py-3">
+                    <h5 class="modal-title fw-bold text-dark" id="privacyModalLabel" style="font-family: 'Outfit';">Política de Privacidad</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body px-4 py-3 text-secondary" style="font-size: 0.95rem; line-height: 1.6;">
+                    <h6 class="fw-bold text-dark mb-3">Cuidamos tus datos como a nuestro mate:</h6>
+                    <ul class="ps-3 d-flex flex-column gap-2">
+                        <li><strong>¿Qué guardamos?:</strong> Solo tu nombre, correo, preferencias de viaje del test y fechas elegidas.</li>
+                        <li><strong>¿Para qué?:</strong> Únicamente para ayudarte a encontrar compañeres de viaje compatibles.</li>
+                        <li><strong>Tus datos son tuyos:</strong> No vendemos tus datos a nadie. Si querés borrar tu cuenta, nos mandás un mail y los borramos al toque.</li>
+                        <li><strong>Seguridad:</strong> Protegemos tus datos para que viajen tan seguros como vos.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer border-0 px-4 py-3 justify-content-end">
+                    <button type="button" class="btn text-white px-4 py-1.5 fw-semibold rounded-pill btn-verde" style="border: none; font-size: 0.9rem;" data-bs-dismiss="modal">Entendido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TRAVELER TEST MODAL -->
+    <div class="modal fade" id="travelerTestModal" tabindex="-1" aria-labelledby="travelerTestModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 500px;">
+            <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+                
+                <!-- Modal Header -->
+                <div class="modal-header border-0 bg-light px-4 py-3 justify-content-between">
+                    <h5 class="modal-title fw-bold text-dark" id="travelerTestModalLabel" style="font-family: 'Outfit';">Test de Viajero</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <!-- Modal Body (Wizard Container) -->
+                <div class="modal-body px-4 py-3">
+                    
+                    <!-- STEPPER PROGRESS BAR -->
+                    <div class="test-stepper d-flex justify-content-between align-items-center mb-4 mt-2 position-relative" style="max-width: 320px; margin: 0 auto;">
+                        <!-- Line behind circles -->
+                        <div class="stepper-line-back position-absolute" style="top: 18px; left: 8%; right: 8%; height: 2px; background-color: #e9ecef; z-index: 1;"></div>
+                        <div class="stepper-line-progress position-absolute" id="stepperLineProgress" style="top: 18px; left: 8%; width: 0%; height: 2px; background-color: #2ecc71; z-index: 2; transition: width 0.3s ease;"></div>
+                        
+                        <!-- Step 1 -->
+                        <div class="step-indicator text-center position-relative" style="z-index: 3; width: 20%;">
+                            <div class="step-circle-indicator rounded-circle mx-auto d-flex align-items-center justify-content-center fw-bold active" data-step="1" style="font-size: 0.85rem; width: 36px; height: 36px;">1</div>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="step-indicator text-center position-relative" style="z-index: 3; width: 20%;">
+                            <div class="step-circle-indicator rounded-circle mx-auto d-flex align-items-center justify-content-center fw-bold" data-step="2" style="font-size: 0.85rem; width: 36px; height: 36px;">2</div>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="step-indicator text-center position-relative" style="z-index: 3; width: 20%;">
+                            <div class="step-circle-indicator rounded-circle mx-auto d-flex align-items-center justify-content-center fw-bold" data-step="3" style="font-size: 0.85rem; width: 36px; height: 36px;">3</div>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="step-indicator text-center position-relative" style="z-index: 3; width: 20%;">
+                            <div class="step-circle-indicator rounded-circle mx-auto d-flex align-items-center justify-content-center fw-bold" data-step="4" style="font-size: 0.85rem; width: 36px; height: 36px;">4</div>
+                        </div>
+                        <!-- Step 5 -->
+                        <div class="step-indicator text-center position-relative" style="z-index: 3; width: 20%;">
+                            <div class="step-circle-indicator rounded-circle mx-auto d-flex align-items-center justify-content-center fw-bold" data-step="5" style="font-size: 0.85rem; width: 36px; height: 36px;">5</div>
+                        </div>
+                    </div>
+                    
+                    <!-- WIZARD SCREENS -->
+                    <div id="testWizardContent">
+                        
+                        <!-- STEP 1: Tipo de viaje -->
+                        <div class="wizard-step" data-step="1">
+                            <h6 class="text-center fw-bold mb-3" style="color: #2d3436; font-size: 1.1rem;">¿Qué tipo de viaje estás buscando?</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <div class="card border p-3 d-flex flex-row align-items-center gap-3 test-option-card" data-key="tipoViaje" data-value="mochilero" style="border-radius: 12px;">
+                                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success shadow-sm" style="width: 55px; height: 55px; flex-shrink: 0;">
+                                        <i class="bi bi-backpack fs-3"></i>
+                                    </div>
+                                    <div class="text-start">
+                                        <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">Mochilero</h6>
+                                        <p class="text-muted small mb-0">Aventura, libertad y bajo presupuesto.</p>
+                                    </div>
+                                </div>
+                                <div class="card border p-3 d-flex flex-row align-items-center gap-3 test-option-card" data-key="tipoViaje" data-value="hotel" style="border-radius: 12px;">
+                                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success shadow-sm" style="width: 55px; height: 55px; flex-shrink: 0;">
+                                        <i class="bi bi-building fs-3"></i>
+                                    </div>
+                                    <div class="text-start">
+                                        <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">Hotel</h6>
+                                        <p class="text-muted small mb-0">Comodidad y servicios garantizados.</p>
+                                    </div>
+                                </div>
+                                <div class="card border p-3 d-flex flex-row align-items-center gap-3 test-option-card" data-key="tipoViaje" data-value="organizado" style="border-radius: 12px;">
+                                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success shadow-sm" style="width: 55px; height: 55px; flex-shrink: 0;">
+                                        <i class="bi bi-calendar-check fs-3"></i>
+                                    </div>
+                                    <div class="text-start">
+                                        <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">Organizado</h6>
+                                        <p class="text-muted small mb-0">Todo planificado, sin preocupaciones.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- STEP 2: Presupuesto -->
+                        <div class="wizard-step d-none" data-step="2">
+                            <h6 class="text-center fw-bold mb-3" style="color: #2d3436; font-size: 1.1rem;">¿Cuál es tu presupuesto?</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <div class="card border p-3 d-flex flex-row align-items-center gap-3 test-option-card" data-key="presupuesto" data-value="economico" style="border-radius: 12px;">
+                                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success shadow-sm" style="width: 55px; height: 55px; flex-shrink: 0;">
+                                        <i class="bi bi-wallet2 fs-3"></i>
+                                    </div>
+                                    <div class="text-start">
+                                        <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">Económico</h6>
+                                        <p class="text-muted small mb-0">Hostales, comida local y viajes gasoleros.</p>
+                                    </div>
+                                </div>
+                                <div class="card border p-3 d-flex flex-row align-items-center gap-3 test-option-card" data-key="presupuesto" data-value="medio" style="border-radius: 12px;">
+                                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success shadow-sm" style="width: 55px; height: 55px; flex-shrink: 0;">
+                                        <i class="bi bi-cash-coin fs-3"></i>
+                                    </div>
+                                    <div class="text-start">
+                                        <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">Medio</h6>
+                                        <p class="text-muted small mb-0">Equilibrio de confort en hoteles de gama media.</p>
+                                    </div>
+                                </div>
+                                <div class="card border p-3 d-flex flex-row align-items-center gap-3 test-option-card" data-key="presupuesto" data-value="premium" style="border-radius: 12px;">
+                                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success shadow-sm" style="width: 55px; height: 55px; flex-shrink: 0;">
+                                        <i class="bi bi-gem fs-3"></i>
+                                    </div>
+                                    <div class="text-start">
+                                        <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">Premium</h6>
+                                        <p class="text-muted small mb-0">Hoteles de lujo y experiencias de primer nivel.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- STEP 3: Destino -->
+                        <div class="wizard-step d-none" data-step="3">
+                            <h6 class="text-center fw-bold mb-3" style="color: #2d3436; font-size: 1.1rem;">¿Qué región te interesa explorar?</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <div class="card border p-2 d-flex flex-row align-items-center gap-3 test-option-card" data-key="region" data-value="noa" style="border-radius: 10px;">
+                                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success shadow-sm" style="width: 40px; height: 40px; flex-shrink: 0;">
+                                        <i class="bi bi-geo-alt-fill fs-4"></i>
+                                    </div>
+                                    <div class="text-start">
+                                        <h6 class="fw-bold mb-0" style="font-size: 0.9rem;">Noroeste (NOA)</h6>
+                                    </div>
+                                </div>
+                                <div class="card border p-2 d-flex flex-row align-items-center gap-3 test-option-card" data-key="region" data-value="nea" style="border-radius: 10px;">
+                                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success shadow-sm" style="width: 40px; height: 40px; flex-shrink: 0;">
+                                        <i class="bi bi-water fs-4"></i>
+                                    </div>
+                                    <div class="text-start">
+                                        <h6 class="fw-bold mb-0" style="font-size: 0.9rem;">Noreste (NEA)</h6>
+                                    </div>
+                                </div>
+                                <div class="card border p-2 d-flex flex-row align-items-center gap-3 test-option-card" data-key="region" data-value="cuyo" style="border-radius: 10px;">
+                                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success shadow-sm" style="width: 40px; height: 40px; flex-shrink: 0;">
+                                        <i class="bi bi-sun-fill fs-4"></i>
+                                    </div>
+                                    <div class="text-start">
+                                        <h6 class="fw-bold mb-0" style="font-size: 0.9rem;">Cuyo</h6>
+                                    </div>
+                                </div>
+                                <div class="card border p-2 d-flex flex-row align-items-center gap-3 test-option-card" data-key="region" data-value="pampeana" style="border-radius: 10px;">
+                                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success shadow-sm" style="width: 40px; height: 40px; flex-shrink: 0;">
+                                        <i class="bi bi-buildings-fill fs-4"></i>
+                                    </div>
+                                    <div class="text-start">
+                                        <h6 class="fw-bold mb-0" style="font-size: 0.9rem;">Pampeana</h6>
+                                    </div>
+                                </div>
+                                <div class="card border p-2 d-flex flex-row align-items-center gap-3 test-option-card" data-key="region" data-value="patagonia" style="border-radius: 10px;">
+                                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success shadow-sm" style="width: 40px; height: 40px; flex-shrink: 0;">
+                                        <i class="bi bi-snow2 fs-4"></i>
+                                    </div>
+                                    <div class="text-start">
+                                        <h6 class="fw-bold mb-0" style="font-size: 0.9rem;">Patagónica</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- STEP 4: Fechas -->
+                        <div class="wizard-step d-none" data-step="4">
+                            <h6 class="text-center fw-bold mb-1" style="color: #2d3436; font-size: 1.1rem;">¿Cuándo podés viajar?</h6>
+                            <p class="text-center text-muted small mb-3">Hacé clic sobre los días para seleccionar fechas</p>
+                            <div class="mx-auto" style="max-width: 320px;">
+                                <div class="card border rounded-3 p-2 shadow-sm bg-white">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <button class="btn btn-sm btn-outline-secondary py-0" id="calPrevMonth" type="button" style="border-radius: 50%; width: 28px; height: 28px; display:flex; align-items:center; justify-content:center;"><i class="bi bi-chevron-left" style="font-size:0.8rem;"></i></button>
+                                        <h6 class="fw-bold mb-0 text-dark" id="calendarMonthTitle" style="font-size:0.9rem;">Enero 2027</h6>
+                                        <button class="btn btn-sm btn-outline-secondary py-0" id="calNextMonth" type="button" style="border-radius: 50%; width: 28px; height: 28px; display:flex; align-items:center; justify-content:center;"><i class="bi bi-chevron-right" style="font-size:0.8rem;"></i></button>
+                                    </div>
+                                    
+                                    <div class="d-grid gap-1 text-center fw-bold text-muted mb-1" style="grid-template-columns: repeat(7, 1fr); font-size: 0.75rem;">
+                                        <span>LU</span><span>MA</span><span>MI</span><span>JU</span><span>VI</span><span>SA</span><span>DO</span>
+                                    </div>
+                                    
+                                    <div class="d-grid gap-1 text-center" id="calendarDaysGrid" style="grid-template-columns: repeat(7, 1fr); font-size: 0.85rem;">
+                                        <!-- Days dynamically rendered -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- STEP 5: Compañere -->
+                        <div class="wizard-step d-none" data-step="5">
+                            <h6 class="text-center fw-bold mb-3" style="color: #2d3436; font-size: 1.1rem;">¿Qué buscás en un compañere de viaje?</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <div class="card border p-3 d-flex flex-row align-items-center gap-3 test-option-card" data-key="companero" data-value="aventura" style="border-radius: 12px;">
+                                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success shadow-sm" style="width: 55px; height: 55px; flex-shrink: 0;">
+                                        <i class="bi bi-compass fs-3"></i>
+                                    </div>
+                                    <div class="text-start">
+                                        <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">Aventura y Naturaleza</h6>
+                                        <p class="text-muted small mb-0">Exploración, trekking y actividades de campo.</p>
+                                    </div>
+                                </div>
+                                <div class="card border p-3 d-flex flex-row align-items-center gap-3 test-option-card" data-key="companero" data-value="fiesta" style="border-radius: 12px;">
+                                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success shadow-sm" style="width: 55px; height: 55px; flex-shrink: 0;">
+                                        <i class="bi bi-music-note-beamed fs-3"></i>
+                                    </div>
+                                    <div class="text-start">
+                                        <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">Vida Nocturna y Fiesta</h6>
+                                        <p class="text-muted small mb-0">Salidas grupales, bares y socialización activa.</p>
+                                    </div>
+                                </div>
+                                <div class="card border p-3 d-flex flex-row align-items-center gap-3 test-option-card" data-key="companero" data-value="confort" style="border-radius: 12px;">
+                                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success shadow-sm" style="width: 55px; height: 55px; flex-shrink: 0;">
+                                        <i class="bi bi-bank fs-3"></i>
+                                    </div>
+                                    <div class="text-start">
+                                        <h6 class="fw-bold mb-1" style="font-size: 0.95rem;">Comodidad y Cultura</h6>
+                                        <p class="text-muted small mb-0">Paseos culturales, gastronomía y museos.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- LOADING SCREEN -->
+                        <div class="wizard-step d-none text-center py-4" id="testLoadingScreen">
+                            <div class="spinner-border text-success mb-3" style="width: 3rem; height: 3rem;" role="status">
+                                <span class="visually-hidden">Calculando...</span>
+                            </div>
+                            <h6 class="fw-bold text-dark">Analizando tus respuestas...</h6>
+                            <p class="text-muted small">Buscando tu perfil ideal y recomendaciones...</p>
+                            <div class="progress mx-auto mt-3" style="max-width: 250px; height: 8px; border-radius: 10px;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" id="loadingProgress" role="progressbar" style="width: 0%; border-radius: 10px;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- RESULT SCREEN -->
+                        <div class="wizard-step d-none" id="testResultScreen">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="images/resultado_aventurero.jpg" id="resultProfileImage" alt="Perfil" class="img-fluid rounded-3 shadow-sm border mb-3" style="height: 180px; width: 100%; object-fit: cover;">
+                                
+                                <span class="badge bg-success-subtle text-success mb-2 px-3 py-1.5 rounded-pill fw-semibold text-uppercase" style="font-size: 0.7rem; letter-spacing: 0.5px;">Resultado</span>
+                                <h4 class="fw-bold text-dark mb-2" id="resultProfileTitle" style="font-family: 'Outfit';">Aventurero Indómito</h4>
+                                <p class="text-secondary small mb-3 px-1" id="resultProfileDesc" style="line-height: 1.5; font-size: 0.88rem;">
+                                    Sos un explorador nato. Te motivan los desafíos físicos, la conexión profunda con la naturaleza salvaje y el trekking.
+                                </p>
+                                
+                                <div class="bg-light p-3 rounded-3 border-start border-success border-4 shadow-sm mb-3 w-100 text-start">
+                                    <h6 class="fw-bold text-dark mb-1" style="font-size: 0.85rem;"><i class="bi bi-geo-alt-fill text-success"></i> Destinos recomendados:</h6>
+                                    <p class="text-muted small mb-0" id="resultDestinationsText" style="font-size: 0.8rem; line-height: 1.4;"></p>
+                                </div>
+                                
+                                <div class="d-grid gap-2 w-100">
+                                    <button class="btn text-white py-2 fw-semibold rounded-pill btn-verde" style="border: none; font-size: 0.9rem;" id="btnFindPartner">Encontrar compañere</button>
+                                    <button class="btn btn-outline-secondary py-2 fw-semibold rounded-pill" id="btnRestartTest" style="font-size: 0.85rem;">Repetir el test</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- Modal Footer -->
+                <div class="modal-footer border-0 px-4 py-3 bg-light justify-content-between" id="testModalFooter">
+                    <button class="btn btn-outline-secondary px-4 py-1.5 fw-semibold rounded-pill" id="btnPrevStep" style="font-size: 0.9rem;" disabled>Volver</button>
+                    <button class="btn text-white px-4 py-1.5 fw-semibold rounded-pill btn-verde" id="btnNextStep" style="border: none; font-size: 0.9rem;" disabled>Siguiente</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- Custom Infinite Multi-Item Slider Controller -->
+    <script>
+        let currentIndex = 0;
+        const slider = document.getElementById('customSlider');
+        const indicators = document.querySelectorAll('.carousel-indicators-custom button');
+
+        // Dynamically compute item width percentage based on media query rules in styles.css
+        function getItemWidth() {
+            const firstItem = document.querySelector('.slider-item');
+            if (!firstItem) return 25; // Fallback to 25% (desktop)
+            const style = getComputedStyle(firstItem);
+            return parseFloat(style.flexBasis) || 25;
+        }
+
+        function updateIndicators(index) {
+            indicators.forEach((btn, idx) => {
+                if (idx === index) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        function slideNext() {
+            currentIndex++;
+            const itemWidth = getItemWidth();
+            slider.style.transition = 'transform 0.5s ease-in-out';
+            slider.style.transform = `translateX(${-currentIndex * itemWidth}%)`;
+            updateIndicators(currentIndex % 5);
+        }
+
+        function slidePrev() {
+            const itemWidth = getItemWidth();
+            if (currentIndex === 0) {
+                slider.style.transition = 'none';
+                currentIndex = 5;
+                slider.style.transform = `translateX(${-currentIndex * itemWidth}%)`;
+                slider.offsetHeight; // Force DOM reflow
+            }
+            currentIndex--;
+            slider.style.transition = 'transform 0.5s ease-in-out';
+            slider.style.transform = `translateX(${-currentIndex * itemWidth}%)`;
+            updateIndicators(currentIndex);
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            const itemWidth = getItemWidth();
+            slider.style.transition = 'transform 0.5s ease-in-out';
+            slider.style.transform = `translateX(${-currentIndex * itemWidth}%)`;
+            updateIndicators(currentIndex);
+        }
+
+        slider.addEventListener('transitionend', () => {
+            if (currentIndex >= 5) {
+                slider.style.transition = 'none';
+                currentIndex = 0;
+                slider.style.transform = 'translateX(0%)';
+            }
+        });
+
+        // Set up autoplay
+        let autoplayInterval = setInterval(slideNext, 5000);
+
+        // Pause autoplay when hover, resume when leave
+        const container = slider.parentElement;
+        container.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+        container.addEventListener('mouseleave', () => {
+            clearInterval(autoplayInterval);
+            autoplayInterval = setInterval(slideNext, 5000);
+        });
+    </script>
+
+    <!-- Province Cards Visibility and Filter Controller -->
+    <script>
+        const searchInput = document.getElementById('searchProvince');
+        const cards = document.querySelectorAll('.province-card');
+        const tabButtons = document.querySelectorAll('.region-tab');
+        let activeRegion = 'destacados';
+
+        function updateVisibility() {
+            const term = searchInput.value.toLowerCase().trim();
+            const normalizedTerm = term.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+            if (normalizedTerm !== "") {
+                // If searching: hide tabs and show all matching cards
+                document.getElementById('regionTabs').classList.add('d-none');
+                cards.forEach(card => {
+                    const name = card.getAttribute('data-name').toLowerCase();
+                    const normalized = name.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    if (normalized.includes(normalizedTerm)) {
+                        card.classList.remove('d-none');
+                    } else {
+                        card.classList.add('d-none');
+                    }
+                });
+            } else {
+                // If not searching: show tabs and filter based on the active tab
+                document.getElementById('regionTabs').classList.remove('d-none');
+                cards.forEach(card => {
+                    const region = card.getAttribute('data-region');
+                    const isFeatured = card.getAttribute('data-featured') === 'true';
+
+                    if (activeRegion === 'destacados' && isFeatured) {
+                        card.classList.remove('d-none');
+                    } else if (activeRegion === region) {
+                        card.classList.remove('d-none');
+                    } else {
+                        card.classList.add('d-none');
+                    }
+                });
+            }
+        }
+
+        // Initialize visibility
+        updateVisibility();
+
+        // Search trigger
+        searchInput.addEventListener('input', updateVisibility);
+
+        // Tab click handlers
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                tabButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                activeRegion = this.getAttribute('data-target');
+                updateVisibility();
+            });
+        });
+
+        // Smooth scroll for anchor links and mobile menu collapse auto-close
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                
+                // If it is just '#', scroll to top of page and handle active class
+                if (targetId === '#') {
+                    if (this.classList.contains('custom-nav-link')) {
+                        e.preventDefault();
+                        document.querySelectorAll('.custom-nav-link').forEach(link => link.classList.remove('active'));
+                        this.classList.add('active');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                    return;
+                }
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    
+                    // Update active class on nav links
+                    if (this.classList.contains('custom-nav-link')) {
+                        document.querySelectorAll('.custom-nav-link').forEach(link => link.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                    
+                    // Auto-close mobile navbar collapse if it is open
+                    const menuToggle = document.getElementById('navbarNav');
+                    if (menuToggle && menuToggle.classList.contains('show')) {
+                        const bsCollapse = bootstrap.Collapse.getInstance(menuToggle);
+                        if (bsCollapse) {
+                            bsCollapse.hide();
+                        } else if (typeof bootstrap !== 'undefined') {
+                            new bootstrap.Collapse(menuToggle).hide();
+                        }
+                    }
+                    
+                    // Smooth scroll to the target section
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- Traveler Test Wizard Script Controller -->
+    <script>
+        (function() {
+            let currentStep = 1;
+            let userAnswers = {
+                tipoViaje: '',
+                presupuesto: '',
+                region: '',
+                fechas: [],
+                companero: ''
+            };
+
+            const today = new Date();
+            let displayYear = today.getFullYear();
+            let displayMonth = today.getMonth(); // 0-indexed
+
+            const modal = document.getElementById('travelerTestModal');
+            const btnPrev = document.getElementById('btnPrevStep');
+            const btnNext = document.getElementById('btnNextStep');
+            const footer = document.getElementById('testModalFooter');
+            const progressLine = document.getElementById('stepperLineProgress');
+
+            const profiles = {
+                aventurero: {
+                    title: "Aventurero Indómito",
+                    desc: "Sos un explorador nato. Te motivan los desafíos físicos, la conexión profunda con la naturaleza salvaje y el trekking. No buscás lujos, sino experiencias auténticas y la libertad de moverte a tu propio ritmo con la mochila a cuestas.",
+                    image: "images/resultado_aventurero.jpg"
+                },
+                confort: {
+                    title: "Buscador de Confort y Relax",
+                    desc: "Para vos, viajar es sinónimo de descansar, mimarte y recargar energías en entornos cómodos y placenteros. Te encantan los buenos hoteles, spas, degustación de platos selectos y paseos organizados sin preocupaciones logísticas.",
+                    image: "images/resultado_confort.jpg"
+                },
+                social: {
+                    title: "Explorador Social",
+                    desc: "Buscás conectar con la gente, la música y la noche de cada lugar. Disfrutás compartir un fogón, recorrer bares locales, participar de fiestas tradicionales y hacer nuevos amigos en hostels y tours grupales.",
+                    image: "images/resultado_social.jpg"
+                },
+                cultural: {
+                    title: "Explorador Cultural e Histórico",
+                    desc: "Te apasiona la historia local, las leyendas de cada pueblo, la arquitectura colonial, los museos y el patrimonio arqueológico. Buscás viajes enriquecedores que te dejen nuevos aprendizajes e historias que contar.",
+                    image: "images/resultado_cultural.jpg"
+                }
+            };
+
+            const recommendations = {
+                noa: {
+                    aventurero: "Jujuy (Salinas Grandes y senderos de altura en Purmamarca y Tilcara).",
+                    confort: "Salta (Cafayate, bodegas de altura y hoteles coloniales premium con spa).",
+                    social: "Salta Capital (Peñas folclóricas de la calle Balcarce y peatonales activas).",
+                    cultural: "Tucumán (Ruinas de Quilmes) y La Rioja (Parque Nacional Talampaya)."
+                },
+                nea: {
+                    aventurero: "Chaco (El Impenetrable) y Formosa (Bañado La Estrella en lancha de aventura).",
+                    confort: "Misiones (Cataratas del Iguazú y resorts ecológicos premium de selva).",
+                    social: "Corrientes (Esteros del Iberá, playas fluviales y costanera con fiesta).",
+                    cultural: "Misiones (Ruinas Jesuíticas de San Ignacio Miní, patrimonio mundial)."
+                },
+                cuyo: {
+                    aventurero: "Mendoza (Alta Montaña, senderismo al pie del Aconcagua y rafting en Potrerillos).",
+                    confort: "Mendoza (Bodegas exclusivas en Valle de Uco y hoteles boutique de viñedos).",
+                    social: "San Luis (Potrero de los Funes y deportes grupales en el lago).",
+                    cultural: "San Juan (Parque Provincial Ischigualasto / Valle de la Luna)."
+                },
+                pampeana: {
+                    aventurero: "Buenos Aires (Senderismo y escalada en las Sierras de Tandil o Sierra de la Ventana).",
+                    confort: "CABA (Puerto Madero, hoteles 5 estrellas y cenas-show de tango de primer nivel).",
+                    social: "CABA (Bares y boliches en Palermo) o Rosario (Paseo costanero del río Paraná).",
+                    cultural: "Buenos Aires (San Antonio de Areco, cuna de la tradición gaucha y estancias históricas)."
+                },
+                patagonia: {
+                    aventurero: "Santa Cruz (El Chaltén, capital nacional del trekking, y Glaciar Perito Moreno).",
+                    confort: "Neuquén (Villa La Angostura, cabañas de lujo frente al lago Correntoso).",
+                    social: "Río Negro (Bariloche, cervecerías artesanales del Circuito Chico y movida nocturna joven).",
+                    cultural: "Chubut (Gaiman, casas de té galesas históricas y avistaje de ballenas en Puerto Madryn)."
+                }
+            };
+
+            // Render calendar days
+            function renderCalendar() {
+                const grid = document.getElementById('calendarDaysGrid');
+                if (!grid) return;
+                grid.innerHTML = '';
+                
+                // Spanish month names
+                const monthNames = [
+                    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+                ];
+                const monthName = monthNames[displayMonth];
+                document.getElementById('calendarMonthTitle').innerText = `${monthName} ${displayYear}`;
+                
+                // First day of current displayed month
+                const firstDay = new Date(displayYear, displayMonth, 1);
+                // Offset calculation (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+                // We want Monday (1) as start of week.
+                let startDayOffset = firstDay.getDay() - 1;
+                if (startDayOffset < 0) startDayOffset = 6; // Sunday offset is 6
+                
+                // Days in current displayed month
+                const totalDays = new Date(displayYear, displayMonth + 1, 0).getDate();
+                // Days in previous month
+                const prevMonthDays = new Date(displayYear, displayMonth, 0).getDate();
+                
+                // Disable prev month button if we are at the actual current month
+                const btnPrevMonth = document.getElementById('calPrevMonth');
+                if (displayYear === today.getFullYear() && displayMonth === today.getMonth()) {
+                    btnPrevMonth.setAttribute('disabled', 'true');
+                } else {
+                    btnPrevMonth.removeAttribute('disabled');
+                }
+                
+                // Render trailing days of previous month
+                for (let i = startDayOffset - 1; i >= 0; i--) {
+                    const dayNum = prevMonthDays - i;
+                    const btn = document.createElement('button');
+                    btn.className = 'calendar-day-btn muted';
+                    btn.type = 'button';
+                    btn.innerText = dayNum < 10 ? '0' + dayNum : dayNum;
+                    btn.disabled = true;
+                    grid.appendChild(btn);
+                }
+                
+                // Render current month days
+                for (let day = 1; day <= totalDays; day++) {
+                    const btn = document.createElement('button');
+                    btn.className = 'calendar-day-btn';
+                    btn.type = 'button';
+                    const dayStr = day < 10 ? '0' + day : day;
+                    btn.innerText = dayStr;
+                    
+                    const dateKey = `${displayYear}-${displayMonth + 1}-${dayStr}`;
+                    
+                    // Check if date is in the past
+                    const cellDate = new Date(displayYear, displayMonth, day);
+                    const todayDateOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+                    
+                    if (cellDate < todayDateOnly) {
+                        btn.classList.add('muted');
+                        btn.disabled = true;
+                    } else {
+                        if (userAnswers.fechas.includes(dateKey)) {
+                            btn.classList.add('selected');
+                        }
+                        
+                        btn.addEventListener('click', function() {
+                            this.classList.toggle('selected');
+                            if (this.classList.contains('selected')) {
+                                userAnswers.fechas.push(dateKey);
+                            } else {
+                                userAnswers.fechas = userAnswers.fechas.filter(d => d !== dateKey);
+                            }
+                            updateButtonState();
+                        });
+                    }
+                    
+                    grid.appendChild(btn);
+                }
+            }
+
+            // Month navigation
+            document.getElementById('calPrevMonth').addEventListener('click', () => {
+                if (displayYear > today.getFullYear() || (displayYear === today.getFullYear() && displayMonth > today.getMonth())) {
+                    displayMonth--;
+                    if (displayMonth < 0) {
+                        displayMonth = 11;
+                        displayYear--;
+                    }
+                    renderCalendar();
+                }
+            });
+            document.getElementById('calNextMonth').addEventListener('click', () => {
+                displayMonth++;
+                if (displayMonth > 11) {
+                    displayMonth = 0;
+                    displayYear++;
+                }
+                renderCalendar();
+            });
+
+            // Card Option Clicks
+            document.querySelectorAll('.test-option-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const key = this.getAttribute('data-key');
+                    const value = this.getAttribute('data-value');
+                    
+                    // Unselect siblings
+                    document.querySelectorAll(`.test-option-card[data-key="${key}"]`).forEach(c => {
+                        c.classList.remove('selected');
+                    });
+                    
+                    this.classList.add('selected');
+                    userAnswers[key] = value;
+                    updateButtonState();
+                });
+            });
+
+            function updateButtonState() {
+                let enabled = false;
+                if (currentStep === 1 && userAnswers.tipoViaje) enabled = true;
+                if (currentStep === 2 && userAnswers.presupuesto) enabled = true;
+                if (currentStep === 3 && userAnswers.region) enabled = true;
+                if (currentStep === 4 && userAnswers.fechas.length > 0) enabled = true;
+                if (currentStep === 5 && userAnswers.companero) enabled = true;
+
+                if (enabled) {
+                    btnNext.removeAttribute('disabled');
+                } else {
+                    btnNext.setAttribute('disabled', 'true');
+                }
+            }
+
+            function updateStepVisibility() {
+                // Stepper circles
+                document.querySelectorAll('.step-circle-indicator').forEach(indicator => {
+                    const stepNum = parseInt(indicator.getAttribute('data-step'));
+                    indicator.classList.remove('active', 'completed');
+                    if (stepNum === currentStep) {
+                        indicator.classList.add('active');
+                    } else if (stepNum < currentStep) {
+                        indicator.classList.add('completed');
+                        indicator.innerHTML = '<i class="bi bi-check-lg"></i>';
+                    } else {
+                        indicator.innerHTML = stepNum;
+                    }
+                });
+
+                // Stepper line progress width
+                const progressWidth = ((currentStep - 1) / 4) * 90;
+                progressLine.style.width = `${progressWidth}%`;
+
+                // Step content
+                document.querySelectorAll('.wizard-step').forEach(stepDiv => {
+                    stepDiv.classList.add('d-none');
+                });
+                
+                const currentStepDiv = document.querySelector(`.wizard-step[data-step="${currentStep}"]`);
+                if (currentStepDiv) {
+                    currentStepDiv.classList.remove('d-none');
+                }
+
+                // Prev/Next buttons
+                btnPrev.disabled = currentStep === 1;
+                updateButtonState();
+            }
+
+            btnPrev.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateStepVisibility();
+                }
+            });
+
+            btnNext.addEventListener('click', () => {
+                if (currentStep < 5) {
+                    currentStep++;
+                    updateStepVisibility();
+                } else {
+                    // Calculation state
+                    showLoading();
+                }
+            });
+
+            function showLoading() {
+                document.querySelectorAll('.wizard-step').forEach(stepDiv => {
+                    stepDiv.classList.add('d-none');
+                });
+                footer.classList.add('d-none');
+                
+                const loadingScreen = document.getElementById('testLoadingScreen');
+                loadingScreen.classList.remove('d-none');
+                
+                let percent = 0;
+                const progressBar = document.getElementById('loadingProgress');
+                const interval = setInterval(() => {
+                    percent += 5;
+                    progressBar.style.width = `${percent}%`;
+                    if (percent >= 100) {
+                        clearInterval(interval);
+                        calculateResult();
+                    }
+                }, 100);
+            }
+
+            function calculateResult() {
+                let aventurero = 0;
+                let confort = 0;
+                let social = 0;
+                let cultural = 0;
+
+                // Step 1 mapping
+                if (userAnswers.tipoViaje === 'mochilero') { aventurero += 3; social += 1.5; }
+                else if (userAnswers.tipoViaje === 'hotel') { confort += 3; cultural += 1; }
+                else if (userAnswers.tipoViaje === 'organizado') { cultural += 3; confort += 1.5; }
+
+                // Step 2 mapping
+                if (userAnswers.presupuesto === 'economico') { aventurero += 2; social += 1; }
+                else if (userAnswers.presupuesto === 'medio') { social += 2; cultural += 1.5; }
+                else if (userAnswers.presupuesto === 'premium') { confort += 3; cultural += 1; }
+
+                // Step 5 mapping
+                if (userAnswers.companero === 'aventura') { aventurero += 3; social += 0.5; }
+                else if (userAnswers.companero === 'fiesta') { social += 3; }
+                else if (userAnswers.companero === 'confort') { confort += 2; cultural += 3; }
+
+                const maxScore = Math.max(aventurero, confort, social, cultural);
+                let selectedProfile = 'aventurero';
+                if (maxScore === confort) selectedProfile = 'confort';
+                else if (maxScore === social) selectedProfile = 'social';
+                else if (maxScore === cultural) selectedProfile = 'cultural';
+
+                // Render result page
+                const profile = profiles[selectedProfile];
+                document.getElementById('resultProfileTitle').innerText = profile.title;
+                document.getElementById('resultProfileDesc').innerText = profile.desc;
+                document.getElementById('resultProfileImage').src = profile.image;
+
+                // Destinations recommendation string
+                const regionName = {
+                    noa: 'Noroeste (NOA)',
+                    nea: 'Noreste (NEA)',
+                    cuyo: 'Cuyo',
+                    pampeana: 'Pampeana',
+                    patagonia: 'Patagónica'
+                }[userAnswers.region];
+
+                const destText = recommendations[userAnswers.region][selectedProfile];
+                document.getElementById('resultDestinationsText').innerHTML = `Basado en tu interés por la región <strong>${regionName}</strong> y tu perfil de <strong>${profile.title}</strong>, te recomendamos explorar:<br><br><strong>${destText}</strong>`;
+
+                // Show result screen
+                document.getElementById('testLoadingScreen').classList.add('d-none');
+                document.getElementById('testResultScreen').classList.remove('d-none');
+            }
+
+            function restartTest() {
+                currentStep = 1;
+                userAnswers = {
+                    tipoViaje: '',
+                    presupuesto: '',
+                    region: '',
+                    fechas: [],
+                    companero: ''
+                };
+                displayYear = today.getFullYear();
+                displayMonth = today.getMonth();
+                
+                // Clear selected classes from cards
+                document.querySelectorAll('.test-option-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+                
+                // Hide result screen, show step 1, restore footer
+                document.getElementById('testResultScreen').classList.add('d-none');
+                document.getElementById('testLoadingScreen').classList.add('d-none');
+                footer.classList.remove('d-none');
+                
+                updateStepVisibility();
+                renderCalendar();
+            }
+
+            document.getElementById('btnRestartTest').addEventListener('click', restartTest);
+
+            // Render calendar on modal trigger
+            modal.addEventListener('show.bs.modal', function () {
+                restartTest();
+            });
+
+            // Find Partner redirects to dedicated Login/Register page
+            document.getElementById('btnFindPartner').addEventListener('click', function() {
+                const resultTitle = document.getElementById('resultProfileTitle').innerText;
+                const encodedTitle = encodeURIComponent(resultTitle);
+                window.location.href = `pantallas/iniciar_sesion.html?mode=register&profile=${encodedTitle}`;
+            });
+
+        })();
+    </script>
+</body>
+</html>

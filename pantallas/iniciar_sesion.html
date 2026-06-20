@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mate & Travel - Iniciar Sesión</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .btn-verde {
+            background-color: #27ae60 !important;
+            transition: all 0.2s ease-in-out !important;
+        }
+        .btn-verde:hover {
+            background-color: #219653 !important;
+            transform: scale(1.02);
+        }
+        .hover-link {
+            transition: color 0.2s ease;
+        }
+        .hover-link:hover {
+            color: #2ecc71 !important;
+        }
+        input::placeholder {
+            color: #b2bec3 !important;
+        }
+        .form-control:focus {
+            border-color: #2ecc71 !important;
+            box-shadow: 0 0 0 0.25rem rgba(46, 204, 113, 0.15) !important;
+        }
+        .social-btn {
+            border-radius: 10px;
+            font-size: 0.85rem;
+            border-color: #e2e8f0;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        .social-btn:hover {
+            background-color: #f7fafc;
+            border-color: #cbd5e0;
+            transform: translateY(-1px);
+            color: #2d3748;
+        }
+        .social-icon {
+            font-size: 1.2rem;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-bounce {
+            animation: bounce 1.5s infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid min-vh-100 p-0 overflow-hidden">
+        <div class="row g-0 min-vh-100">
+            <!-- Left Image Column -->
+            <div class="col-lg-4 d-none d-lg-block position-relative">
+                <img src="../images/login_left.png" alt="Backpackers" class="position-absolute w-100 h-100" style="object-fit: cover;">
+                <div class="position-absolute w-100 h-100" style="background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);"></div>
+            </div>
+            
+            <!-- Center Form Column -->
+            <div class="col-lg-4 col-md-8 mx-auto d-flex align-items-center bg-white px-4 py-5 shadow-lg" style="z-index: 10;">
+                <div class="w-100" style="max-width: 380px; margin: 0 auto;">
+                    
+                    <!-- Brand Logo -->
+                    <div class="text-center mb-4">
+                        <a class="d-flex align-items-center justify-content-center text-decoration-none" href="../index.html">
+                            <span class="fw-bold fs-3" style="color: #2ecc71; font-family: 'Outfit';">Mate</span>
+                            <span class="fs-4" style="color: #48dbfb;">&nbsp;&amp;&nbsp;</span>
+                            <span class="fw-bold fs-3" style="color: #3498db; font-family: 'Outfit';">Travel</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Title & Subtitle -->
+                    <h2 class="fw-bold text-dark text-center mb-1" id="authTitle" style="font-family: 'Outfit'; letter-spacing: -0.5px;">Iniciar Sesión</h2>
+                    <p class="text-secondary small text-center mb-4" id="authSubtitle" style="line-height: 1.4;">
+                        Ingresá tus datos para continuar tu aventura.
+                    </p>
+
+                    <!-- Traveler Test Result Alert -->
+                    <div class="alert alert-success d-none shadow-sm border-0 mb-4" id="profileAlert" style="border-radius: 12px; background-color: rgba(46, 204, 113, 0.08); border-left: 4px solid #2ecc71 !important;">
+                        <div class="d-flex gap-2 align-items-center text-success small">
+                            <i class="bi bi-award-fill fs-5" style="flex-shrink:0;"></i>
+                            <span class="fw-semibold">¡Excelente! Tu perfil es <span id="profileResultName" class="text-decoration-underline">Aventurero Indómito</span>. Creá tu cuenta gratis para guardarlo.</span>
+                        </div>
+                    </div>
+
+                    <div id="authFormsContainer">
+                        <!-- LOGIN FORM -->
+                        <form id="loginForm" onsubmit="window.handleAuthSubmit(event, 'login')">
+                            <div class="mb-3">
+                                <label class="form-label small fw-semibold text-secondary mb-1">Email</label>
+                                <input type="email" class="form-control rounded-pill px-3 py-2 border-secondary-subtle" placeholder="nombre@correo.com" required style="font-size: 0.9rem; height: 42px;">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-semibold text-secondary mb-1">Contraseña</label>
+                                <div class="input-group rounded-pill overflow-hidden border border-secondary-subtle" style="height: 42px;">
+                                    <input type="password" id="loginPassword" class="form-control border-0 px-3 py-2" placeholder="Tu contraseña" required style="font-size: 0.9rem; box-shadow: none;">
+                                    <button class="btn btn-link bg-white text-secondary border-0 px-3" type="button" onclick="togglePasswordVisibility('loginPassword', this)" style="display:flex; align-items:center;">
+                                        <i class="bi bi-eye-slash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="text-end mb-4">
+                                <a href="#" class="small text-secondary text-decoration-none hover-link">¿Olvidaste tu contraseña?</a>
+                            </div>
+                            <div class="d-grid mb-4">
+                                <button type="submit" class="btn text-white py-2 fw-semibold rounded-pill btn-verde" style="border: none; font-size: 0.95rem; height: 44px;">Ingresar</button>
+                            </div>
+                        </form>
+
+                        <!-- REGISTER FORM -->
+                        <form id="registerForm" class="d-none" onsubmit="window.handleAuthSubmit(event, 'register')">
+                            <div class="mb-3">
+                                <label class="form-label small fw-semibold text-secondary mb-1">Nombre completo</label>
+                                <input type="text" class="form-control rounded-pill px-3 py-2 border-secondary-subtle" placeholder="Ej: Sofía Rodríguez" required style="font-size: 0.9rem; height: 42px;">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-semibold text-secondary mb-1">Email</label>
+                                <input type="email" class="form-control rounded-pill px-3 py-2 border-secondary-subtle" placeholder="nombre@correo.com" required style="font-size: 0.9rem; height: 42px;">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-semibold text-secondary mb-1">Contraseña</label>
+                                <div class="input-group rounded-pill overflow-hidden border border-secondary-subtle" style="height: 42px;">
+                                    <input type="password" id="registerPassword" class="form-control border-0 px-3 py-2" placeholder="Mínimo 6 caracteres" required minlength="6" style="font-size: 0.9rem; box-shadow: none;">
+                                    <button class="btn btn-link bg-white text-secondary border-0 px-3" type="button" onclick="togglePasswordVisibility('registerPassword', this)" style="display:flex; align-items:center;">
+                                        <i class="bi bi-eye-slash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-check mb-4 text-start">
+                                <input class="form-check-input text-success" type="checkbox" id="authTermsCheck" required>
+                                <label class="form-check-label text-muted" for="authTermsCheck" style="font-size: 0.78rem; line-height: 1.4;">
+                                    Acepto los <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal" class="text-success text-decoration-none fw-semibold">Términos</a> y la <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal" class="text-success text-decoration-none fw-semibold">Política de Privacidad</a>.
+                                </label>
+                            </div>
+                            <div class="d-grid mb-4">
+                                <button type="submit" class="btn text-white py-2 fw-semibold rounded-pill btn-verde" style="border: none; font-size: 0.95rem; height: 44px;">Registrarse y guardar perfil</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Social Login Divider -->
+                    <div class="d-flex align-items-center mb-4">
+                        <hr class="flex-grow-1 border-secondary-subtle">
+                        <span class="mx-3 text-muted" style="font-size: 0.75rem;">O ingresar con</span>
+                        <hr class="flex-grow-1 border-secondary-subtle">
+                    </div>
+
+                    <!-- Social Login Buttons -->
+                    <div class="row g-2 mb-4">
+                        <div class="col-4">
+                            <a href="#" class="btn btn-outline-secondary w-100 py-2 d-flex flex-column align-items-center justify-content-center social-btn shadow-sm">
+                                <i class="bi bi-google text-danger mb-1 social-icon"></i>
+                                Google
+                            </a>
+                        </div>
+                        <div class="col-4">
+                            <a href="#" class="btn btn-outline-secondary w-100 py-2 d-flex flex-column align-items-center justify-content-center social-btn shadow-sm">
+                                <i class="bi bi-apple text-dark mb-1 social-icon"></i>
+                                Apple
+                            </a>
+                        </div>
+                        <div class="col-4">
+                            <a href="#" class="btn btn-outline-secondary w-100 py-2 d-flex flex-column align-items-center justify-content-center social-btn shadow-sm">
+                                <i class="bi bi-facebook text-primary mb-1 social-icon"></i>
+                                Facebook
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Toggle Mode Link -->
+                    <div class="text-center pt-2">
+                        <span class="text-secondary small" id="toggleModeText">¿No tienes cuenta?</span>
+                        <a href="#" class="small text-success text-decoration-none fw-bold ms-1 hover-link" id="toggleModeBtn" onclick="toggleAuthMode(event)">Regístrate</a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- Right Image Column -->
+            <div class="col-lg-4 d-none d-lg-block position-relative">
+                <img src="../images/login_right.png" alt="Adventurer" class="position-absolute w-100 h-100" style="object-fit: cover;">
+                <div class="position-absolute w-100 h-100" style="background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TERMS MODAL -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow-lg">
+                <div class="modal-header border-0 bg-light px-4 py-3">
+                    <h5 class="modal-title fw-bold text-dark" id="termsModalLabel" style="font-family: 'Outfit';">Términos y Condiciones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body px-4 py-3 text-secondary" style="font-size: 0.95rem; line-height: 1.6;">
+                    <h6 class="fw-bold text-dark mb-3">Reglas claras para viajar bien:</h6>
+                    <ul class="ps-3 d-flex flex-column gap-2">
+                        <li><strong>Respeto mutuo:</strong> Tratamos a todes con buena onda y respeto. Cero discriminación o violencia.</li>
+                        <li><strong>Datos reales:</strong> Completá tu perfil con información verdadera para que viajar sea seguro para todes.</li>
+                        <li><strong>Compartir gastos:</strong> Si coordinan compartir gastos, pónganse de acuerdo claramente antes de salir. Mate &amp; Travel no interviene en arreglos económicos privados.</li>
+                        <li><strong>Cuidar la comunidad:</strong> Si ves un perfil sospechoso, reportalo. ¡Viajar segures es tarea de todes!</li>
+                    </ul>
+                </div>
+                <div class="modal-footer border-0 px-4 py-3 justify-content-end">
+                    <button type="button" class="btn text-white px-4 py-1.5 fw-semibold rounded-pill btn-verde" style="border: none; font-size: 0.9rem;" data-bs-dismiss="modal">Entendido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRIVACY MODAL -->
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow-lg">
+                <div class="modal-header border-0 bg-light px-4 py-3">
+                    <h5 class="modal-title fw-bold text-dark" id="privacyModalLabel" style="font-family: 'Outfit';">Política de Privacidad</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body px-4 py-3 text-secondary" style="font-size: 0.95rem; line-height: 1.6;">
+                    <h6 class="fw-bold text-dark mb-3">Cuidamos tus datos como a nuestro mate:</h6>
+                    <ul class="ps-3 d-flex flex-column gap-2">
+                        <li><strong>¿Qué guardamos?:</strong> Solo tu nombre, correo, preferencias de viaje del test y fechas elegidas.</li>
+                        <li><strong>¿Para qué?:</strong> Únicamente para ayudarte a encontrar compañeres de viaje compatibles.</li>
+                        <li><strong>Tus datos son tuyos:</strong> No vendemos tus datos a nadie. Si querés borrar tu cuenta, nos mandás un mail y los borramos al toque.</li>
+                        <li><strong>Seguridad:</strong> Protegemos tus datos para que viajen tan seguros como vos.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer border-0 px-4 py-3 justify-content-end">
+                    <button type="button" class="btn text-white px-4 py-1.5 fw-semibold rounded-pill btn-verde" style="border: none; font-size: 0.9rem;" data-bs-dismiss="modal">Entendido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        let currentMode = 'login';
+        let originalFormsContent = '';
+
+        window.addEventListener('DOMContentLoaded', () => {
+            originalFormsContent = document.getElementById('authFormsContainer').innerHTML;
+            
+            // Parse URL Parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const mode = urlParams.get('mode');
+            const profile = urlParams.get('profile');
+            
+            if (profile) {
+                const alertDiv = document.getElementById('profileAlert');
+                const profileSpan = document.getElementById('profileResultName');
+                profileSpan.innerText = decodeURIComponent(profile);
+                alertDiv.classList.remove('d-none');
+            }
+            
+            if (mode === 'register') {
+                toggleAuthMode(null, 'register');
+            }
+        });
+
+        function togglePasswordVisibility(inputId, btn) {
+            const input = document.getElementById(inputId);
+            const icon = btn.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            }
+        }
+
+        function toggleAuthMode(e, forceMode) {
+            if (e) e.preventDefault();
+            
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const title = document.getElementById('authTitle');
+            const subtitle = document.getElementById('authSubtitle');
+            const toggleText = document.getElementById('toggleModeText');
+            const toggleBtn = document.getElementById('toggleModeBtn');
+            
+            const targetMode = forceMode || (currentMode === 'login' ? 'register' : 'login');
+            
+            if (targetMode === 'register') {
+                currentMode = 'register';
+                loginForm.classList.add('d-none');
+                registerForm.classList.remove('d-none');
+                title.innerText = 'Crear Cuenta';
+                subtitle.innerText = 'Registrate gratis para conectar con tu compañere.';
+                toggleText.innerText = '¿Ya tienes cuenta?';
+                toggleBtn.innerText = 'Iniciar Sesión';
+            } else {
+                currentMode = 'login';
+                registerForm.classList.add('d-none');
+                loginForm.classList.remove('d-none');
+                title.innerText = 'Iniciar Sesión';
+                subtitle.innerText = 'Ingresá tus datos para continuar tu aventura.';
+                toggleText.innerText = '¿No tienes cuenta?';
+                toggleBtn.innerText = 'Regístrate';
+            }
+        }
+
+        window.handleAuthSubmit = function(event, type) {
+            event.preventDefault();
+            const container = document.getElementById('authFormsContainer');
+            
+            container.innerHTML = `
+                <div class="text-center py-5">
+                    <div class="rounded-circle bg-success-subtle text-success d-flex align-items-center justify-content-center mx-auto mb-3 animate-bounce" style="width: 70px; height: 70px;">
+                        <i class="bi bi-check-lg fs-1"></i>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-2" style="font-family: 'Outfit';">¡Acceso exitoso!</h4>
+                    <p class="text-muted small px-3">Tu cuenta está lista y tu perfil de viajere ha sido guardado. Conectándote con tu próximo viaje...</p>
+                    <div class="spinner-border text-success spinner-border-sm mt-3" role="status">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                // Redirect to home page
+                window.location.href = '../index.html';
+            }, 2500);
+        };
+    </script>
+</body>
+</html>
