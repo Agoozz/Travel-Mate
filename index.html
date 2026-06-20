@@ -1282,8 +1282,8 @@
                 
                 <!-- Modal Footer -->
                 <div class="modal-footer border-0 px-4 py-3 bg-light justify-content-between" id="testModalFooter">
-                    <button class="btn btn-outline-secondary px-4 py-1.5 fw-semibold rounded-pill" id="btnPrevStep" style="font-size: 0.9rem;" disabled>Volver</button>
-                    <button class="btn btn-success px-4 py-1.5 fw-semibold rounded-pill" id="btnNextStep" style="font-size: 0.9rem;" disabled>Siguiente</button>
+                    <button type="button" class="btn btn-outline-secondary px-4 py-1.5 fw-semibold rounded-pill" id="btnPrevStep" style="font-size: 0.9rem;" disabled>Volver</button>
+                    <button type="button" class="btn btn-success px-4 py-1.5 fw-semibold rounded-pill" id="btnNextStep" style="font-size: 0.9rem;" disabled>Siguiente</button>
                 </div>
                 
             </div>
@@ -1676,7 +1676,11 @@
                 if (currentStep === 4 && userAnswers.fechas.length > 0) enabled = true;
                 if (currentStep === 5 && userAnswers.companero) enabled = true;
 
-                btnNext.disabled = !enabled;
+                if (enabled) {
+                    btnNext.removeAttribute('disabled');
+                } else {
+                    btnNext.setAttribute('disabled', 'true');
+                }
             }
 
             function updateStepVisibility() {
@@ -1709,7 +1713,11 @@
                 }
 
                 // Prev/Next buttons
-                btnPrev.disabled = currentStep === 1;
+                if (currentStep === 1) {
+                    btnPrev.setAttribute('disabled', 'true');
+                } else {
+                    btnPrev.removeAttribute('disabled');
+                }
                 updateButtonState();
             }
 
