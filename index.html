@@ -1270,8 +1270,9 @@
                                 </div>
                                 
                                 <div class="d-grid gap-2 w-100">
-                                    <button class="btn btn-success py-2 fw-semibold rounded-pill" style="font-size: 0.9rem;" id="btnFindPartner">Encontrar compañere</button>
-                                    <button class="btn btn-outline-secondary py-2 fw-semibold rounded-pill" id="btnRestartTest" style="font-size: 0.85rem;">Repetir el test</button>
+                                    <button class="btn btn-success py-2 fw-semibold rounded-pill" style="font-size: 0.9rem;" id="btnRegisterAndSave">Crear cuenta y guardar perfil</button>
+                                    <button class="btn btn-outline-success border-2 py-2 fw-semibold rounded-pill" style="font-size: 0.9rem;" id="btnLoginAndSave">Ya tengo cuenta (Iniciar sesión)</button>
+                                    <button class="btn btn-outline-secondary py-2 fw-semibold rounded-pill mt-1" id="btnRestartTest" style="font-size: 0.85rem;">Repetir el test</button>
                                 </div>
                             </div>
                         </div>
@@ -1675,11 +1676,7 @@
                 if (currentStep === 4 && userAnswers.fechas.length > 0) enabled = true;
                 if (currentStep === 5 && userAnswers.companero) enabled = true;
 
-                if (enabled) {
-                    btnNext.removeAttribute('disabled');
-                } else {
-                    btnNext.setAttribute('disabled', 'true');
-                }
+                btnNext.disabled = !enabled;
             }
 
             function updateStepVisibility() {
@@ -1837,11 +1834,17 @@
                 restartTest();
             });
 
-            // Find Partner redirects to dedicated Login/Register page
-            document.getElementById('btnFindPartner').addEventListener('click', function() {
+            // Redirects to dedicated Login/Register page
+            document.getElementById('btnRegisterAndSave').addEventListener('click', function() {
                 const resultTitle = document.getElementById('resultProfileTitle').innerText;
                 const encodedTitle = encodeURIComponent(resultTitle);
                 window.location.href = `pantallas/iniciar_sesion.html?mode=register&profile=${encodedTitle}`;
+            });
+
+            document.getElementById('btnLoginAndSave').addEventListener('click', function() {
+                const resultTitle = document.getElementById('resultProfileTitle').innerText;
+                const encodedTitle = encodeURIComponent(resultTitle);
+                window.location.href = `pantallas/iniciar_sesion.html?mode=login&profile=${encodedTitle}`;
             });
 
         })();

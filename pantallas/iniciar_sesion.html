@@ -89,7 +89,7 @@
                     <div class="alert alert-success d-none shadow-sm border-0 mb-4" id="profileAlert" style="border-radius: 12px; background-color: rgba(46, 204, 113, 0.08); border-left: 4px solid #2ecc71 !important;">
                         <div class="d-flex gap-2 align-items-center text-success small">
                             <i class="bi bi-award-fill fs-5" style="flex-shrink:0;"></i>
-                            <span class="fw-semibold">¡Excelente! Tu perfil es <span id="profileResultName" class="text-decoration-underline">Aventurero Indómito</span>. Creá tu cuenta gratis para guardarlo.</span>
+                            <span class="fw-semibold" id="profileAlertText">¡Excelente! Tu perfil es <span id="profileResultName" class="text-decoration-underline">Aventurero Indómito</span>. Creá tu cuenta gratis para guardarlo.</span>
                         </div>
                     </div>
 
@@ -248,6 +248,18 @@
         let currentMode = 'login';
         let originalFormsContent = '';
 
+        function updateAlertText(mode) {
+            const alertTextSpan = document.getElementById('profileAlertText');
+            if (!alertTextSpan) return;
+            const profileSpan = document.getElementById('profileResultName');
+            const profileName = profileSpan ? profileSpan.innerText : '';
+            if (mode === 'register') {
+                alertTextSpan.innerHTML = `¡Excelente! Tu perfil es <span id="profileResultName" class="text-decoration-underline">${profileName}</span>. Creá tu cuenta gratis para guardarlo.`;
+            } else {
+                alertTextSpan.innerHTML = `¡Excelente! Tu perfil es <span id="profileResultName" class="text-decoration-underline">${profileName}</span>. Iniciá sesión para guardarlo.`;
+            }
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             originalFormsContent = document.getElementById('authFormsContainer').innerHTML;
             
@@ -261,6 +273,7 @@
                 const profileSpan = document.getElementById('profileResultName');
                 profileSpan.innerText = decodeURIComponent(profile);
                 alertDiv.classList.remove('d-none');
+                updateAlertText(mode || 'login');
             }
             
             if (mode === 'register') {
@@ -310,6 +323,12 @@
                 subtitle.innerText = 'Ingresá tus datos para continuar tu aventura.';
                 toggleText.innerText = '¿No tienes cuenta?';
                 toggleBtn.innerText = 'Regístrate';
+            }
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const profile = urlParams.get('profile');
+            if (profile) {
+                updateAlertText(targetMode);
             }
         }
 
