@@ -16,6 +16,149 @@
             color: #27ae60 !important;
             box-shadow: none !important;
         }
+        .avatar-circle {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            margin-right: -10px;
+            background-color: #dfe6e9;
+        }
+        .carousel-indicators-custom {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            display: flex;
+            gap: 8px;
+            z-index: 15;
+        }
+        .carousel-indicators-custom button {
+            width: 9px !important;
+            height: 9px !important;
+            border-radius: 50% !important;
+            background-color: #fff !important;
+            border: 1px solid rgba(0,0,0,0.3) !important;
+            opacity: 0.6 !important;
+            padding: 0 !important;
+            transition: opacity 0.6s ease;
+        }
+        .carousel-indicators-custom .active {
+            opacity: 1 !important;
+        }
+        .slider-item {
+            flex: 0 0 25%;
+            padding: 0 2px;
+        }
+        .slider-item img {
+            height: 520px;
+            object-fit: cover;
+        }
+        @media (max-width: 991.98px) {
+            .slider-item {
+                flex: 0 0 50%;
+            }
+            .slider-item img {
+                height: 350px !important;
+            }
+        }
+        @media (max-width: 575.98px) {
+            .slider-item {
+                flex: 0 0 100%;
+            }
+            .slider-item img {
+                height: 260px !important;
+            }
+        }
+        .step-circle {
+            transition: transform 0.2s ease-in-out !important;
+        }
+        .step-circle:hover {
+            transform: scale(1.08);
+        }
+        .card-destino {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card-destino:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12) !important;
+        }
+        .custom-nav-link {
+            color: #555555 !important;
+            transition: color 0.25s ease, background-color 0.25s ease;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .custom-nav-link:hover {
+            color: #2ecc71 !important;
+            background-color: rgba(46, 204, 113, 0.08);
+        }
+        .custom-nav-link.active {
+            color: #2ecc71 !important;
+            background-color: rgba(46, 204, 113, 0.12);
+            font-weight: 600;
+        }
+        .step-circle-indicator {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #e9ecef;
+            background: #fff;
+            color: #aaa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .step-circle-indicator.active {
+            border-color: #2ecc71;
+            background: #2ecc71;
+            color: #fff;
+        }
+        .step-circle-indicator.completed {
+            border-color: #2ecc71;
+            background: #fff;
+            color: #2ecc71;
+        }
+        .test-option-card {
+            cursor: pointer;
+            transition: all 0.2s;
+            border-width: 2px !important;
+        }
+        .test-option-card:hover {
+            transform: translateY(-2px);
+            border-color: #6ed3a6 !important;
+        }
+        .test-option-card.selected {
+            border-color: #2ecc71 !important;
+            background-color: rgba(46, 204, 113, 0.05) !important;
+            transform: scale(1.02);
+        }
+        .calendar-day-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background: none;
+            transition: all 0.2s;
+        }
+        .calendar-day-btn:hover {
+            background: #e9ecef;
+        }
+        .calendar-day-btn.selected {
+            background: #2ecc71 !important;
+            color: #fff !important;
+        }
+        .calendar-day-btn.muted {
+            color: #ccc;
+        }
+        .hover-link {
+            transition: color 0.2s ease;
+        }
+        .hover-link:hover {
+            color: #2ecc71 !important;
+        }
     </style>
 </head>
 <body>
@@ -56,7 +199,7 @@
                 <!-- Right elements -->
                 <div class="d-flex align-items-center gap-3">
                     <a href="pantallas/iniciar_sesion.html?mode=login" class="text-secondary text-decoration-none fw-semibold hover-link">Ingresar</a>
-                    <a href="pantallas/iniciar_sesion.html?mode=register" class="btn text-white rounded-pill px-4 py-2 fw-semibold btn-verde-light text-decoration-none">Registrarse</a>
+                    <a href="pantallas/iniciar_sesion.html?mode=register" class="btn btn-success rounded-pill px-4 py-2 fw-semibold text-decoration-none text-white">Registrarse</a>
                 </div>
             </div>
         </div>
@@ -79,8 +222,8 @@
                         
                         <!-- CTA Buttons -->
                         <div class="d-flex flex-wrap gap-2 gap-sm-3 mb-5">
-                            <button class="btn btn-hero-primary" data-bs-toggle="modal" data-bs-target="#travelerTestModal">Comenzar test</button>
-                            <a href="#como-funciona" class="btn btn-hero-secondary text-decoration-none">Cómo funciona</a>
+                            <button class="btn btn-success rounded-pill px-4 py-2.5 fw-semibold shadow-sm" data-bs-toggle="modal" data-bs-target="#travelerTestModal">Comenzar test</button>
+                            <a href="#como-funciona" class="btn btn-outline-success border-2 rounded-pill px-4 py-2.5 fw-semibold text-decoration-none">Cómo funciona</a>
                         </div>
                         
                         <!-- Social Proof -->
@@ -271,7 +414,7 @@
 
             <!-- CTA Empezar Button Centered -->
             <div class="text-center mt-5">
-                <button class="btn btn-hero-primary px-5 py-3 fw-bold fs-4" data-bs-toggle="modal" data-bs-target="#travelerTestModal" style="letter-spacing: 1px;">
+                <button class="btn btn-success rounded-pill px-5 py-3 fw-bold fs-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#travelerTestModal" style="letter-spacing: 1px;">
                     Empezar
                 </button>
             </div>
@@ -851,7 +994,7 @@
                     </ul>
                 </div>
                 <div class="modal-footer border-0 px-4 py-3 justify-content-end">
-                    <button type="button" class="btn text-white px-4 py-1.5 fw-semibold rounded-pill btn-verde" style="border: none; font-size: 0.9rem;" data-bs-dismiss="modal">Entendido</button>
+                    <button type="button" class="btn btn-success px-4 py-1.5 fw-semibold rounded-pill" style="font-size: 0.9rem;" data-bs-dismiss="modal">Entendido</button>
                 </div>
             </div>
         </div>
@@ -875,7 +1018,7 @@
                     </ul>
                 </div>
                 <div class="modal-footer border-0 px-4 py-3 justify-content-end">
-                    <button type="button" class="btn text-white px-4 py-1.5 fw-semibold rounded-pill btn-verde" style="border: none; font-size: 0.9rem;" data-bs-dismiss="modal">Entendido</button>
+                    <button type="button" class="btn btn-success px-4 py-1.5 fw-semibold rounded-pill" style="font-size: 0.9rem;" data-bs-dismiss="modal">Entendido</button>
                 </div>
             </div>
         </div>
@@ -1127,7 +1270,7 @@
                                 </div>
                                 
                                 <div class="d-grid gap-2 w-100">
-                                    <button class="btn text-white py-2 fw-semibold rounded-pill btn-verde" style="border: none; font-size: 0.9rem;" id="btnFindPartner">Encontrar compañere</button>
+                                    <button class="btn btn-success py-2 fw-semibold rounded-pill" style="font-size: 0.9rem;" id="btnFindPartner">Encontrar compañere</button>
                                     <button class="btn btn-outline-secondary py-2 fw-semibold rounded-pill" id="btnRestartTest" style="font-size: 0.85rem;">Repetir el test</button>
                                 </div>
                             </div>
@@ -1139,7 +1282,7 @@
                 <!-- Modal Footer -->
                 <div class="modal-footer border-0 px-4 py-3 bg-light justify-content-between" id="testModalFooter">
                     <button class="btn btn-outline-secondary px-4 py-1.5 fw-semibold rounded-pill" id="btnPrevStep" style="font-size: 0.9rem;" disabled>Volver</button>
-                    <button class="btn text-white px-4 py-1.5 fw-semibold rounded-pill btn-verde" id="btnNextStep" style="border: none; font-size: 0.9rem;" disabled>Siguiente</button>
+                    <button class="btn btn-success px-4 py-1.5 fw-semibold rounded-pill" id="btnNextStep" style="font-size: 0.9rem;" disabled>Siguiente</button>
                 </div>
                 
             </div>
