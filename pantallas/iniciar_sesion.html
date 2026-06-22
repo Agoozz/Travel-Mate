@@ -19,7 +19,7 @@
 
     <div class="container-fluid min-vh-100 p-0 overflow-hidden position-relative">
         <!-- Floating Theme Toggle -->
-        <button class="btn btn-light rounded-circle shadow theme-toggle position-fixed top-0 end-0 m-3" id="btnThemeToggle" title="Cambiar tema" aria-label="Cambiar tema" style="width:45px;height:45px;z-index:1050;">
+        <button class="btn btn-light rounded-circle shadow theme-toggle position-fixed top-0 end-0 m-3" id="btnThemeToggle" title="Cambiar tema" aria-label="Cambiar tema">
             <i class="bi bi-moon-fill fs-5"></i>
         </button>
         <div class="row g-0 min-vh-100">
@@ -31,7 +31,7 @@
             </div>
             
             <!-- Center Form Column -->
-            <div class="col-lg-4 col-md-8 mx-auto d-flex align-items-center bg-white px-4 py-5 shadow-lg z-1">
+            <div class="col-lg-4 col-md-8 mx-auto d-flex align-items-center bg-body px-4 py-5 shadow-lg z-1">
                 <div class="w-100 mx-auto col-xl-10">
                     
                     <!-- Brand Logo -->
@@ -44,8 +44,8 @@
                     </div>
                     
                     <!-- Title & Subtitle -->
-                    <h2 class="fw-bold text-dark text-center mb-1" id="authTitle">Iniciar Sesión</h2>
-                    <p class="text-secondary small text-center mb-4 lh-sm" id="authSubtitle">
+                    <h2 class="fw-bold text-body-emphasis text-center mb-1" id="authTitle">Iniciar Sesión</h2>
+                    <p class="text-body-secondary small text-center mb-4 lh-sm" id="authSubtitle">
                         Ingresá tus datos para continuar tu aventura.
                     </p>
 
@@ -67,7 +67,7 @@
                                     <div>
                                         <span class="fw-bold d-block mb-1">💡 Ingreso Simulado</span>
                                         Usá las siguientes credenciales para probar el perfil completo de Mateo:
-                                        <div class="mt-2 font-monospace bg-white bg-opacity-75 rounded p-2 text-dark border border-info-subtle">
+                                        <div class="mt-2 font-monospace bg-body bg-opacity-75 rounded p-2 text-body-emphasis border border-info-subtle">
                                             <div><strong>Email:</strong> viajero@mate.com</div>
                                             <div><strong>Contraseña:</strong> password123</div>
                                         </div>
@@ -78,14 +78,14 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label small fw-semibold text-secondary mb-1">Email</label>
+                                <label class="form-label small fw-semibold text-body-secondary mb-1">Email</label>
                                 <input type="email" id="loginEmail" class="form-control rounded-pill px-3 py-2 border-secondary-subtle small" placeholder="nombre@correo.com" required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label small fw-semibold text-secondary mb-1">Contraseña</label>
+                                <label class="form-label small fw-semibold text-body-secondary mb-1">Contraseña</label>
                                 <div class="input-group rounded-pill overflow-hidden border border-secondary-subtle">
                                     <input type="password" id="loginPassword" class="form-control border-0 px-3 py-2 shadow-none small" placeholder="Tu contraseña" required>
-                                    <button class="btn btn-link bg-white text-secondary border-0 px-3 d-flex align-items-center" type="button" onclick="togglePasswordVisibility('loginPassword', this)">
+                                    <button class="btn btn-link bg-body text-body-secondary border-0 px-3 d-flex align-items-center" type="button" onclick="togglePasswordVisibility('loginPassword', this)">
                                         <i class="bi bi-eye-slash-fill"></i>
                                     </button>
                                 </div>
@@ -93,7 +93,7 @@
                             <div class="d-flex justify-content-between align-items-center mb-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="rememberMe">
-                                    <label class="form-check-label text-secondary small" for="rememberMe">Recordarme</label>
+                                    <label class="form-check-label text-body-secondary small" for="rememberMe">Recordarme</label>
                                 </div>
                                 <a href="#" class="text-success small text-decoration-none fw-semibold">¿Olvidaste tu contraseña?</a>
                             </div>
@@ -103,18 +103,18 @@
                         <!-- REGISTER FORM -->
                         <form id="registerForm" class="d-none" onsubmit="window.handleAuthSubmit(event, 'register')">
                             <div class="mb-3">
-                                <label class="form-label small fw-semibold text-secondary mb-1">Nombre Completo</label>
+                                <label class="form-label small fw-semibold text-body-secondary mb-1">Nombre Completo</label>
                                 <input type="text" class="form-control rounded-pill px-3 py-2 border-secondary-subtle small" placeholder="Ej: Sofía Rodríguez" required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label small fw-semibold text-secondary mb-1">Email</label>
+                                <label class="form-label small fw-semibold text-body-secondary mb-1">Email</label>
                                 <input type="email" class="form-control rounded-pill px-3 py-2 border-secondary-subtle small" placeholder="nombre@correo.com" required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label small fw-semibold text-secondary mb-1">Contraseña</label>
+                                <label class="form-label small fw-semibold text-body-secondary mb-1">Contraseña</label>
                                 <div class="input-group rounded-pill overflow-hidden border border-secondary-subtle">
                                     <input type="password" id="registerPassword" class="form-control border-0 px-3 py-2 shadow-none small" placeholder="Mínimo 6 caracteres" required minlength="6">
-                                    <button class="btn btn-link bg-white text-secondary border-0 px-3 d-flex align-items-center" type="button" onclick="togglePasswordVisibility('registerPassword', this)">
+                                    <button class="btn btn-link bg-body text-body-secondary border-0 px-3 d-flex align-items-center" type="button" onclick="togglePasswordVisibility('registerPassword', this)">
                                         <i class="bi bi-eye-slash-fill"></i>
                                     </button>
                                 </div>
@@ -122,7 +122,7 @@
                             <div class="mb-4">
                                 <div class="form-check d-flex align-items-start gap-2">
                                     <input class="form-check-input mt-1" type="checkbox" id="authTermsCheck" required>
-                                    <label class="form-check-label text-muted small lh-sm" for="authTermsCheck">
+                                    <label class="form-check-label text-body-secondary small lh-sm" for="authTermsCheck">
                                         Acepto los <a href="#" class="text-success text-decoration-none fw-semibold" data-bs-toggle="modal" data-bs-target="#termsModal">Términos y Condiciones</a> y la <a href="#" class="text-success text-decoration-none fw-semibold" data-bs-toggle="modal" data-bs-target="#privacyModal">Política de Privacidad</a>.
                                     </label>
                                 </div>
@@ -133,27 +133,27 @@
 
                     <!-- Divider -->
                     <div class="d-flex align-items-center my-4">
-                        <hr class="flex-grow-1 text-secondary-subtle">
-                        <span class="mx-3 text-muted small">O ingresar con</span>
-                        <hr class="flex-grow-1 text-secondary-subtle">
+                        <hr class="flex-grow-1 text-body-secondary-subtle">
+                        <span class="mx-3 text-body-secondary small">O ingresar con</span>
+                        <hr class="flex-grow-1 text-body-secondary-subtle">
                     </div>
 
                     <!-- Social Login Buttons -->
                     <div class="row g-2 mb-4">
                         <div class="col-6">
-                            <a href="#" class="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 py-2 rounded-3 text-secondary text-decoration-none small">
+                            <a href="#" class="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 py-2 rounded-3 text-body-secondary text-decoration-none small">
                                 <i class="bi bi-google text-danger fs-5"></i> Google
                             </a>
                         </div>
                         <div class="col-6">
-                            <a href="#" class="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 py-2 rounded-3 text-secondary text-decoration-none small">
+                            <a href="#" class="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 py-2 rounded-3 text-body-secondary text-decoration-none small">
                                 <i class="bi bi-facebook text-primary fs-5"></i> Facebook
                             </a>
                         </div>
                     </div>
 
                     <!-- Toggle Auth Mode -->
-                    <p class="text-center text-secondary small mb-0" id="authToggleText">
+                    <p class="text-center text-body-secondary small mb-0" id="authToggleText">
                         ¿No tenés una cuenta? <a href="#" class="text-success text-decoration-none fw-bold" onclick="toggleAuthMode('register')">Registrate acá</a>
                     </p>
 
@@ -173,14 +173,14 @@
     <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content border-0 rounded-4 shadow-lg">
-                <div class="modal-header border-0 px-4 py-3 bg-light justify-content-between">
-                    <h5 class="modal-title fw-bold text-dark" id="termsModalLabel">Términos y Condiciones</h5>
+                <div class="modal-header border-0 px-4 py-3 bg-body-tertiary justify-content-between">
+                    <h5 class="modal-title fw-bold text-body-emphasis" id="termsModalLabel">Términos y Condiciones</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body px-4 py-3 text-secondary small lh-base">
+                <div class="modal-body px-4 py-3 text-body-secondary small lh-base">
                     <p>¡Hola! Te damos la bienvenida a Mate & Travel. Al usar nuestra plataforma para buscar compañeres de ruta, estás aceptando tratar a todes con respeto, buena onda y honestidad. Queda estrictamente prohibido cualquier contenido ofensivo, comercial o de citas románticas. ¡Hagamos de los viajes un espacio de amistad seguro y divertido!</p>
                 </div>
-                <div class="modal-footer border-0 px-4 py-3 bg-light">
+                <div class="modal-footer border-0 px-4 py-3 bg-body-tertiary">
                     <button type="button" class="btn btn-success px-4 py-1.5 fw-semibold rounded-pill btn-sm" data-bs-dismiss="modal">Entendido</button>
                 </div>
             </div>
@@ -190,14 +190,14 @@
     <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content border-0 rounded-4 shadow-lg">
-                <div class="modal-header border-0 px-4 py-3 bg-light justify-content-between">
-                    <h5 class="modal-title fw-bold text-dark" id="privacyModalLabel">Política de Privacidad</h5>
+                <div class="modal-header border-0 px-4 py-3 bg-body-tertiary justify-content-between">
+                    <h5 class="modal-title fw-bold text-body-emphasis" id="privacyModalLabel">Política de Privacidad</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body px-4 py-3 text-secondary small lh-base">
+                <div class="modal-body px-4 py-3 text-body-secondary small lh-base">
                     <p>En Mate & Travel cuidamos tus datos. Solo recopilamos tu correo, nombre y respuestas de estilo de viaje para ayudarte a encontrar el compañere ideal. No compartimos tu información con terceros con fines publicitarios. Podés editar o eliminar tu perfil cuando quieras.</p>
                 </div>
-                <div class="modal-footer border-0 px-4 py-3 bg-light">
+                <div class="modal-footer border-0 px-4 py-3 bg-body-tertiary">
                     <button type="button" class="btn btn-success px-4 py-1.5 fw-semibold rounded-pill btn-sm" data-bs-dismiss="modal">Entendido</button>
                 </div>
             </div>

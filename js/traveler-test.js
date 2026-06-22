@@ -18,26 +18,29 @@
     const footer = document.getElementById('testModalFooter');
     const progressLine = document.getElementById('stepperLineProgress');
 
+    const isPantallas = window.location.pathname.includes('/pantallas/');
+    const basePath = isPantallas ? '../' : '';
+
     const profiles = {
         aventurero: {
             title: "Aventurero Indómito",
             desc: "Sos un explorador nato. Te motivan los desafíos físicos, la conexión profunda con la naturaleza salvaje y el trekking. No buscás lujos, sino experiencias auténticas y la libertad de moverte a tu propio ritmo con la mochila a cuestas.",
-            image: "images/resultado_aventurero.jpg"
+            image: basePath + "images/resultado_aventurero.jpg"
         },
         confort: {
             title: "Buscador de Confort y Relax",
             desc: "Para vos, viajar es sinónimo de descansar, mimarte y recargar energías en entornos cómodos y placenteros. Te encantan los buenos hoteles, spas, degustación de platos selectos y paseos organizados sin preocupaciones logísticas.",
-            image: "images/resultado_confort.jpg"
+            image: basePath + "images/resultado_confort.jpg"
         },
         social: {
             title: "Explorador Social",
             desc: "Buscás conectar con la gente, la música y la noche de cada lugar. Disfrutás compartir un fogón, recorrer bares locales, participar de fiestas tradicionales y hacer nuevos amigos en hostels y tours grupales.",
-            image: "images/resultado_social.jpg"
+            image: basePath + "images/resultado_social.jpg"
         },
         cultural: {
             title: "Explorador Cultural e Histórico",
             desc: "Te apasiona la historia local, las leyendas de cada pueblo, la arquitectura colonial, los museos y el patrimonio arqueológico. Buscás viajes enriquecedores que te dejen nuevos aprendizajes e historias que contar.",
-            image: "images/resultado_cultural.jpg"
+            image: basePath + "images/resultado_cultural.jpg"
         }
     };
 
@@ -128,7 +131,7 @@
             }
 
             if (isDaySelected(dayNum)) {
-                btn.classList.add('selected');
+                btn.classList.add('selected', 'bg-success', 'text-white', 'border-success', 'border-2');
             }
 
             btn.innerText = dayNum;
@@ -184,9 +187,9 @@
         
         card.addEventListener('click', () => {
             document.querySelectorAll(`.test-option-card[data-key="${key}"]`).forEach(c => {
-                c.classList.remove('selected');
+                c.classList.remove('selected', 'border-success', 'bg-success-subtle', 'border-2');
             });
-            card.classList.add('selected');
+            card.classList.add('selected', 'border-success', 'bg-success-subtle', 'border-2');
             userAnswers[key] = value;
             updateButtonState();
         });
@@ -331,7 +334,7 @@
         displayMonth = today.getMonth();
         
         document.querySelectorAll('.test-option-card').forEach(card => {
-            card.classList.remove('selected');
+            card.classList.remove('selected', 'border-success', 'bg-success-subtle', 'border-2');
         });
         
         document.getElementById('testResultScreen').classList.add('d-none');
@@ -342,7 +345,10 @@
         renderCalendar();
     }
 
-    document.getElementById('btnRestartTest').addEventListener('click', restartTest);
+    const btnRestartTestEl = document.getElementById('btnRestartTest');
+    if (btnRestartTestEl) {
+        btnRestartTestEl.addEventListener('click', restartTest);
+    }
 
     modal.addEventListener('show.bs.modal', function () {
         restartTest();
@@ -385,18 +391,32 @@
     }
 
     // Find Partner redirects to dedicated Login/Register page
-    document.getElementById('btnRegisterAndSave').addEventListener('click', function() {
-        saveTestResultsToLocalStorage();
-        const resultTitle = document.getElementById('resultProfileTitle').innerText;
-        const encodedTitle = encodeURIComponent(resultTitle);
-        window.location.href = `pantallas/iniciar_sesion.html?mode=register&profile=${encodedTitle}`;
-    });
+    const btnRegisterAndSave = document.getElementById('btnRegisterAndSave');
+    if (btnRegisterAndSave) {
+        btnRegisterAndSave.addEventListener('click', function() {
+            saveTestResultsToLocalStorage();
+            const resultTitle = document.getElementById('resultProfileTitle').innerText;
+            const encodedTitle = encodeURIComponent(resultTitle);
+            window.location.href = `pantallas/iniciar_sesion.html?mode=register&profile=${encodedTitle}`;
+        });
+    }
     
-    document.getElementById('btnLoginAndSave').addEventListener('click', function() {
-        saveTestResultsToLocalStorage();
-        const resultTitle = document.getElementById('resultProfileTitle').innerText;
-        const encodedTitle = encodeURIComponent(resultTitle);
-        window.location.href = `pantallas/iniciar_sesion.html?mode=login&profile=${encodedTitle}`;
-    });
+    const btnLoginAndSave = document.getElementById('btnLoginAndSave');
+    if (btnLoginAndSave) {
+        btnLoginAndSave.addEventListener('click', function() {
+            saveTestResultsToLocalStorage();
+            const resultTitle = document.getElementById('resultProfileTitle').innerText;
+            const encodedTitle = encodeURIComponent(resultTitle);
+            window.location.href = `pantallas/iniciar_sesion.html?mode=login&profile=${encodedTitle}`;
+        });
+    }
+
+    // Save Profile from within perfil.html
+    const btnSaveTestProfile = document.getElementById('btnSaveTestProfile');
+    if (btnSaveTestProfile) {
+        btnSaveTestProfile.addEventListener('click', function() {
+            saveTestResultsToLocalStorage();
+        });
+    }
 
 })();
