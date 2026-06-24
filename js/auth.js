@@ -121,7 +121,7 @@ window.handleAuthSubmit = function(event, type) {
                 }
                 localStorage.setItem('user_budget', 'economico');
                 localStorage.setItem('user_regions', JSON.stringify([]));
-                localStorage.setItem('user_destination', 'Tailandia');
+                localStorage.setItem('user_destination', 'Argentina');
             } else {
                 // Default empty state values
                 localStorage.setItem('user_travel_style', 'Aventurero Indómito');
@@ -129,7 +129,7 @@ window.handleAuthSubmit = function(event, type) {
                 localStorage.setItem('user_budget', 'economico');
                 localStorage.setItem('user_companion_style', 'aventura');
                 localStorage.setItem('user_regions', JSON.stringify([]));
-                localStorage.setItem('user_destination', 'Tailandia');
+                localStorage.setItem('user_destination', 'Argentina');
             }
             
             // Set defaults for dates
@@ -165,7 +165,14 @@ window.handleAuthSubmit = function(event, type) {
         </div>
     `;
     setTimeout(() => {
-        window.location.href = "inicio.html";
+        const isRegister = document.getElementById('registerForm') && 
+                           !document.getElementById('registerForm').classList.contains('d-none');
+        const onboardingDone = localStorage.getItem('user_onboarding_done');
+        if (isRegister && !onboardingDone) {
+            window.location.href = "onboarding.html";
+        } else {
+            window.location.href = "inicio.html";
+        }
     }, 1500);
 }
 

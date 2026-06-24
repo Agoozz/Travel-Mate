@@ -42,10 +42,12 @@ window.ChatManager = (function() {
             chats[userId].avatar = userAvatar;
         }
 
+        const now = new Date();
         chats[userId].messages.push({
             text: text,
             sender: sender, // 'sent' (yo) o 'received' (el otro)
-            timestamp: new Date().getTime()
+            timestamp: now.getTime(),
+            time: now.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'})
         });
         chats[userId].lastUpdate = new Date().getTime();
         

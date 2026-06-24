@@ -186,11 +186,25 @@
         const value = card.getAttribute('data-value');
         
         card.addEventListener('click', () => {
-            document.querySelectorAll(`.test-option-card[data-key="${key}"]`).forEach(c => {
-                c.classList.remove('selected', 'border-success', 'bg-success-subtle', 'border-2');
-            });
-            card.classList.add('selected', 'border-success', 'bg-success-subtle', 'border-2');
-            userAnswers[key] = value;
+            const isMulti = card.getAttribute('data-multi') === 'true';
+            if (isMulti) {
+                // Toggle: multi-select
+                card.classList.toggle('selected');
+                card.classList.toggle('border-success');
+                card.classList.toggle('bg-success-subtle');
+                card.classList.toggle('border-2');
+                const selected = Array.from(
+                    document.querySelectorAll(`.test-option-card[data-key="${key}"].selected`)
+                ).map(c => c.getAttribute('data-value'));
+                userAnswers[key] = selected.length > 0 ? selected.join(',') : null;
+            } else {
+                // Single select
+                document.querySelectorAll(`.test-option-card[data-key="${key}"]`).forEach(c => {
+                    c.classList.remove('selected', 'border-success', 'bg-success-subtle', 'border-2');
+                });
+                card.classList.add('selected', 'border-success', 'bg-success-subtle', 'border-2');
+                userAnswers[key] = value;
+            }
             updateButtonState();
         });
     });
@@ -314,7 +328,7 @@
             patagonia: 'Patagónica'
         }[userAnswers.region];
 
-        const destText = recommendations[userAnswers.region][selectedProfile];
+        const regionKey = userAnswers.region ? userAnswers.region.split(',')[0] : 'patagonia'; const destText = recommendations[regionKey] ? recommendations[regionKey][selectedProfile] : recommendations['patagonia'][selectedProfile];
         document.getElementById('resultDestinationsText').innerHTML = `Basado en tu interés por la región <strong>${regionName}</strong> y tu perfil de <strong>${profile.title}</strong>, te recomendamos explorar:<br><br><strong>${destText}</strong>`;
 
         document.getElementById('testLoadingScreen').classList.add('d-none');

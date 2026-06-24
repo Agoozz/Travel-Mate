@@ -45,20 +45,20 @@
                         <a href="perfil.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
                             <i class="bi bi-person-circle me-2"></i> Mi Perfil
                         </a>
-                        <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
+                        <a href="mis_companeres.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
                             <i class="bi bi-people me-2"></i> Mis Compañeres
                         </a>
                         <a href="mensajes.html" class="nav-link active bg-success text-white py-2 px-3 rounded-3">
                             <i class="bi bi-chat-left-text me-2"></i> Mensajes
                         </a>
-                        <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
+                        <a href="mis_viajes.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
                             <i class="bi bi-airplane me-2"></i> Mis Viajes
                         </a>
-                        <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
-                            <i class="bi bi-star me-2"></i> Favoritos
+                        <a href="mis-lugares.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
+                            <i class="bi bi-bookmark-fill me-2"></i> Mis Lugares
                         </a>
-                        <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
-                            <i class="bi bi-bookmark me-2"></i> Guardados
+                        <a href="mis-lugares.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
+                            <i class="bi bi-bookmark-fill me-2"></i> Mis Lugares
                         </a>
                         <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3 theme-toggle" id="btnThemeToggle">
                             <i class="bi bi-moon-fill me-2"></i> <span class="theme-toggle-text">Modo Oscuro</span>
@@ -70,13 +70,7 @@
                     </nav>
                 </div>
                 
-                <!-- Bottom Action -->
-                <div>
-                    <button class="btn btn-outline-success w-100 rounded-pill d-flex align-items-center justify-content-center gap-2 mt-4" id="themeToggleBtn">
-                        <i class="bi bi-moon-stars"></i>
-                        <span>Modo Noche</span>
-                    </button>
-                </div>
+
             </aside>
 
             <!-- MAIN CONTENT (MESSAGES) -->
@@ -103,7 +97,7 @@
                             <img src="" id="activeChatAvatar" class="rounded-circle object-fit-cover" width="45" height="45">
                             <div>
                                 <h5 class="fw-bold mb-0" id="activeChatName">Nombre</h5>
-                                <small class="text-success">En línea</small>
+                                <small class="text-success d-flex align-items-center gap-1"><span style="width:8px;height:8px;background:#2ecc71;border-radius:50%;display:inline-block;flex-shrink:0;"></span>En línea</small>
                             </div>
                         </div>
                         
@@ -118,10 +112,7 @@
 
                         <div class="p-3 bg-body border-top">
                             <form id="pageChatForm" class="d-flex gap-2">
-                                <button type="button" class="btn btn-light rounded-circle text-success">
-                                    <i class="bi bi-paperclip"></i>
-                                </button>
-                                <input type="text" class="form-control rounded-pill shadow-none border-secondary-subtle" placeholder="Escribí un mensaje..." id="pageChatInput">
+                                <input type="text" class="form-control rounded-pill shadow-none" placeholder="Escribí un mensaje..." id="pageChatInput" style="border-color:var(--bs-success,#2ecc71)!important;">
                                 <button type="submit" class="btn btn-success rounded-circle d-flex align-items-center justify-content-center shadow-sm">
                                     <i class="bi bi-send-fill"></i>
                                 </button>
@@ -129,11 +120,61 @@
                         </div>
                     </div>
                     
-                    <!-- Empty State -->
+                    <!-- Empty State / No match state -->
                     <div class="col-md-8 col-lg-9 vh-100 d-flex flex-column" id="emptyStateContainer">
-                        <div class="d-flex flex-column align-items-center justify-content-center h-100 text-body-secondary">
-                            <i class="bi bi-chat-dots text-success opacity-50"></i>
-                            <h4 class="mt-3 text-body-secondary">Seleccioná un chat para comenzar</h4>
+                        <div class="d-flex flex-column h-100 p-4 gap-4 overflow-y-auto">
+
+                            <!-- Sin chats -->
+                            <div class="text-center text-body-secondary pt-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="text-success opacity-50 mb-3" viewBox="0 0 24 24">
+                                    <line x1="13" y1="7" x2="18" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M6 9c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v3c0 4.4-3.6 7-8 7s-8-2.6-8-7V9zm2 .5H16V12c0 3.3-2.7 5-6 5s-6-1.7-6-5V9.5z" fill-rule="evenodd"/>
+                                </svg>
+                                <h5 class="text-body-emphasis fw-bold mb-1">Todavía no tenés chats activos</h5>
+                                <p class="text-body-secondary small mb-3">Explorá perfiles e invitá un mate. Cuando hagan match, el chat se abre acá.</p>
+                                <a href="inicio.html" class="btn btn-success rounded-pill px-4 fw-semibold"><i class="bi bi-compass me-2"></i>Ir a Explorar</a>
+                            </div>
+
+                            <!-- Notificaciones -->
+                            <div class="card border-0 rounded-4 shadow-sm bg-body">
+                                <div class="d-flex align-items-center justify-content-between px-4 py-3 border-bottom">
+                                    <h6 class="fw-bold mb-0"><i class="bi bi-bell-fill text-success me-2"></i>Notificaciones</h6>
+                                    <button class="btn btn-sm btn-link text-success p-0 text-decoration-none small" id="markAllReadMsg">Marcar todo leído</button>
+                                </div>
+                                <div class="list-group list-group-flush rounded-bottom-4" id="notifListMsg">
+
+                                    <!-- Notif 1: Match -->
+                                    <div class="list-group-item list-group-item-action border-0 d-flex gap-3 align-items-start px-4 py-3 notif-msg-item bg-success bg-opacity-10">
+                                        <img src="https://i.pravatar.cc/150?img=32" class="rounded-circle object-fit-cover flex-shrink-0" width="40" height="40" alt="Sofía">
+                                        <div class="flex-grow-1 min-width-0">
+                                            <p class="mb-0 small fw-semibold">¡Match con Sofía!</p>
+                                            <p class="mb-0 text-body-secondary" style="font-size:0.75rem;">Bariloche · Hace 5 min</p>
+                                        </div>
+                                        <span class="flex-shrink-0 rounded-circle bg-success d-inline-block mt-1" style="width:8px;height:8px;"></span>
+                                    </div>
+
+                                    <!-- Notif 2: Te envió un mate -->
+                                    <div class="list-group-item list-group-item-action border-0 d-flex gap-3 align-items-start px-4 py-3 notif-msg-item bg-success bg-opacity-10">
+                                        <img src="https://i.pravatar.cc/150?img=60" class="rounded-circle object-fit-cover flex-shrink-0" width="40" height="40" alt="Martín">
+                                        <div class="flex-grow-1 min-width-0">
+                                            <p class="mb-0 small fw-semibold">Martín te envió un mate 🧉</p>
+                                            <p class="mb-0 text-body-secondary" style="font-size:0.75rem;">Salta / NOA · Hace 20 min</p>
+                                        </div>
+                                        <span class="flex-shrink-0 rounded-circle bg-success d-inline-block mt-1" style="width:8px;height:8px;"></span>
+                                    </div>
+
+                                    <!-- Notif 3: Vio tu perfil -->
+                                    <div class="list-group-item list-group-item-action border-0 d-flex gap-3 align-items-start px-4 py-3 notif-msg-item">
+                                        <img src="https://i.pravatar.cc/150?img=49" class="rounded-circle object-fit-cover flex-shrink-0" width="40" height="40" alt="Caro">
+                                        <div class="flex-grow-1 min-width-0">
+                                            <p class="mb-0 small text-body-secondary">Caro vio tu perfil</p>
+                                            <p class="mb-0 text-body-secondary" style="font-size:0.75rem;">Misiones · Hace 1 hora</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -145,6 +186,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="../js/chat.js"></script>
     <script src="../js/mensajes.js"></script>
+    <script>
+    // Marcar notif individual como leída al clickear
+    document.querySelectorAll('.notif-msg-item').forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.remove('bg-success', 'bg-opacity-10');
+            const dot = item.querySelector('.rounded-circle.bg-success');
+            if (dot) dot.remove();
+        });
+    });
+    // Marcar todas como leídas
+    const markAllBtn = document.getElementById('markAllReadMsg');
+    if (markAllBtn) {
+        markAllBtn.addEventListener('click', () => {
+            document.querySelectorAll('.notif-msg-item').forEach(item => {
+                item.classList.remove('bg-success', 'bg-opacity-10');
+                const dot = item.querySelector('.rounded-circle.bg-success');
+                if (dot) dot.remove();
+            });
+        });
+    }
+    </script>
 </body>
 
 </html>

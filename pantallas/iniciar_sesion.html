@@ -60,19 +60,22 @@
                     <div id="authFormsContainer">
                         <!-- LOGIN FORM -->
                         <form id="loginForm" onsubmit="window.handleAuthSubmit(event, 'login')">
-                            <!-- Info Perfil de Prueba -->
-                            <div class="alert alert-info border-0 rounded-4 p-3 mb-4 shadow-sm bg-info-subtle text-info-emphasis">
-                                <div class="d-flex gap-2 align-items-start small">
-                                    <i class="bi bi-info-circle-fill fs-5 mt-0.5 flex-shrink-0"></i>
-                                    <div>
-                                        <span class="fw-bold d-block mb-1">💡 Ingreso Simulado</span>
-                                        Usá las siguientes credenciales para probar el perfil completo de Mateo:
-                                        <div class="mt-2 font-monospace bg-body bg-opacity-75 rounded p-2 text-body-emphasis border border-info-subtle">
-                                            <div><strong>Email:</strong> viajero@mate.com</div>
-                                            <div><strong>Contraseña:</strong> password123</div>
+                            <!-- Banner modo demo -->
+                            <div class="rounded-4 p-1 mb-4 shadow-sm" style="background:linear-gradient(135deg,#2ecc71,#27ae60);">
+                                <div class="bg-body rounded-3 p-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="rounded-circle bg-success d-flex align-items-center justify-content-center flex-shrink-0" style="width:44px;height:44px;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 24 24">
+                                                <line x1="13" y1="7" x2="18" y2="2" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                                <path d="M6 9c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v3c0 4.4-3.6 7-8 7s-8-2.6-8-7V9zm2 .5H16V12c0 3.3-2.7 5-6 5s-6-1.7-6-5V9.5z" fill-rule="evenodd"/>
+                                            </svg>
                                         </div>
-                                        <button type="button" class="btn btn-info btn-sm rounded-pill fw-semibold mt-2 px-3 text-white border-0" onclick="window.autofillMockCredentials()">
-                                            <i class="bi bi-magic me-1"></i> Autocompletar
+                                        <div class="flex-grow-1">
+                                            <p class="fw-bold mb-0 small text-body-emphasis">Modo demo disponible</p>
+                                            <p class="text-body-secondary mb-0" style="font-size:0.75rem;">Probá la app con el perfil completo de Mateo</p>
+                                        </div>
+                                        <button type="button" class="btn btn-success rounded-pill fw-semibold flex-shrink-0 px-3 py-1" style="font-size:0.8rem;" onclick="window.autofillMockCredentials()">
+                                            <i class="bi bi-play-fill me-1"></i>Entrar demo
                                         </button>
                                     </div>
                                 </div>

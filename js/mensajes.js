@@ -48,22 +48,34 @@ function loadContacts() {
     });
 }
 
-function appendMessage(text, type, animate = true) {
-    const msgDiv = document.createElement('div');
+function appendMessage(text, type, animate = true, time = null) {
+    const wrapper = document.createElement('div');
+    wrapper.className = type === 'sent' ? 'd-flex flex-column align-items-end mb-2' : 'd-flex flex-column align-items-start mb-2';
     
-    const baseClasses = "p-2 px-3 mb-2 rounded-4 shadow-sm w-75 position-relative";
+    const msgDiv = document.createElement('div');
     const typeClasses = type === 'sent' 
-        ? "bg-success text-white align-self-end ms-auto" 
-        : "bg-body-secondary text-body-emphasis align-self-start border border-light-subtle";
+        ? "bg-success text-white rounded-4 rounded-end shadow-sm" 
+        : "bg-body-secondary text-body-emphasis rounded-4 rounded-start border border-light-subtle shadow-sm";
         
-    msgDiv.className = `${baseClasses} ${typeClasses}`;
+    msgDiv.className = `p-2 px-3 ${typeClasses}`;
+    msgDiv.style.maxWidth = '75%';
     if (!animate) msgDiv.style.animation = 'none';
     msgDiv.innerText = text;
+    wrapper.appendChild(msgDiv);
+
+    // Hora del mensaje
+    const now = new Date();
+    const timeStr = time || now.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'});
+    const timeEl = document.createElement('small');
+    timeEl.className = 'text-body-secondary mt-1 px-1';
+    timeEl.style.fontSize = '0.7rem';
+    timeEl.innerText = timeStr;
+    wrapper.appendChild(timeEl);
     
     if (pageTypingIndicator.parentNode === pageChatMessages) {
-        pageChatMessages.insertBefore(msgDiv, pageTypingIndicator);
+        pageChatMessages.insertBefore(wrapper, pageTypingIndicator);
     } else {
-        pageChatMessages.appendChild(msgDiv);
+        pageChatMessages.appendChild(wrapper);
     }
     pageChatMessages.scrollTop = pageChatMessages.scrollHeight;
 }
@@ -87,7 +99,7 @@ function openChat(id, name, avatar) {
     pageChatMessages.appendChild(pageTypingIndicator); // put indicator back
     
     chat.messages.forEach(msg => {
-        appendMessage(msg.text, msg.sender, false);
+        appendMessage(msg.text, msg.sender, false, msg.time || null);
     });
 }
 

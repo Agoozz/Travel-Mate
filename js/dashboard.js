@@ -43,13 +43,18 @@
             location: 'Córdoba, Argentina',
             type: 'Aventurero Mochilero',
             about: 'Me encanta conocer culturas, hacer trekking y descubrir nuevos destinos locales o internacionales. ¡Busco alguien activo para armar ruta!',
-            destination: 'Tailandia',
+            destination: 'Jujuy, Argentina',
             dates: '01 Jun - 20 Jun',
-            budget: 'USD 800 - 1200',
+            budget: '$800.000 - $1200.000 ARS',
             style: 'Mochilero',
             interests: ['Trekking', 'Fotografía', 'Comida local'],
             languages: 'Español, Inglés',
-            avatar: 'https://i.pravatar.cc/150?img=11'
+            avatar: 'https://i.pravatar.cc/150?img=11',
+            photos: [
+                { src: '../images/jujuy.png', caption: 'Quebrada de Humahuaca, Jujuy 🏔️' },
+                { src: '../images/salta.png', caption: 'Valles Calchaquíes, Salta 🌄' },
+                { src: '../images/santa_cruz.jpg', caption: 'El Calafate, Santa Cruz ❄️' }
+            ]
         },
         sofia: {
             name: 'Sofía',
@@ -59,11 +64,15 @@
             about: 'Busco relajarme en la Patagonia, conocer cafeterías de especialidad, hacer excursiones tranquilas y compartir buenas charlas con un rico mate de por medio.',
             destination: 'Bariloche',
             dates: '08 Jul - 18 Jul',
-            budget: 'USD 1000 - 1500',
+            budget: '$1000.000 - $1500.000 ARS',
             style: 'Confort',
             interests: ['Cultura', 'Café', 'Senderismo suave'],
             languages: 'Español, Inglés',
-            avatar: 'https://i.pravatar.cc/150?img=32'
+            avatar: 'https://i.pravatar.cc/150?img=32',
+            photos: [
+                { src: '../images/rio_negro.png', caption: 'Bariloche, Patagonia 🏔️' },
+                { src: '../images/neuquen.jpg', caption: 'Villa La Angostura, Neuquén 🌲' }
+            ]
         },
         martin: {
             name: 'Martín',
@@ -73,11 +82,16 @@
             about: 'Fan de la naturaleza salvaje, peñas folclóricas, y acampar bajo las estrellas. Planeo un viaje gasolero para recorrer los Valles Calchaquíes en julio.',
             destination: 'Salta / NOA',
             dates: '10 Jun - 25 Jun',
-            budget: 'USD 600 - 900',
+            budget: '$600.000 - $900.000 ARS',
             style: 'Aventurero',
             interests: ['Camping', 'Folclore', 'Trekking'],
             languages: 'Español',
-            avatar: 'https://i.pravatar.cc/150?img=60'
+            avatar: 'https://i.pravatar.cc/150?img=60',
+            photos: [
+                { src: '../images/salta.png', caption: 'Cafayate, Salta 🎸' },
+                { src: '../images/jujuy.png', caption: 'Purmamarca, Jujuy 🌈' },
+                { src: '../images/mendoza.png', caption: 'Mendoza ⛰️' }
+            ]
         },
         caro: {
             name: 'Caro',
@@ -87,11 +101,15 @@
             about: 'Me encanta descubrir ruinas históricas, visitar museos locales y conocer la selva. Busco compañeros curiosos que les guste caminar mucho.',
             destination: 'Misiones',
             dates: '15 Ago - 25 Ago',
-            budget: 'USD 500 - 800',
+            budget: '$500.000 - $800.000 ARS',
             style: 'Cultural',
             interests: ['Historia', 'Caminatas', 'Museos'],
             languages: 'Español, Portugués',
-            avatar: 'https://i.pravatar.cc/150?img=5'
+            avatar: 'https://i.pravatar.cc/150?img=49',
+            photos: [
+                { src: '../images/misiones.png', caption: 'Cataratas del Iguazú 🌿' },
+                { src: '../images/santa_cruz.jpg', caption: 'Glaciares patagónicos ❄️' }
+            ]
         },
         juan: {
             name: 'Juan',
@@ -101,11 +119,15 @@
             about: 'Priorizo el buen comer, el relax y los paseos organizados. Estoy planeando ir al Fin del Mundo para ver la nieve con todas las comodidades.',
             destination: 'Ushuaia',
             dates: '10 Jul - 20 Jul',
-            budget: 'USD 1500 - 2500',
+            budget: '$1500.000 - $2500.000 ARS',
             style: 'Confort',
             interests: ['Gastronomía', 'Esquí', 'Relax'],
             languages: 'Español, Inglés',
-            avatar: 'https://i.pravatar.cc/150?img=12'
+            avatar: 'https://i.pravatar.cc/150?img=12',
+            photos: [
+                { src: '../images/santa_cruz.jpg', caption: 'Ushuaia, Fin del Mundo 🌎' },
+                { src: '../images/rio_negro.png', caption: 'Bariloche nevado ⛷️' }
+            ]
         },
         lucia: {
             name: 'Lucía',
@@ -115,11 +137,14 @@
             about: 'Lo mío es la playa, las rondas de mate en la arena, conocer gente nueva en hostels y salir de noche. ¡Amo improvisar planes grupales!',
             destination: 'Costa Atlántica',
             dates: '01 Ene - 15 Ene',
-            budget: 'USD 300 - 600',
+            budget: '$300.000 - $600.000 ARS',
             style: 'Social',
             interests: ['Playa', 'Fiesta', 'Amigos'],
             languages: 'Español',
-            avatar: 'https://i.pravatar.cc/150?img=20'
+            avatar: 'https://i.pravatar.cc/150?img=20',
+            photos: [
+                { src: '../images/misiones.png', caption: 'Costa atlántica en verano ☀️' }
+            ]
         },
         nico: {
             name: 'Nico',
@@ -129,11 +154,16 @@
             about: 'Vivo para los deportes extremos y subir cerros. Voy al norte buscando senderos difíciles y paisajes agrestes. Necesito un compañero ágil.',
             destination: 'Jujuy',
             dates: '05 Sep - 15 Sep',
-            budget: 'USD 400 - 700',
+            budget: '$400.000 - $700.000 ARS',
             style: 'Aventurero',
             interests: ['Alpinismo', 'Trail Running', 'Camping'],
             languages: 'Español',
-            avatar: 'https://i.pravatar.cc/150?img=59'
+            avatar: 'https://i.pravatar.cc/150?img=59',
+            photos: [
+                { src: '../images/jujuy.png', caption: 'Cumbre en Jujuy 🧗' },
+                { src: '../images/neuquen.jpg', caption: 'Sendero en Neuquén 🥾' },
+                { src: '../images/santa_cruz.jpg', caption: 'Campo de Hielo Sur ❄️' }
+            ]
         },
         valentina: {
             name: 'Valentina',
@@ -143,11 +173,15 @@
             about: 'Quiero conocer el Valle de Uco, degustar vinos de altura y hospedarme en lugares premium. Si te gusta el turismo gastronómico, ¡escribime!',
             destination: 'Mendoza',
             dates: '12 Oct - 20 Oct',
-            budget: 'USD 1200 - 1800',
+            budget: '$1200.000 - $1800.000 ARS',
             style: 'Confort / Enoturismo',
             interests: ['Vinos', 'Gourmet', 'Paisajes'],
             languages: 'Español, Inglés',
-            avatar: 'https://i.pravatar.cc/150?img=47'
+            avatar: 'https://i.pravatar.cc/150?img=47',
+            photos: [
+                { src: '../images/mendoza.png', caption: 'Valle de Uco, Mendoza 🍷' },
+                { src: '../images/salta.png', caption: 'Bodega en Cafayate 🥂' }
+            ]
         }
     };
 
@@ -421,7 +455,10 @@
 
         // 1. Setup and Show Match Overlay
         if (matchTargetAvatar) matchTargetAvatar.src = targetAvatarSrc;
-        if (matchSubtitle) matchSubtitle.classList.add('d-none');
+        const matchTargetNameLabel = document.getElementById('matchTargetNameLabel');
+        if (matchTargetNameLabel) matchTargetNameLabel.innerText = targetName;
+        const matchSubtitleArea = document.getElementById('matchSubtitleArea');
+        if (matchSubtitleArea) matchSubtitleArea.classList.add('d-none');
         
         const matchModalEl = document.getElementById('matchModal');
         let bsMatchModal = null;
@@ -429,8 +466,50 @@
             bsMatchModal = new bootstrap.Modal(matchModalEl);
             bsMatchModal.show();
             setTimeout(() => {
-                if (matchSubtitle) matchSubtitle.classList.remove('d-none');
+                if (matchSubtitleArea) matchSubtitleArea.classList.remove('d-none');
+                const matchSubtitleEl = document.getElementById('matchSubtitle');
+                if (matchSubtitleEl) matchSubtitleEl.textContent = `¡Vos y ${targetName} quieren viajar juntos!`;
             }, 800);
+
+            // === Conectar con panel de notificaciones ===
+            setTimeout(() => {
+                // 1. Agregar notif al panel
+                const notifList = document.getElementById('notifList');
+                if (notifList) {
+                    const notifEl = document.createElement('div');
+                    notifEl.className = 'notif-item d-flex gap-2 align-items-start p-2 rounded-3 bg-success bg-opacity-10 mb-1 new-match-notif';
+                    notifEl.innerHTML = `
+                        <img src="${targetAvatarSrc}" class="rounded-circle flex-shrink-0 object-fit-cover" width="32" height="32" alt="${targetName}">
+                        <div>
+                            <p class="mb-0 small fw-semibold">¡Match con ${targetName}! 🧉</p>
+                            <p class="mb-0 text-body-secondary" style="font-size:0.7rem;">Chat desbloqueado · Ahora mismo</p>
+                        </div>
+                        <span class="ms-auto flex-shrink-0 rounded-circle bg-success d-inline-block flex-shrink-0" style="width:8px;height:8px;margin-top:6px;"></span>
+                    `;
+                    notifList.prepend(notifEl);
+                }
+
+                // 2. Actualizar contador de campana
+                const notifCount = document.getElementById('notifCount');
+                const notifSummary = document.getElementById('notifSummary');
+                if (notifCount) {
+                    const current = parseInt(notifCount.textContent) || 0;
+                    const newCount = current + 1;
+                    notifCount.textContent = newCount;
+                    notifCount.classList.remove('d-none');
+                    if (notifSummary) notifSummary.textContent = `${newCount} novedad${newCount > 1 ? 'es' : ''}`;
+                }
+
+                // 3. Hacer titilar la campana
+                const bell = document.getElementById('notifBell');
+                if (bell) {
+                    bell.classList.add('bell-ring');
+                    setTimeout(() => bell.classList.remove('bell-ring'), 1000);
+                }
+
+                // 4. Quitar burbuja "¡Nuevo!" del botón que se clickeó
+                document.querySelectorAll('.pulse-badge').forEach(b => b.remove());
+            }, 500);
         }
         
         // Setup Chat Headers
@@ -460,7 +539,7 @@
                         // 4. Simulate receiving a message
                         setTimeout(() => {
                             if (chatTypingIndicator) chatTypingIndicator.classList.remove('active');
-                            const firstMsg = `¡Hola Mateo! Qué bueno coincidir 😊 ¿Tenés fechas pensadas para tu viaje? 🧉`;
+                            const userName = localStorage.getItem('user_name') || 'viajere'; const firstMsg = `¡Hola ${userName}! Qué bueno coincidir 😊 ¿Tenés fechas pensadas para el viaje? 🧉`;
                             ChatManager.addMessage(targetId, targetName, targetAvatarSrc, firstMsg, 'received');
                             appendMessage(firstMsg, 'received');
                         }, 2000);
@@ -472,24 +551,35 @@
         }, 3000);
     }
     
-    function appendMessage(text, type, animate = true) {
+    function appendMessage(text, type, animate = true, time = null) {
         if (!chatMessages) return;
+        
+        const wrapper = document.createElement('div');
+        wrapper.className = type === 'sent' ? 'd-flex flex-column align-items-end mb-2' : 'd-flex flex-column align-items-start mb-2';
+        
         const msgDiv = document.createElement('div');
-        
-        const baseClasses = "p-2 px-3 mb-2 rounded-4 shadow-sm w-75 position-relative";
         const typeClasses = type === 'sent' 
-            ? "bg-success text-white align-self-end ms-auto" 
-            : "bg-body-secondary text-body-emphasis align-self-start border border-light-subtle";
-            
-        msgDiv.className = `${baseClasses} ${typeClasses}`;
-        if (!animate) msgDiv.style.animation = 'none'; // Disable animation for history load
+            ? "bg-success text-white rounded-4 rounded-end shadow-sm" 
+            : "bg-body-secondary text-body-emphasis rounded-4 rounded-start border border-light-subtle shadow-sm";
+        msgDiv.className = `p-2 px-3 ${typeClasses}`;
+        msgDiv.style.maxWidth = '75%';
+        if (!animate) msgDiv.style.animation = 'none';
         msgDiv.innerText = text;
+        wrapper.appendChild(msgDiv);
+
+        // Hora
+        const now = new Date();
+        const timeStr = time || now.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'});
+        const timeEl = document.createElement('small');
+        timeEl.className = 'text-body-secondary mt-1 px-1';
+        timeEl.style.fontSize = '0.7rem';
+        timeEl.innerText = timeStr;
+        wrapper.appendChild(timeEl);
         
-        // Insert before typing indicator
         if (chatTypingIndicator) {
-            chatMessages.insertBefore(msgDiv, chatTypingIndicator);
+            chatMessages.insertBefore(wrapper, chatTypingIndicator);
         } else {
-            chatMessages.appendChild(msgDiv);
+            chatMessages.appendChild(wrapper);
         }
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }

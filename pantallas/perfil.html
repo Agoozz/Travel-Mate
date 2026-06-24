@@ -42,23 +42,23 @@
                         <a href="inicio.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
                             <i class="bi bi-compass me-2"></i> Explorar
                         </a>
-                        <a href="#" class="nav-link active bg-success text-white py-2 px-3 rounded-3">
+                        <a href="perfil.html" class="nav-link active bg-success text-white py-2 px-3 rounded-3">
                             <i class="bi bi-person-circle me-2"></i> Mi Perfil
                         </a>
-                        <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
+                        <a href="mis_companeres.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
                             <i class="bi bi-people me-2"></i> Mis Compañeres
                         </a>
                         <a href="mensajes.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
                             <i class="bi bi-chat-left-text me-2"></i> Mensajes
                         </a>
-                        <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
+                        <a href="mis_viajes.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
                             <i class="bi bi-airplane me-2"></i> Mis Viajes
                         </a>
-                        <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
-                            <i class="bi bi-star me-2"></i> Favoritos
+                        <a href="mis-lugares.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
+                            <i class="bi bi-bookmark-fill me-2"></i> Mis Lugares
                         </a>
-                        <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
-                            <i class="bi bi-bookmark me-2"></i> Guardados
+                        <a href="mis-lugares.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
+                            <i class="bi bi-bookmark-fill me-2"></i> Mis Lugares
                         </a>
                         <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3 theme-toggle" id="btnThemeToggle">
                             <i class="bi bi-moon-fill me-2"></i> <span class="theme-toggle-text">Modo Oscuro</span>
@@ -84,7 +84,7 @@
             </aside>
 
             <!-- MAIN CONTENT -->
-            <main class="col-lg-9 col-xl-10 p-4 p-md-5 bg-body-tertiary">
+            <main class="col-lg-9 col-xl-10 p-4 p-md-5 bg-body-tertiary d-flex flex-column align-items-center">
 
                 <!-- PROFILE PREVIEW MODE -->
                 <div id="profilePreviewMode" class="row g-4">
@@ -241,30 +241,116 @@
                                     </button>
                                 </div>
                                 
-                                <!-- Tarjeta: Fotos -->
-                                <div class="card border-0 shadow-sm p-4 rounded-4 bg-body">
+                                <!-- Tarjeta: Fotos con descripciones (usuario con viajes) -->
+                                <div class="card border-0 shadow-sm p-4 rounded-4 bg-body" id="photosWithTrips">
                                     <h4 class="fw-bold text-body-emphasis mb-4 fs-5 d-flex align-items-center gap-2">
-                                        <i class="bi bi-images text-success"></i> Fotos de Viajes
+                                        <i class="bi bi-images text-success"></i> Mis Viajes
                                     </h4>
-                                    
-                                    <div class="row g-2 mb-4 profile-photo-grid">
-                                        <div class="col-6">
-                                            <img src="../images/rio_negro.png" alt="Travel 1" class="img-fluid rounded-4 w-100">
+
+                                    <!-- Post viaje 1 -->
+                                    <div class="mb-4 pb-4 border-bottom">
+                                        <div class="d-flex align-items-center gap-2 mb-2">
+                                            <span class="badge bg-success bg-opacity-10 text-success rounded-pill small"><i class="bi bi-geo-alt-fill me-1"></i>Bariloche, Río Negro</span>
+                                            <span class="text-body-secondary small ms-auto"><i class="bi bi-calendar3 me-1"></i>Julio 2025</span>
                                         </div>
-                                        <div class="col-6">
-                                            <img src="../images/mendoza.png" alt="Travel 2" class="img-fluid rounded-4 w-100">
-                                        </div>
-                                        <div class="col-6">
-                                            <img src="../images/salta.png" alt="Travel 3" class="img-fluid rounded-4 w-100">
-                                        </div>
-                                        <div class="col-6">
-                                            <img src="../images/jujuy.png" alt="Travel 4" class="img-fluid rounded-4 w-100">
+                                        <img src="../images/rio_negro.png" alt="Bariloche" class="img-fluid rounded-4 w-100 mb-2" style="max-height:200px;object-fit:cover;">
+                                        <p class="text-body-secondary small mb-1 lh-base">Cruce de lagos con Sofía. 7 días de trekking, refugios y chocolate artesanal. Una de las mejores experiencias de mi vida 🏔️</p>
+                                        <div class="d-flex gap-3 mt-2">
+                                            <span class="text-body-secondary small"><i class="bi bi-heart text-danger me-1"></i>24</span>
+                                            <span class="text-body-secondary small"><i class="bi bi-chat text-success me-1"></i>8</span>
+                                            <span class="text-body-secondary small ms-auto"><i class="bi bi-star-fill text-warning me-1"></i>5/5</span>
                                         </div>
                                     </div>
-                                    
-                                    <button type="button" class="btn btn-outline-secondary border-2 rounded-pill fw-semibold px-4 py-2 w-100" onclick="alert('Funcionalidad de galería en desarrollo 🧉')">
-                                        Ver todas las fotos
+
+                                    <!-- Post viaje 2 -->
+                                    <div class="mb-4 pb-4 border-bottom">
+                                        <div class="d-flex align-items-center gap-2 mb-2">
+                                            <span class="badge bg-success bg-opacity-10 text-success rounded-pill small"><i class="bi bi-geo-alt-fill me-1"></i>Cafayate, Salta</span>
+                                            <span class="text-body-secondary small ms-auto"><i class="bi bi-calendar3 me-1"></i>Marzo 2025</span>
+                                        </div>
+                                        <img src="../images/salta.png" alt="Salta" class="img-fluid rounded-4 w-100 mb-2" style="max-height:200px;object-fit:cover;">
+                                        <p class="text-body-secondary small mb-1 lh-base">Ruta del vino por los Valles Calchaquíes. Bodegas, empanadas norteñas y un atardecer en Cachi que no voy a olvidar 🍷</p>
+                                        <div class="d-flex gap-3 mt-2">
+                                            <span class="text-body-secondary small"><i class="bi bi-heart text-danger me-1"></i>18</span>
+                                            <span class="text-body-secondary small"><i class="bi bi-chat text-success me-1"></i>5</span>
+                                            <span class="text-body-secondary small ms-auto"><i class="bi bi-star-fill text-warning me-1"></i>4/5</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Post viaje 3 -->
+                                    <div class="mb-3">
+                                        <div class="d-flex align-items-center gap-2 mb-2">
+                                            <span class="badge bg-success bg-opacity-10 text-success rounded-pill small"><i class="bi bi-geo-alt-fill me-1"></i>Mendoza</span>
+                                            <span class="text-body-secondary small ms-auto"><i class="bi bi-calendar3 me-1"></i>Diciembre 2024</span>
+                                        </div>
+                                        <img src="../images/mendoza.png" alt="Mendoza" class="img-fluid rounded-4 w-100 mb-2" style="max-height:200px;object-fit:cover;">
+                                        <p class="text-body-secondary small mb-1 lh-base">City trip de 4 días. Spa, vinotecas y un día de ski en Los Penitentes. El mejor finde largo del año 🎿</p>
+                                        <div class="d-flex gap-3 mt-2">
+                                            <span class="text-body-secondary small"><i class="bi bi-heart text-danger me-1"></i>31</span>
+                                            <span class="text-body-secondary small"><i class="bi bi-chat text-success me-1"></i>12</span>
+                                            <span class="text-body-secondary small ms-auto"><i class="bi bi-star-fill text-warning me-1"></i>5/5</span>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-outline-success border-2 rounded-pill fw-semibold px-4 py-2 w-100 mt-3">
+                                        <i class="bi bi-plus-circle me-1"></i> Agregar nuevo viaje
                                     </button>
+                                </div>
+
+                                <!-- Feed vacío (usuario nuevo sin viajes) -->
+                                <div class="card border-0 shadow-sm p-4 rounded-4 bg-body d-none" id="emptyFeed">
+                                    <h4 class="fw-bold text-body-emphasis mb-3 fs-5 d-flex align-items-center gap-2">
+                                        <i class="bi bi-grid text-success"></i> Feed de Viajes
+                                    </h4>
+
+                                    <!-- Estado vacío propio -->
+                                    <div class="text-center py-3 mb-4 bg-body-tertiary rounded-4">
+                                        <i class="bi bi-camera text-success fs-1 opacity-50 mb-2 d-block"></i>
+                                        <p class="text-body-secondary small mb-2">Todavía no publicaste ningún viaje.</p>
+                                        <button class="btn btn-success rounded-pill px-4 py-1 small fw-semibold"><i class="bi bi-plus-circle me-1"></i>Compartir primer viaje</button>
+                                    </div>
+
+                                    <!-- Feed simulado de otros viajeros -->
+                                    <h6 class="fw-bold text-body-secondary small text-uppercase mb-3">Publicaciones recientes de la comunidad</h6>
+
+                                    <div class="mb-3 pb-3 border-bottom">
+                                        <div class="d-flex align-items-center gap-2 mb-2">
+                                            <img src="https://i.pravatar.cc/150?img=32" class="rounded-circle object-fit-cover" width="32" height="32" alt="Sofía">
+                                            <div>
+                                                <span class="fw-semibold small">Sofía · Buenos Aires</span>
+                                                <p class="mb-0 text-body-secondary" style="font-size:0.72rem;">hace 2 días</p>
+                                            </div>
+                                        </div>
+                                        <img src="../images/rio_negro.png" alt="Bariloche" class="img-fluid rounded-3 w-100 mb-2" style="max-height:160px;object-fit:cover;">
+                                        <p class="small text-body-secondary mb-1">Bariloche en invierno 💙 7 días de pura Patagonia con mi mejor compañere de viaje</p>
+                                        <span class="text-body-secondary small"><i class="bi bi-heart text-danger me-1"></i>42 <i class="bi bi-chat text-success ms-2 me-1"></i>11</span>
+                                    </div>
+
+                                    <div class="mb-3 pb-3 border-bottom">
+                                        <div class="d-flex align-items-center gap-2 mb-2">
+                                            <img src="https://i.pravatar.cc/150?img=11" class="rounded-circle object-fit-cover" width="32" height="32" alt="Tomás">
+                                            <div>
+                                                <span class="fw-semibold small">Tomás · Córdoba</span>
+                                                <p class="mb-0 text-body-secondary" style="font-size:0.72rem;">hace 5 días</p>
+                                            </div>
+                                        </div>
+                                        <img src="../images/jujuy.png" alt="Jujuy" class="img-fluid rounded-3 w-100 mb-2" style="max-height:160px;object-fit:cover;">
+                                        <p class="small text-body-secondary mb-1">Purmamarca 🌈 El Cerro de los 7 Colores en persona es otra cosa. Sin dudas el mejor viaje de 2025.</p>
+                                        <span class="text-body-secondary small"><i class="bi bi-heart text-danger me-1"></i>38 <i class="bi bi-chat text-success ms-2 me-1"></i>7</span>
+                                    </div>
+
+                                    <div>
+                                        <div class="d-flex align-items-center gap-2 mb-2">
+                                            <img src="https://i.pravatar.cc/150?img=49" class="rounded-circle object-fit-cover" width="32" height="32" alt="Caro">
+                                            <div>
+                                                <span class="fw-semibold small">Caro · Rosario</span>
+                                                <p class="mb-0 text-body-secondary" style="font-size:0.72rem;">hace 1 semana</p>
+                                            </div>
+                                        </div>
+                                        <img src="../images/misiones.png" alt="Misiones" class="img-fluid rounded-3 w-100 mb-2" style="max-height:160px;object-fit:cover;">
+                                        <p class="small text-body-secondary mb-1">Cataratas en Semana Santa 🌿 El parque de día, peñas de noche. ¡Imperdible!</p>
+                                        <span class="text-body-secondary small"><i class="bi bi-heart text-danger me-1"></i>55 <i class="bi bi-chat text-success ms-2 me-1"></i>19</span>
+                                    </div>
                                 </div>
                             </div>
                         </div> <!-- end row g-4 -->
@@ -585,6 +671,15 @@
     <!-- Scripts Externos -->
     <script src="../js/traveler-test.js"></script>
     <script src="../js/perfil.js"></script>
+    <script>
+    // En el perfil propio: siempre mostrar el feed (sin fotos de viajes propias aún)
+    (function() {
+        const photosSection = document.getElementById('photosWithTrips');
+        const feedSection = document.getElementById('emptyFeed');
+        if (photosSection) photosSection.classList.add('d-none');
+        if (feedSection) feedSection.classList.remove('d-none');
+    })();
+    </script>
 </body>
 
 </html>
