@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mate & Travel - Mis Lugares</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../js/theme.js"></script>
+    <style>
+        /* Stilos para el mate icon */
+        .mate-icon {
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .mate-icon:hover {
+            transform: scale(1.1);
+        }
+        .mate-icon.mated {
+            animation: bounce 0.5s ease;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        /* Tabs personalizados */
+        .nav-tabs-custom {
+            border-bottom: 2px solid #e9ecef;
+        }
+        .nav-tabs-custom .nav-link {
+            color: #6c757d;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .nav-tabs-custom .nav-link:hover {
+            color: #198754;
+            border-bottom-color: #198754;
+        }
+        .nav-tabs-custom .nav-link.active {
+            color: #198754;
+            border-bottom-color: #198754;
+            background-color: transparent;
+        }
+        /* Contador de mate */
+        .mate-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            background-color: #f0f9f7;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #198754;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- SIDEBAR -->
+            <aside class="col-lg-3 col-xl-2 bg-body border-end min-vh-100 p-4 d-flex flex-column justify-content-between">
+                <div>
+                    <div class="d-flex align-items-center gap-1 mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="text-success align-text-bottom me-1" viewBox="0 0 24 24">
+                            <line x1="13" y1="7" x2="18" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M6 9c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v3c0 4.4-3.6 7-8 7s-8-2.6-8-7V9zm2 .5H16V12c0 3.3-2.7 5-6 5s-6-1.7-6-5V9.5z" fill-rule="evenodd"/>
+                        </svg>
+                        <h3 class="fw-bold mb-0 fs-5"><span class="text-success">Mate</span> &amp; Travel</h3>
+                    </div>
+
+                    <p class="text-body-secondary small mb-4 lh-sm">
+                        Compañeres de viaje,<br>
+                        mejores recuerdos
+                    </p>
+
+                    <nav class="nav flex-column nav-pills gap-1">
+                        <a href="inicio.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
+                            <i class="bi bi-compass me-2"></i> Explorar
+                        </a>
+                        <a href="perfil.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
+                            <i class="bi bi-person-circle me-2"></i> Mi Perfil
+                        </a>
+                        <a href="mis_companeres.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
+                            <i class="bi bi-people me-2"></i> Mis Compañeres
+                        </a>
+                        <a href="mensajes.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
+                            <i class="bi bi-chat-left-text me-2"></i> Mensajes
+                        </a>
+                        <a href="mis_viajes.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
+                            <i class="bi bi-airplane me-2"></i> Mis Viajes
+                        </a>
+                        <a href="mis-lugares.html" class="nav-link active bg-success text-white py-2 px-3 rounded-3">
+                            <i class="bi bi-bookmark-fill me-2"></i> Mis Lugares
+                        </a>
+                        <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3 theme-toggle" id="btnThemeToggle">
+                            <i class="bi bi-moon-fill me-2"></i> <span class="theme-toggle-text">Modo Oscuro</span>
+                        </a>
+                        <hr class="my-2 border-secondary opacity-25">
+                        <a href="iniciar_sesion.html" class="nav-link text-danger link-danger py-2 px-3 rounded-3 mt-1 fw-semibold">
+                            <i class="bi bi-box-arrow-right me-2"></i> Cerrar sesión
+                        </a>
+                    </nav>
+                </div>
+
+                <div>
+                    <div class="card border-0 bg-body-tertiary p-3 rounded-4 text-center">
+                        <div class="rounded-circle overflow-hidden mx-auto mb-2 border border-2 border-success" style="width:60px; height:60px; display: flex; align-items: center; justify-content: center; font-size: 1.75rem;">
+                            🧉
+                        </div>
+                        <h6 class="fw-bold mb-1 fs-6">Tus Lugares</h6>
+                        <p class="text-body-secondary small mb-0">Accedé rápido a tus compañeres y destinos favoritos.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="col-lg-9 col-xl-10 p-4 p-md-5 bg-body-tertiary">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-4 mb-5">
+                    <div>
+                        <h1 class="fw-bold mb-2 fs-3">Mis Lugares</h1>
+                        <p class="text-body-secondary mb-0 fs-6">Tus compañeres de viaje y destinos favoritos en un solo lugar.</p>
+                    </div>
+                    <a href="inicio.html" class="btn btn-outline-success rounded-pill px-4 py-2 fw-semibold flex-shrink-0">
+                        <i class="bi bi-compass-fill me-1"></i> Explorar más
+                    </a>
+                </div>
+
+                <!-- TABS NAVIGATION -->
+                <ul class="nav nav-tabs-custom mb-4" id="misLugaresTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="companeres-tab" data-bs-toggle="tab" data-bs-target="#companeres" type="button" role="tab" aria-controls="companeres" aria-selected="true">
+                            <i class="bi bi-people me-2"></i> Compañeres Mis Lugares
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="destinos-tab" data-bs-toggle="tab" data-bs-target="#destinos" type="button" role="tab" aria-controls="destinos" aria-selected="false">
+                            <i class="bi bi-pin-map me-2"></i> Destinos Mis Lugares
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- TAB CONTENT -->
+                <div class="tab-content" id="misLugaresTabContent">
+                    
+                    <!-- TAB 1: COMPAÑERES FAVORITOS -->
+                    <div class="tab-pane fade show active" id="companeres" role="tabpanel" aria-labelledby="companeres-tab">
+                        <div class="row g-4 mb-5">
+                            <!-- Tomás -->
+                            <div class="col-md-6">
+                                <div class="card rounded-4 shadow-sm border-0 h-100">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <div class="rounded-circle overflow-hidden border border-2 border-success" style="width:56px; height:56px;">
+                                                    <img src="https://i.pravatar.cc/150?img=11" alt="Tomás" class="w-100 h-100 object-fit-cover">
+                                                </div>
+                                                <div>
+                                                    <h5 class="fw-bold mb-0">Tomás · 28</h5>
+                                                    <small class="text-body-secondary">Aventurero Mochilero</small>
+                                                </div>
+                                            </div>
+                                            <!-- MATE ICON -->
+                                            <span class="mate-icon" title="Dar mate" data-profile="tomas">🧉</span>
+                                        </div>
+                                        <p class="text-body-secondary small mb-3">Amante del trekking, las culturas nuevas y los destinos de aventura. Perfecto para un viaje activo y emocionante.</p>
+                                        <div class="d-flex flex-wrap gap-2 mb-3">
+                                            <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-10">Jujuy</span>
+                                            <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-10">Mochilero</span>
+                                            <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-10">$800K-$1.2M</span>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <a href="inicio.html" class="btn btn-outline-success rounded-pill flex-grow-1">Ver perfil</a>
+                                            <button class="btn btn-danger rounded-pill px-4 eliminar-favorito" data-profile="tomas">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sofía -->
+                            <div class="col-md-6">
+                                <div class="card rounded-4 shadow-sm border-0 h-100">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <div class="rounded-circle overflow-hidden border border-2 border-success" style="width:56px; height:56px;">
+                                                    <img src="https://i.pravatar.cc/150?img=32" alt="Sofía" class="w-100 h-100 object-fit-cover">
+                                                </div>
+                                                <div>
+                                                    <h5 class="fw-bold mb-0">Sofía · 25</h5>
+                                                    <small class="text-body-secondary">Aventurera Confort</small>
+                                                </div>
+                                            </div>
+                                            <!-- MATE ICON -->
+                                            <span class="mate-icon" title="Dar mate" data-profile="sofia">🧉</span>
+                                        </div>
+                                        <p class="text-body-secondary small mb-3">Busca relax, buena comida y paisajes de montaña con compañía tranquila y amistosa.</p>
+                                        <div class="d-flex flex-wrap gap-2 mb-3">
+                                            <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-10">Bariloche</span>
+                                            <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-10">Confort</span>
+                                            <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-10">$1M-$1.5M</span>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <a href="inicio.html" class="btn btn-outline-success rounded-pill flex-grow-1">Ver perfil</a>
+                                            <button class="btn btn-danger rounded-pill px-4 eliminar-favorito" data-profile="sofia">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Martín -->
+                            <div class="col-md-6">
+                                <div class="card rounded-4 shadow-sm border-0 h-100">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <div class="rounded-circle overflow-hidden border border-2 border-success" style="width:56px; height:56px;">
+                                                    <img src="https://i.pravatar.cc/150?img=60" alt="Martín" class="w-100 h-100 object-fit-cover">
+                                                </div>
+                                                <div>
+                                                    <h5 class="fw-bold mb-0">Martín · 31</h5>
+                                                    <small class="text-body-secondary">Aventurero Gasolero</small>
+                                                </div>
+                                            </div>
+                                            <!-- MATE ICON -->
+                                            <span class="mate-icon" title="Dar mate" data-profile="martin">🧉</span>
+                                        </div>
+                                        <p class="text-body-secondary small mb-3">Fan de la naturaleza salvaje, peñas folclóricas, y acampar bajo las estrellas. Gasolero.</p>
+                                        <div class="d-flex flex-wrap gap-2 mb-3">
+                                            <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-10">Salta / NOA</span>
+                                            <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-10">Aventurero</span>
+                                            <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-10">$600K-$900K</span>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <a href="inicio.html" class="btn btn-outline-success rounded-pill flex-grow-1">Ver perfil</a>
+                                            <button class="btn btn-danger rounded-pill px-4 eliminar-favorito" data-profile="martin">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-0 bg-body rounded-4 shadow-sm p-4 mt-4 border-start border-success border-4">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="text-success mt-1 flex-shrink-0">
+                                    <i class="bi bi-info-circle-fill fs-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-1">¿Cómo agregar favoritos?</h5>
+                                    <p class="text-body-secondary mb-0 fs-6">Volvé a <strong>Explorar</strong> y presioná el mate 🧉 en los perfiles que más te atraigan. Aparecerán automáticamente aquí.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: DESTINOS GUARDADOS -->
+                    <div class="tab-pane fade" id="destinos" role="tabpanel" aria-labelledby="destinos-tab">
+                        <!-- Mapa Interactivo -->
+                        <div class="card border-0 rounded-4 shadow-sm mb-4">
+                            <div class="card-body p-0">
+                                <div class="d-flex align-items-center gap-2 p-3 border-bottom">
+                                    <i class="bi bi-map-fill text-success"></i>
+                                    <h6 class="fw-bold mb-0">Mapa de destinos guardados</h6>
+                                    <span class="badge bg-success bg-opacity-10 text-success ms-auto">5 destinos</span>
+                                </div>
+                                <div id="savedMap" style="height:320px;border-radius:0 0 1rem 1rem;z-index:1;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Destinos guardados -->
+                        <section class="mb-5">
+                            <h2 class="fs-5 fw-bold mb-3">Mis Destinos Mis Lugares</h2>
+                            <div class="row g-4">
+                                <div class="col-md-4">
+                                    <div class="card rounded-4 shadow-sm border-0 h-100 overflow-hidden">
+                                        <img src="../images/salta.png" alt="Salta" class="w-100 object-fit-cover" style="height:120px;">
+                                        <div class="card-body text-center p-3">
+                                            <h5 class="fw-bold mb-1">Salta Capital</h5>
+                                            <p class="text-body-secondary small mb-3">Peñas folclóricas, arquitectura colonial.</p>
+                                            <div class="d-flex gap-2 justify-content-center flex-wrap mb-3">
+                                                <span class="mate-count">🧉 24</span>
+                                                <span class="badge bg-success bg-opacity-10 text-success">Cultura</span>
+                                            </div>
+                                            <button class="btn btn-sm btn-danger w-100 eliminar-lugar" data-destino="salta">
+                                                <i class="bi bi-trash me-1"></i> Eliminar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card rounded-4 shadow-sm border-0 h-100 overflow-hidden">
+                                        <img src="../images/jujuy.png" alt="Jujuy" class="w-100 object-fit-cover" style="height:120px;">
+                                        <div class="card-body text-center p-3">
+                                            <h5 class="fw-bold mb-1">Jujuy - Purmamarca</h5>
+                                            <p class="text-body-secondary small mb-3">Montaña de los 7 Colores, Quebrada de Humahuaca.</p>
+                                            <div class="d-flex gap-2 justify-content-center flex-wrap mb-3">
+                                                <span class="mate-count">🧉 38</span>
+                                                <span class="badge bg-success bg-opacity-10 text-success">Aventura</span>
+                                            </div>
+                                            <button class="btn btn-sm btn-danger w-100 eliminar-lugar" data-destino="jujuy">
+                                                <i class="bi bi-trash me-1"></i> Eliminar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card rounded-4 shadow-sm border-0 h-100 overflow-hidden">
+                                        <img src="../images/rio_negro.png" alt="Bariloche" class="w-100 object-fit-cover" style="height:120px;">
+                                        <div class="card-body text-center p-3">
+                                            <h5 class="fw-bold mb-1">Bariloche</h5>
+                                            <p class="text-body-secondary small mb-3">Lagos, cerros y rutas ideales en la Patagonia.</p>
+                                            <div class="d-flex gap-2 justify-content-center flex-wrap mb-3">
+                                                <span class="mate-count">🧉 52</span>
+                                                <span class="badge bg-success bg-opacity-10 text-success">Confort</span>
+                                            </div>
+                                            <button class="btn btn-sm btn-danger w-100 eliminar-lugar" data-destino="bariloche">
+                                                <i class="bi bi-trash me-1"></i> Eliminar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card rounded-4 shadow-sm border-0 h-100 overflow-hidden">
+                                        <img src="../images/mendoza.png" alt="Mendoza" class="w-100 object-fit-cover" style="height:120px;">
+                                        <div class="card-body text-center p-3">
+                                            <h5 class="fw-bold mb-1">Mendoza</h5>
+                                            <p class="text-body-secondary small mb-3">Vinos y paisajes de montaña.</p>
+                                            <div class="d-flex gap-2 justify-content-center flex-wrap mb-3">
+                                                <span class="mate-count">🧉 31</span>
+                                                <span class="badge bg-success bg-opacity-10 text-success">Enología</span>
+                                            </div>
+                                            <button class="btn btn-sm btn-danger w-100 eliminar-lugar" data-destino="mendoza">
+                                                <i class="bi bi-trash me-1"></i> Eliminar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card rounded-4 shadow-sm border-0 h-100 overflow-hidden">
+                                        <img src="../images/cordoba.png" alt="Córdoba" class="w-100 object-fit-cover" style="height:120px;">
+                                        <div class="card-body text-center p-3">
+                                            <h5 class="fw-bold mb-1">Córdoba</h5>
+                                            <p class="text-body-secondary small mb-3">Sierras, historia colonial y arte.</p>
+                                            <div class="d-flex gap-2 justify-content-center flex-wrap mb-3">
+                                                <span class="mate-count">🧉 19</span>
+                                                <span class="badge bg-success bg-opacity-10 text-success">Cultural</span>
+                                            </div>
+                                            <button class="btn btn-sm btn-danger w-100 eliminar-lugar" data-destino="cordoba">
+                                                <i class="bi bi-trash me-1"></i> Eliminar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="card border-0 bg-body rounded-4 shadow-sm p-4 mt-4 border-start border-success border-4">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="text-success mt-1 flex-shrink-0">
+                                    <i class="bi bi-info-circle-fill fs-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-1">¿Cómo guardar destinos?</h5>
+                                    <p class="text-body-secondary mb-0 fs-6">Volvé a <strong>Explorar</strong> y presioná el bookmark 🔖 en los destinos que quieras recordar. Se guardarán aquí automáticamente.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script>
+        // Lógica para los matesIcon (mate button)
+        document.querySelectorAll('.mate-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                this.classList.toggle('mated');
+                this.textContent = this.classList.contains('mated') ? '🧉✓' : '🧉';
+                console.log('Mate given to:', this.dataset.profile);
+            });
+        });
+
+        // Lógica para eliminar favoritos
+        document.querySelectorAll('.eliminar-favorito').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (confirm('¿Deseas eliminar este compañere de favoritos?')) {
+                    this.closest('.col-md-6').remove();
+                    console.log('Eliminado:', this.dataset.profile);
+                }
+            });
+        });
+
+        // Lógica para eliminar lugares
+        document.querySelectorAll('.eliminar-lugar').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (confirm('¿Deseas eliminar este destino de guardados?')) {
+                    this.closest('.col-md-4').remove();
+                    console.log('Lugar eliminado:', this.dataset.destino);
+                }
+            });
+        });
+
+        // Mapa Leaflet (si es necesario)
+        if (document.getElementById('savedMap')) {
+            const map = L.map('savedMap').setView([-35.6751, -65.5014], 4);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(map);
+            
+            // Agregar markers para destinos
+            const destinos = [
+                {lat: -25.4874, lng: -65.4120, name: 'Salta'},
+                {lat: -23.7590, lng: -65.4103, name: 'Jujuy'},
+                {lat: -41.1336, lng: -71.3101, name: 'Bariloche'},
+                {lat: -32.8872, lng: -68.8450, name: 'Mendoza'},
+                {lat: -31.4201, lng: -64.1888, name: 'Córdoba'}
+            ];
+            
+            destinos.forEach(destino => {
+                L.marker([destino.lat, destino.lng]).addTo(map)
+                    .bindPopup(`<strong>${destino.name}</strong><br>🧉 Guardado`);
+            });
+        }
+    </script>
+</body>
+
+</html>
