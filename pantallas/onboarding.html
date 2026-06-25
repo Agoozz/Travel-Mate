@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mate & Travel — Bienvenide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../js/theme.js"></script>
+    <style>
+        .onboard-step { display: none; }
+        .onboard-step.active { display: block; }
+        .avatar-option { cursor: pointer; transition: all 0.15s; border: 3px solid transparent; }
+        .avatar-option.selected { border-color: var(--bs-success) !important; transform: scale(1.08); }
+        .avatar-option:hover { transform: scale(1.05); }
+        .step-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--bs-secondary); opacity: 0.3; transition: all 0.2s; }
+        .step-dot.active { background: var(--bs-success); opacity: 1; transform: scale(1.3); }
+        .step-dot.done { background: var(--bs-success); opacity: 0.6; }
+        .interest-tag { cursor: pointer; transition: all 0.15s; user-select: none; }
+        .interest-tag.selected { background: var(--bs-success) !important; color: white !important; border-color: var(--bs-success) !important; }
+        .progress-line { height: 4px; background: rgba(46,204,113,0.2); border-radius: 2px; }
+        .progress-line-fill { height: 4px; background: var(--bs-success); border-radius: 2px; transition: width 0.4s ease; }
+    </style>
+</head>
+<body class="bg-body-tertiary min-vh-100 d-flex align-items-center justify-content-center p-3">
+
+<div class="card border-0 shadow-lg rounded-4 overflow-hidden col-xl-5 col-lg-6 col-md-8 w-100">
+
+    <!-- Header fijo -->
+    <div class="bg-body px-4 pt-4 pb-3 border-bottom">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+            <div class="d-flex align-items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="text-success" viewBox="0 0 24 24">
+                    <line x1="13" y1="7" x2="18" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M6 9c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v3c0 4.4-3.6 7-8 7s-8-2.6-8-7V9zm2 .5H16V12c0 3.3-2.7 5-6 5s-6-1.7-6-5V9.5z" fill-rule="evenodd"/>
+                </svg>
+                <span class="fw-bold text-success">Mate &amp; Travel</span>
+            </div>
+            <span class="text-body-secondary small" id="stepLabel">Paso 1 de 3</span>
+        </div>
+        <!-- Barra de progreso -->
+        <div class="progress-line w-100">
+            <div class="progress-line-fill" id="progressFill" style="width:33%"></div>
+        </div>
+        <!-- Dots -->
+        <div class="d-flex gap-2 justify-content-center mt-2">
+            <div class="step-dot active" id="dot1"></div>
+            <div class="step-dot" id="dot2"></div>
+            <div class="step-dot" id="dot3"></div>
+        </div>
+    </div>
+
+    <!-- Contenido de pasos -->
+    <div class="bg-body px-4 py-4">
+
+        <!-- PASO 1: Avatar + nombre -->
+        <div class="onboard-step active" id="step1">
+            <div class="text-center mb-4">
+                <h4 class="fw-bold text-body-emphasis mb-1">¡Bienvenide! 🧉</h4>
+                <p class="text-body-secondary small">Elegí tu avatar para que los demás te reconozcan</p>
+            </div>
+
+            <!-- Preview del avatar seleccionado -->
+            <div class="text-center mb-4">
+                <img src="https://i.pravatar.cc/150?img=12" id="avatarPreview" class="rounded-circle border border-3 border-success shadow object-fit-cover" width="80" height="80" alt="Tu avatar">
+                <p class="text-body-secondary small mt-2 mb-0">Tu avatar actual</p>
+            </div>
+
+            <!-- Grid de avatares -->
+            <div class="row g-2 mb-4 justify-content-center">
+                <div class="col-3 text-center"><img src="https://i.pravatar.cc/150?img=12" class="avatar-option rounded-circle w-100 object-fit-cover selected" data-src="https://i.pravatar.cc/150?img=12" width="60" height="60" alt="Avatar 1" style="aspect-ratio:1;"></div>
+                <div class="col-3 text-center"><img src="https://i.pravatar.cc/150?img=25" class="avatar-option rounded-circle w-100 object-fit-cover" data-src="https://i.pravatar.cc/150?img=25" width="60" height="60" alt="Avatar 2" style="aspect-ratio:1;"></div>
+                <div class="col-3 text-center"><img src="https://i.pravatar.cc/150?img=44" class="avatar-option rounded-circle w-100 object-fit-cover" data-src="https://i.pravatar.cc/150?img=44" width="60" height="60" alt="Avatar 3" style="aspect-ratio:1;"></div>
+                <div class="col-3 text-center"><img src="https://i.pravatar.cc/150?img=56" class="avatar-option rounded-circle w-100 object-fit-cover" data-src="https://i.pravatar.cc/150?img=56" width="60" height="60" alt="Avatar 4" style="aspect-ratio:1;"></div>
+                <div class="col-3 text-center"><img src="https://i.pravatar.cc/150?img=68" class="avatar-option rounded-circle w-100 object-fit-cover" data-src="https://i.pravatar.cc/150?img=68" width="60" height="60" alt="Avatar 5" style="aspect-ratio:1;"></div>
+                <div class="col-3 text-center"><img src="https://i.pravatar.cc/150?img=3" class="avatar-option rounded-circle w-100 object-fit-cover" data-src="https://i.pravatar.cc/150?img=3" width="60" height="60" alt="Avatar 6" style="aspect-ratio:1;"></div>
+                <div class="col-3 text-center"><img src="https://i.pravatar.cc/150?img=15" class="avatar-option rounded-circle w-100 object-fit-cover" data-src="https://i.pravatar.cc/150?img=15" width="60" height="60" alt="Avatar 7" style="aspect-ratio:1;"></div>
+                <div class="col-3 text-center"><img src="https://i.pravatar.cc/150?img=29" class="avatar-option rounded-circle w-100 object-fit-cover" data-src="https://i.pravatar.cc/150?img=29" width="60" height="60" alt="Avatar 8" style="aspect-ratio:1;"></div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold small">¿Cómo te llamás? <span class="text-danger">*</span></label>
+                <input type="text" class="form-control rounded-pill border-secondary-subtle" id="onboardName" placeholder="Tu nombre o apodo" maxlength="30">
+            </div>
+            <div class="mb-1">
+                <label class="form-label fw-semibold small">¿De dónde sos?</label>
+                <input type="text" class="form-control rounded-pill border-secondary-subtle" id="onboardCity" placeholder="Ej: Córdoba, Argentina">
+            </div>
+        </div>
+
+        <!-- PASO 2: Bio -->
+        <div class="onboard-step" id="step2">
+            <div class="text-center mb-4">
+                <i class="bi bi-pencil-square text-success fs-1 d-block mb-2"></i>
+                <h4 class="fw-bold text-body-emphasis mb-1">Contá algo de vos</h4>
+                <p class="text-body-secondary small">Esto es lo primero que van a ver tus posibles compañeres</p>
+            </div>
+            <div class="mb-4">
+                <textarea class="form-control rounded-3 border-secondary-subtle" id="onboardBio" rows="4" maxlength="200" placeholder="Ej: Me encanta el trekking, la comida local y viajar con mate en mano. Busco compañeres para recorrer la Patagonia en julio 🧉"></textarea>
+                <div class="d-flex justify-content-end mt-1">
+                    <small class="text-body-secondary" id="bioCount">0/200</small>
+                </div>
+            </div>
+            <!-- Sugerencias rápidas -->
+            <p class="text-body-secondary small mb-2">Sugerencias rápidas (tocá para agregar):</p>
+            <div class="d-flex flex-wrap gap-2">
+                <span class="badge bg-body-secondary text-body-secondary border rounded-pill px-3 py-2 suggestion-tag" style="cursor:pointer;">Me encanta el trekking 🏔️</span>
+                <span class="badge bg-body-secondary text-body-secondary border rounded-pill px-3 py-2 suggestion-tag" style="cursor:pointer;">Fan de la comida local 🍽️</span>
+                <span class="badge bg-body-secondary text-body-secondary border rounded-pill px-3 py-2 suggestion-tag" style="cursor:pointer;">Viajero/a gasolero/a 💰</span>
+                <span class="badge bg-body-secondary text-body-secondary border rounded-pill px-3 py-2 suggestion-tag" style="cursor:pointer;">Busco aventura extrema 🧗</span>
+                <span class="badge bg-body-secondary text-body-secondary border rounded-pill px-3 py-2 suggestion-tag" style="cursor:pointer;">Prefiero el confort 🏨</span>
+                <span class="badge bg-body-secondary text-body-secondary border rounded-pill px-3 py-2 suggestion-tag" style="cursor:pointer;">Amante del vino 🍷</span>
+            </div>
+        </div>
+
+        <!-- PASO 3: Intereses -->
+        <div class="onboard-step" id="step3">
+            <div class="text-center mb-4">
+                <i class="bi bi-tags-fill text-success fs-1 d-block mb-2"></i>
+                <h4 class="fw-bold text-body-emphasis mb-1">¿Qué te apasiona?</h4>
+                <p class="text-body-secondary small">Elegí los que mejor te representen (mínimo 3)</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2 mb-4" id="interestTags">
+                <span class="badge border rounded-pill px-3 py-2 interest-tag bg-body-secondary text-body-secondary">🏔️ Trekking</span>
+                <span class="badge border rounded-pill px-3 py-2 interest-tag bg-body-secondary text-body-secondary">📸 Fotografía</span>
+                <span class="badge border rounded-pill px-3 py-2 interest-tag bg-body-secondary text-body-secondary">🍽️ Gastronomía</span>
+                <span class="badge border rounded-pill px-3 py-2 interest-tag bg-body-secondary text-body-secondary">🍷 Enoturismo</span>
+                <span class="badge border rounded-pill px-3 py-2 interest-tag bg-body-secondary text-body-secondary">🎸 Folclore</span>
+                <span class="badge border rounded-pill px-3 py-2 interest-tag bg-body-secondary text-body-secondary">🏖️ Playa</span>
+                <span class="badge border rounded-pill px-3 py-2 interest-tag bg-body-secondary text-body-secondary">⛷️ Esquí</span>
+                <span class="badge border rounded-pill px-3 py-2 interest-tag bg-body-secondary text-body-secondary">🏛️ Historia</span>
+                <span class="badge border rounded-pill px-3 py-2 interest-tag bg-body-secondary text-body-secondary">🌿 Naturaleza</span>
+                <span class="badge border rounded-pill px-3 py-2 interest-tag bg-body-secondary text-body-secondary">🎉 Vida nocturna</span>
+                <span class="badge border rounded-pill px-3 py-2 interest-tag bg-body-secondary text-body-secondary">🧘 Relax</span>
+                <span class="badge border rounded-pill px-3 py-2 interest-tag bg-body-secondary text-body-secondary">🚴 Ciclismo</span>
+                <span class="badge border rounded-pill px-3 py-2 interest-tag bg-body-secondary text-body-secondary">🎨 Arte</span>
+                <span class="badge border rounded-pill px-3 py-2 interest-tag bg-body-secondary text-body-secondary">🧗 Escalada</span>
+                <span class="badge border rounded-pill px-3 py-2 interest-tag bg-body-secondary text-body-secondary">🤿 Buceo</span>
+            </div>
+            <p class="text-body-secondary small text-center" id="interestCounter">0 elegidos</p>
+        </div>
+
+    </div>
+
+    <!-- Footer con botones -->
+    <div class="bg-body px-4 pb-4 border-top pt-3 d-flex justify-content-between align-items-center gap-3">
+        <button class="btn btn-outline-secondary rounded-pill px-4" id="btnBack" style="display:none!important;">
+            <i class="bi bi-arrow-left me-1"></i>Atrás
+        </button>
+        <a href="inicio.html" class="text-body-secondary small text-decoration-none ms-auto me-2" id="skipLink">Saltar por ahora</a>
+        <button class="btn btn-success rounded-pill px-4 fw-semibold" id="btnNext">
+            Continuar <i class="bi bi-arrow-right ms-1"></i>
+        </button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+let currentStep = 1;
+const totalSteps = 3;
+let selectedAvatar = localStorage.getItem('user_avatar') || 'https://i.pravatar.cc/150?img=12';
+
+// Pre-fill nombre si viene del registro
+const savedName = localStorage.getItem('user_name');
+if (savedName) document.getElementById('onboardName').value = savedName;
+
+// Avatares
+document.querySelectorAll('.avatar-option').forEach(img => {
+    img.addEventListener('click', function() {
+        document.querySelectorAll('.avatar-option').forEach(a => a.classList.remove('selected'));
+        this.classList.add('selected');
+        selectedAvatar = this.dataset.src;
+        document.getElementById('avatarPreview').src = selectedAvatar;
+    });
+});
+
+// Bio counter + sugerencias
+const bioTextarea = document.getElementById('onboardBio');
+const bioCount = document.getElementById('bioCount');
+bioTextarea.addEventListener('input', () => {
+    bioCount.textContent = `${bioTextarea.value.length}/200`;
+});
+document.querySelectorAll('.suggestion-tag').forEach(tag => {
+    tag.addEventListener('click', function() {
+        const current = bioTextarea.value;
+        const text = this.textContent.trim();
+        bioTextarea.value = current ? current + ' ' + text : text;
+        bioCount.textContent = `${bioTextarea.value.length}/200`;
+    });
+});
+
+// Intereses
+let selectedInterests = [];
+document.querySelectorAll('.interest-tag').forEach(tag => {
+    tag.addEventListener('click', function() {
+        this.classList.toggle('selected');
+        const label = this.textContent.trim();
+        if (this.classList.contains('selected')) {
+            selectedInterests.push(label);
+        } else {
+            selectedInterests = selectedInterests.filter(i => i !== label);
+        }
+        const counter = document.getElementById('interestCounter');
+        counter.textContent = `${selectedInterests.length} elegido${selectedInterests.length !== 1 ? 's' : ''}`;
+        counter.className = selectedInterests.length >= 3 
+            ? 'text-success small text-center fw-semibold' 
+            : 'text-body-secondary small text-center';
+    });
+});
+
+// Navegación
+function goToStep(step) {
+    document.querySelectorAll('.onboard-step').forEach(s => s.classList.remove('active'));
+    document.getElementById(`step${step}`).classList.add('active');
+
+    // Dots
+    for (let i = 1; i <= totalSteps; i++) {
+        const dot = document.getElementById(`dot${i}`);
+        dot.classList.remove('active', 'done');
+        if (i < step) dot.classList.add('done');
+        if (i === step) dot.classList.add('active');
+    }
+
+    // Barra
+    document.getElementById('progressFill').style.width = `${(step / totalSteps) * 100}%`;
+    document.getElementById('stepLabel').textContent = `Paso ${step} de ${totalSteps}`;
+
+    // Botón atrás
+    document.getElementById('btnBack').style.display = step > 1 ? 'inline-block' : 'none';
+
+    // Botón next en paso 3
+    const btnNext = document.getElementById('btnNext');
+    if (step === totalSteps) {
+        btnNext.innerHTML = 'Listo, ¡explorar! <i class="bi bi-rocket-takeoff ms-1"></i>';
+    } else {
+        btnNext.innerHTML = 'Continuar <i class="bi bi-arrow-right ms-1"></i>';
+    }
+
+    // Ocultar skip en último paso
+    document.getElementById('skipLink').style.display = step === totalSteps ? 'none' : '';
+
+    currentStep = step;
+}
+
+document.getElementById('btnNext').addEventListener('click', () => {
+    if (currentStep === 1) {
+        const name = document.getElementById('onboardName').value.trim();
+        if (!name) {
+            document.getElementById('onboardName').focus();
+            document.getElementById('onboardName').classList.add('is-invalid');
+            return;
+        }
+        document.getElementById('onboardName').classList.remove('is-invalid');
+        // Guardar paso 1
+        localStorage.setItem('user_name', name);
+        localStorage.setItem('user_avatar', selectedAvatar);
+        const city = document.getElementById('onboardCity').value.trim();
+        if (city) localStorage.setItem('user_hometown', city);
+        goToStep(2);
+    } else if (currentStep === 2) {
+        const bio = document.getElementById('onboardBio').value.trim();
+        if (bio) localStorage.setItem('user_bio', bio);
+        goToStep(3);
+    } else {
+        // Paso 3: guardar y redirigir
+        if (selectedInterests.length > 0) {
+            localStorage.setItem('user_interests', selectedInterests.map(i => i.replace(/^\S+\s/, '')).join(', '));
+        }
+        localStorage.setItem('user_profile_progress', '75');
+        localStorage.setItem('user_onboarding_done', 'true');
+        // Pantalla de éxito breve
+        document.querySelector('.card').innerHTML = `
+            <div class="p-5 text-center">
+                <div class="rounded-circle bg-success bg-opacity-10 d-flex align-items-center justify-content-center mx-auto mb-4" style="width:80px;height:80px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="text-success" viewBox="0 0 24 24">
+                        <line x1="13" y1="7" x2="18" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M6 9c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v3c0 4.4-3.6 7-8 7s-8-2.6-8-7V9zm2 .5H16V12c0 3.3-2.7 5-6 5s-6-1.7-6-5V9.5z" fill-rule="evenodd"/>
+                    </svg>
+                </div>
+                <h4 class="fw-bold text-body-emphasis mb-1">¡Perfil listo! 🧉</h4>
+                <p class="text-success fw-semibold small mb-1">${document.getElementById('onboardName') ? document.getElementById('onboardName').value || 'Viajere' : 'Viajere'}, ¡bienvenide a la comunidad!</p>
+                <p class="text-body-secondary small mb-4">Preparando tu experiencia...</p>
+                <div class="spinner-border text-success spinner-border-sm" role="status"></div>
+            </div>
+        `;
+        setTimeout(() => window.location.href = 'inicio.html', 1500);
+    }
+});
+
+document.getElementById('btnBack').addEventListener('click', () => {
+    if (currentStep > 1) goToStep(currentStep - 1);
+});
+</script>
+</body>
+</html>
