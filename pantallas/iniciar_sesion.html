@@ -71,7 +71,7 @@
                                             <div><strong>Email:</strong> viajero@mate.com</div>
                                             <div><strong>Contraseña:</strong> password123</div>
                                         </div>
-                                        <button type="button" class="btn btn-info btn-sm rounded-pill fw-semibold mt-2 px-3 text-white border-0" onclick="window.autofillMockCredentials()">
+                                        <button type="button" id="btnAutofill" class="btn btn-info btn-sm rounded-pill fw-semibold mt-2 px-3 text-white border-0">
                                             <i class="bi bi-magic me-1"></i> Autocompletar
                                         </button>
                                     </div>
@@ -85,7 +85,7 @@
                                 <label class="form-label small fw-semibold text-body-secondary mb-1">Contraseña</label>
                                 <div class="input-group rounded-pill overflow-hidden border border-secondary-subtle">
                                     <input type="password" id="loginPassword" class="form-control border-0 px-3 py-2 shadow-none small" placeholder="Tu contraseña" required>
-                                    <button class="btn btn-link bg-body text-body-secondary border-0 px-3 d-flex align-items-center" type="button" onclick="togglePasswordVisibility('loginPassword', this)">
+                                    <button id="btnToggleLoginPwd" class="btn btn-link bg-body text-body-secondary border-0 px-3 d-flex align-items-center" type="button">
                                         <i class="bi bi-eye-slash-fill"></i>
                                     </button>
                                 </div>
@@ -114,7 +114,7 @@
                                 <label class="form-label small fw-semibold text-body-secondary mb-1">Contraseña</label>
                                 <div class="input-group rounded-pill overflow-hidden border border-secondary-subtle">
                                     <input type="password" id="registerPassword" class="form-control border-0 px-3 py-2 shadow-none small" placeholder="Mínimo 6 caracteres" required minlength="6">
-                                    <button class="btn btn-link bg-body text-body-secondary border-0 px-3 d-flex align-items-center" type="button" onclick="togglePasswordVisibility('registerPassword', this)">
+                                    <button id="btnToggleRegisterPwd" class="btn btn-link bg-body text-body-secondary border-0 px-3 d-flex align-items-center" type="button">
                                         <i class="bi bi-eye-slash-fill"></i>
                                     </button>
                                 </div>
@@ -153,8 +153,8 @@
                     </div>
 
                     <!-- Toggle Auth Mode -->
-                    <p class="text-center text-body-secondary small mb-0" id="authToggleText">
-                        ¿No tenés una cuenta? <a href="#" class="text-success text-decoration-none fw-bold" onclick="toggleAuthMode('register')">Registrate acá</a>
+                    <p class="text-center text-body-secondary small mb-0">
+                        <span id="authTogglePrefix">¿No tenés una cuenta?</span> <a href="#" class="text-success text-decoration-none fw-bold" id="authToggleLink" data-mode="register">Registrate acá</a>
                     </p>
 
                 </div>

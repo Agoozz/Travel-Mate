@@ -294,6 +294,7 @@
                 e.preventDefault();
                 currentPage = parseInt(this.getAttribute('data-page'));
                 renderCompanions();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
 
@@ -303,6 +304,7 @@
                 e.preventDefault();
                 currentPage--;
                 renderCompanions();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
 
@@ -312,6 +314,7 @@
                 e.preventDefault();
                 currentPage++;
                 renderCompanions();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
     }
@@ -584,17 +587,22 @@
                     mateIcon.style.fontSize = '2rem';
                     mateIcon.style.pointerEvents = 'none';
                     mateIcon.style.zIndex = '9999';
-                    mateIcon.style.transition = 'all 1s cubic-bezier(0.25, 1, 0.5, 1)';
+                    mateIcon.style.transition = 'all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
                     document.body.appendChild(mateIcon);
 
                     // Trigger reflow
                     mateIcon.getBoundingClientRect();
 
-                    // Animate up and fade out
-                    mateIcon.style.transform = 'translateY(-100px) scale(1.5) rotate(15deg)';
+                    // Animate to center, spin and scale up
+                    const centerX = window.innerWidth / 2;
+                    const centerY = window.innerHeight / 2;
+                    const moveX = centerX - e.clientX - 16;
+                    const moveY = centerY - e.clientY - 16;
+
+                    mateIcon.style.transform = `translate(${moveX}px, ${moveY}px) scale(5) rotate(720deg)`;
                     mateIcon.style.opacity = '0';
 
-                    setTimeout(() => mateIcon.remove(), 1000);
+                    setTimeout(() => mateIcon.remove(), 1200);
 
                     // 30% chance to actually match
                     if (Math.random() < 0.3) {
@@ -610,5 +618,21 @@
     
     // Initial attach
     attachInviteEvents();
+
+    // Back to top button logic
+    const backToTopBtn = document.getElementById('btnBackToTop');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('d-none');
+                setTimeout(() => backToTopBtn.style.opacity = '1', 10);
+            } else {
+                backToTopBtn.style.opacity = '0';
+                setTimeout(() => {
+                    if (window.scrollY <= 300) backToTopBtn.classList.add('d-none');
+                }, 300);
+            }
+        });
+    }
 
 })();

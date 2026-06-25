@@ -21,7 +21,7 @@
         <div class="row">
 
             <!-- SIDEBAR -->
-            <aside class="col-lg-3 col-xl-2 bg-body border-end min-vh-100 p-4 d-flex flex-column justify-content-between">
+            <aside class="col-lg-3 col-xl-2 bg-success-subtle border-end border-success-subtle min-vh-100 p-4 d-flex flex-column justify-content-between">
                 <div>
                     <!-- Brand Logo -->
                     <div class="d-flex align-items-center gap-1 mb-2">
@@ -46,20 +46,8 @@
                         <a href="perfil.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
                             <i class="bi bi-person-circle me-2"></i> Mi Perfil
                         </a>
-                        <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
-                            <i class="bi bi-people me-2"></i> Mis Compañeres
-                        </a>
                         <a href="mensajes.html" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
-                            <i class="bi bi-chat-left-text me-2"></i> Mensajes
-                        </a>
-                        <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
-                            <i class="bi bi-airplane me-2"></i> Mis Viajes
-                        </a>
-                        <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
-                            <i class="bi bi-star me-2"></i> Favoritos
-                        </a>
-                        <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3">
-                            <i class="bi bi-bookmark me-2"></i> Guardados
+                            <i class="bi bi-chat-left-text me-2"></i> Mensajes / Compañeres
                         </a>
                         <a href="#" class="nav-link text-body-secondary link-success py-2 px-3 rounded-3 theme-toggle" id="btnThemeToggle">
                             <i class="bi bi-moon-fill me-2"></i> <span class="theme-toggle-text">Modo Oscuro</span>
@@ -70,29 +58,17 @@
                         </a>
                     </nav>
                 </div>
-
-                <!-- Profile Completion card -->
-                <div class="card border-0 bg-body-tertiary p-3 rounded-4 mb-4" id="sidebarProfileCard">
-                    <h6 class="fw-bold mb-1 fs-6" id="sidebarProgressTitle">Completa tu perfil</h6>
-                    <p class="text-body-secondary mb-3 small lh-sm" id="sidebarProgressDesc">Recibí mejores recomendaciones.</p>
-                    <div class="progress mb-3">
-                        <div class="progress-bar bg-success w-0" role="progressbar" id="sidebarProgressBar"></div>
-                    </div>
-                    <button class="btn btn-success rounded-pill fw-semibold w-100 btn-sm py-2" onclick="window.location.href='perfil.html'">
-                        Completar perfil
-                    </button>
-                </div>
             </aside>
 
             <!-- MAIN CONTENT -->
-            <main class="col-lg-9 col-xl-10 p-4 p-md-5">
+            <main class="col-lg-7 col-xl-7 p-4 p-md-5 border-end">
 
 
 
                 <!-- Header Glassmorphism Welcome Banner -->
                 <div class="card bg-success bg-gradient text-white p-3 p-md-4 mb-4 text-white border-0">
                     <div class="row align-items-center">
-                        <div class="col-lg-7 col-xl-8 mb-3 mb-lg-0">
+                        <div class="col-lg-6 col-xl-7 mb-3 mb-lg-0">
                             <h1 class="fw-bold text-white mb-1 fs-4">
                                 Encontrá tu compañere para la próxima aventura
                             </h1>
@@ -100,15 +76,60 @@
                                 Hola, <strong>Mateo Viajero</strong> (Aventurero Indómito). Explorá perfiles compatibles con tu estilo de viaje.
                             </p>
                         </div>
-                        <div class="col-lg-5 col-xl-4">
-                            <div class="input-group rounded-pill overflow-hidden bg-body border border-secondary-subtle shadow-sm">
+                        <div class="col-lg-6 col-xl-5 d-flex gap-3 justify-content-end align-items-center">
+                            <div class="input-group flex-grow-1 rounded-pill overflow-hidden bg-body border border-secondary-subtle shadow-sm">
                                 <span class="input-group-text bg-body border-0 px-3">
                                     <i class="bi bi-search text-success"></i>
                                 </span>
-                                <input type="text" id="searchInput" class="form-control border-0 px-3 shadow-none small" placeholder="¿A dónde querés viajar?">
+                                <input type="text" id="searchInput" class="form-control border-0 px-3 shadow-none small" placeholder="¿Adónde querés viajar?">
                                 <button class="btn btn-light rounded-pill fw-semibold" type="button" id="searchBtn">
                                     Buscar
                                 </button>
+                            </div>
+
+                            <!-- NOTIFICATIONS -->
+                            <div class="dropdown">
+                                <button class="btn btn-light rounded-circle position-relative p-2 border-0 shadow-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-bell-fill text-success fs-5"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                        <span class="visually-hidden">Nuevas notificaciones</span>
+                                    </span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4 mt-2" style="width: 320px;">
+                                    <li><h6 class="dropdown-header fw-bold text-body-emphasis fs-6">Notificaciones</h6></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item d-flex gap-3 align-items-center py-2" href="#">
+                                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style="width:40px; height:40px;"><i class="bi bi-eye-fill fs-5"></i></div>
+                                            <div>
+                                                <p class="mb-0 small fw-semibold text-wrap lh-sm">Sofía vió tu perfil</p>
+                                                <span class="text-body-secondary" style="font-size: 0.75rem;">Hace 2 horas</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3 dropdown-hover" href="#">
+                                            <div class="d-flex align-items-start gap-2">
+                                                <div class="bg-success bg-opacity-10 text-success rounded-circle p-2 d-flex align-items-center justify-content-center" style="width:40px; height:40px;"><i class="bi bi-person-fill-check fs-5"></i></div>
+                                                <div>
+                                                    <p class="mb-0 small fw-semibold text-wrap lh-sm">¡Alguien visitó tu perfil!</p>
+                                                    <span class="text-body-secondary" style="font-size: 0.75rem;">Ayer</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-flex gap-3 align-items-center py-2" href="#">
+                                            <div class="bg-warning bg-opacity-10 text-warning rounded-circle p-2 d-flex align-items-center justify-content-center" style="width:40px; height:40px;"><i class="bi bi-trophy-fill fs-5"></i></div>
+                                            <div>
+                                                <p class="mb-0 small fw-semibold text-wrap lh-sm">¡Ganaste 50 JeviaPuntos!</p>
+                                                <span class="text-body-secondary" style="font-size: 0.75rem;">Ayer</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-center small text-success fw-bold" href="#">Ver todas</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -487,10 +508,57 @@
                                 </li>
                             </ul>
                         </nav>
-\n</div>
+</div>
                 </div>
 
-            </main>
+                        </main>
+
+            <!-- RIGHT SIDEBAR (Novedades y Widgets) -->
+            <aside class="col-lg-2 col-xl-3 d-none d-lg-flex flex-column gap-4 p-4 p-xl-5 min-vh-100 bg-success-subtle border-start border-success-subtle">
+                
+                <!-- El bloque de Progreso de Perfil fue removido a pedido del usuario para evitar redundancias -->
+
+                <!-- Destinos Populares -->
+                <div class="card border-0 shadow-sm rounded-4 bg-transparent border-success-subtle">
+                    <div class="card-body p-4">
+                        <h6 class="fw-bold mb-4">Destinos Populares 🔥</h6>
+                        
+                        <!-- Destino 1 -->
+                        <div class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom border-success-subtle">
+                            <div class="rounded-3 overflow-hidden shadow-sm" style="width: 50px; height: 50px; flex-shrink: 0;">
+                                <img src="../images/mendoza.png" alt="Mendoza" class="w-100 h-100 object-fit-cover">
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold fs-6">Mendoza</h6>
+                                <span class="text-body-secondary small"><i class="bi bi-people-fill text-success me-1"></i> 120 viajeros</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Destino 2 -->
+                        <div class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom border-success-subtle">
+                            <div class="rounded-3 overflow-hidden shadow-sm" style="width: 50px; height: 50px; flex-shrink: 0;">
+                                <img src="../images/salta.png" alt="Salta" class="w-100 h-100 object-fit-cover">
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold fs-6">Salta</h6>
+                                <span class="text-body-secondary small"><i class="bi bi-people-fill text-success me-1"></i> 85 viajeros</span>
+                            </div>
+                        </div>
+
+                        <!-- Destino 3 -->
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-3 overflow-hidden shadow-sm" style="width: 50px; height: 50px; flex-shrink: 0;">
+                                <img src="../images/rio_negro.png" alt="Bariloche" class="w-100 h-100 object-fit-cover">
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold fs-6">Bariloche</h6>
+                                <span class="text-body-secondary small"><i class="bi bi-people-fill text-success me-1"></i> 60 viajeros</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </aside>
         </div>
     </div>
 
@@ -628,6 +696,11 @@
         </div>
     </div>
 
+    <!-- Back to Top Button -->
+    <button class="btn btn-success rounded-circle shadow-lg position-fixed d-none" id="btnBackToTop" style="bottom: 30px; right: 30px; width: 50px; height: 50px; z-index: 1050; opacity: 0; transition: opacity 0.3s;" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+        <i class="bi bi-arrow-up fs-5"></i>
+    </button>
+
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- Scripts Externos -->
@@ -636,5 +709,6 @@
 </body>
 
 </html>
+
 
 
