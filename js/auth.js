@@ -52,6 +52,7 @@ window.handleAuthSubmit = function(event, type) {
             localStorage.removeItem(key);
         }
     });
+    localStorage.removeItem('sentMates');
 
     let emailInput, passwordInput;
     if (type === 'login') {
