@@ -50,7 +50,7 @@ window.handleAuthSubmit = function(event, type) {
 
     const emailInput = event.target.querySelector('input[type="email"]');
     const passwordInput = event.target.querySelector('input[type="password"]');
-    const email = emailInput ? emailInput.value.trim() : '';
+    const email = emailInput ? emailInput.value.trim().toLowerCase() : '';
     const password = passwordInput ? passwordInput.value : '';
 
     if (type === 'login') {
