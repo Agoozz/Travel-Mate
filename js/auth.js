@@ -54,7 +54,7 @@ window.handleAuthSubmit = function(event, type) {
     const password = passwordInput ? passwordInput.value : '';
 
     if (type === 'login') {
-        if (email !== 'viajero@mate.com' || password !== 'password123') {
+        if (email !== 'viajero@mate.com' || password !== '1234') {
             alert('Credenciales incorrectas. Por favor verificá tu email y contraseña.');
             return; // Abort login
         }
@@ -180,7 +180,7 @@ window.autofillMockCredentials = function() {
     
     if (emailField && passwordField) {
         emailField.value = 'viajero@mate.com';
-        passwordField.value = 'password123';
+        passwordField.value = '1234';
         
         // Add a nice visual feedback (focus effect)
         emailField.classList.add('border-info');
