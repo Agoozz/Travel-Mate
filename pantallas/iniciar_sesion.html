@@ -60,9 +60,21 @@
                     <div id="authFormsContainer">
                         <!-- LOGIN FORM -->
                         <form id="loginForm" onsubmit="window.handleAuthSubmit(event, 'login')" autocomplete="off">
-                            <!-- Honeypot para engañar al autocompletado de Chrome -->
-                            <input type="text" style="display:none" autocomplete="username">
-                            <input type="password" style="display:none" autocomplete="current-password">
+                        <!-- Honeypot para engañar al autocompletado de Chrome (Chrome ignora display:none) -->
+                        <div style="position: absolute; left: -9999px; top: -9999px;">
+                            <input type="text" name="fakeusernameremembered" tabindex="-1">
+                            <input type="password" name="fakepasswordremembered" tabindex="-1">
+                        </div>
+                        
+                        <script>
+                            // Forzar borrado en caso de que Chrome insista en rellenar
+                            setTimeout(function() {
+                                var e = document.getElementById('loginEmail');
+                                var p = document.getElementById('loginPassword');
+                                if (e) e.value = '';
+                                if (p) p.value = '';
+                            }, 150);
+                        </script>
                             
                             <!-- Formulario (Info de prueba removida) -->
                             <div class="mb-3">
