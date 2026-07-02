@@ -45,8 +45,13 @@ window.handleAuthSubmit = function(event, type) {
     const testStart = localStorage.getItem('user_start_date');
     const testEnd = localStorage.getItem('user_end_date');
 
-    // Clear previous sessions to keep simulator clean
-    localStorage.clear();
+    // Clear previous user session data to keep simulator clean
+    // But DON'T clear mateAndTravelChats so matches persist between users!
+    Object.keys(localStorage).forEach(key => {
+        if (key.startsWith('user_')) {
+            localStorage.removeItem(key);
+        }
+    });
 
     let emailInput, passwordInput;
     if (type === 'login') {
