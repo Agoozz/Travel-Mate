@@ -53,7 +53,11 @@ window.handleAuthSubmit = function(event, type) {
     const email = emailInput ? emailInput.value.trim() : '';
     const password = passwordInput ? passwordInput.value : '';
 
-    if (type === 'login' && email === 'viajero@mate.com' && password === 'password123') {
+    if (type === 'login') {
+        if (email !== 'viajero@mate.com' || password !== 'password123') {
+            alert('Credenciales incorrectas. Por favor verificá tu email y contraseña.');
+            return; // Abort login
+        }
         // Load mock user data
         localStorage.setItem('user_name', 'Mateo Viajero');
         localStorage.setItem('user_age', '28');
