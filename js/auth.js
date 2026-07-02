@@ -50,8 +50,8 @@ window.handleAuthSubmit = function(event, type) {
 
     let emailInput, passwordInput;
     if (type === 'login') {
-        emailInput = document.getElementById('loginEmail');
-        passwordInput = document.getElementById('loginPassword');
+        emailInput = document.getElementById('fld_alfa');
+        passwordInput = document.getElementById('fld_beta');
     } else {
         emailInput = event.target.querySelector('input[type="email"]');
         passwordInput = event.target.querySelector('input[type="password"]');
