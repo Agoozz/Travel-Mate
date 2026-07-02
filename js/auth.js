@@ -48,8 +48,15 @@ window.handleAuthSubmit = function(event, type) {
     // Clear previous sessions to keep simulator clean
     localStorage.clear();
 
-    const emailInput = event.target.querySelector('input[type="email"]');
-    const passwordInput = event.target.querySelector('input[type="password"]');
+    let emailInput, passwordInput;
+    if (type === 'login') {
+        emailInput = document.getElementById('loginEmail');
+        passwordInput = document.getElementById('loginPassword');
+    } else {
+        emailInput = event.target.querySelector('input[type="email"]');
+        passwordInput = event.target.querySelector('input[type="password"]');
+    }
+    
     const email = emailInput ? emailInput.value.trim().toLowerCase() : '';
     const password = passwordInput ? passwordInput.value : '';
 
