@@ -73,7 +73,7 @@
                                 <label class="form-label small fw-semibold text-body-secondary mb-1">Contraseña</label>
                                 <div class="input-group rounded-pill overflow-hidden border border-secondary-subtle">
                                     <input type="password" id="loginPassword" class="form-control border-0 px-3 py-2 shadow-none small" placeholder="Tu contraseña" required autocomplete="new-password">
-                                    <button id="btnToggleLoginPwd" class="btn btn-link bg-body text-body-secondary border-0 px-3 d-flex align-items-center" type="button">
+                                    <button id="btnToggleLoginPwd" class="btn btn-link bg-body text-body-secondary border-0 px-3 d-flex align-items-center" type="button" onclick="togglePasswordVisibility('loginPassword', this)">
                                         <i class="bi bi-eye-slash-fill"></i>
                                     </button>
                                 </div>
@@ -95,7 +95,7 @@
                                 <label class="form-label small fw-semibold text-body-secondary mb-1">Contraseña</label>
                                 <div class="input-group rounded-pill overflow-hidden border border-secondary-subtle">
                                     <input type="password" id="registerPassword" class="form-control border-0 px-3 py-2 shadow-none small" placeholder="Mínimo 6 caracteres" required minlength="6">
-                                    <button id="btnToggleRegisterPwd" class="btn btn-link bg-body text-body-secondary border-0 px-3 d-flex align-items-center" type="button">
+                                    <button id="btnToggleRegisterPwd" class="btn btn-link bg-body text-body-secondary border-0 px-3 d-flex align-items-center" type="button" onclick="togglePasswordVisibility('registerPassword', this)">
                                         <i class="bi bi-eye-slash-fill"></i>
                                     </button>
                                 </div>
