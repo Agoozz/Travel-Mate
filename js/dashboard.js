@@ -615,8 +615,8 @@
 
                     setTimeout(() => mateIcon.remove(), 1200);
 
-                    // 30% chance to actually match
-                    if (Math.random() < 0.3) {
+                    // 100% chance to match para la presentación
+                    if (true) {
                         setTimeout(() => {
                             removeCompanionByName(targetName);
                             simulateMatchAndChat(targetName, targetAvatarSrc);
