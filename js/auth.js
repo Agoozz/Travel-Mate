@@ -61,28 +61,113 @@ window.handleAuthSubmit = function(event, type) {
     const password = passwordInput ? passwordInput.value : '';
 
     if (type === 'login') {
-        if (email !== 'viajero@mate.com' || password !== '1234') {
-            alert('Credenciales incorrectas. Por favor verificá tu email y contraseña.');
+        const validLogins = {
+            'viajero@mate.com': {
+                name: 'Mateo Viajero', age: '28', hometown: 'San Carlos de Bariloche, Río Negro',
+                bio: '¡Hola! Soy Mateo. Me apasiona viajar por Argentina con el mate en la mano. Busco compañeres para recorrer senderos de la Patagonia y compartir buenos momentos.',
+                travel_style: 'Aventurero Indómito', travel_style_key: 'mochilero', companion_style: 'aventura',
+                avatar: 'https://i.pravatar.cc/150?img=11', budget: 'economico', regions: ['cuyo', 'patagonia'],
+                destination: 'Patagonia', start_date: '2026-11-10', end_date: '2026-11-25',
+                interests: 'Trekking, Fotografía, Comida local', languages: 'Español, Inglés'
+            },
+            'sofia@mate.com': {
+                name: 'Sofía', age: '25', hometown: 'Buenos Aires',
+                bio: 'Busco relajarme en la Patagonia, conocer cafeterías de especialidad.',
+                travel_style: 'Aventurera Confort', travel_style_key: 'confort', companion_style: 'relax',
+                avatar: 'https://i.pravatar.cc/150?img=32', budget: 'premium', regions: ['patagonia'],
+                destination: 'Bariloche', start_date: '2026-07-08', end_date: '2026-07-18',
+                interests: 'Cultura, Café, Senderismo', languages: 'Español, Inglés'
+            },
+            'tomas@mate.com': {
+                name: 'Tomás', age: '28', hometown: 'Córdoba',
+                bio: 'Me encanta conocer culturas, hacer trekking y descubrir nuevos destinos.',
+                travel_style: 'Aventurero Mochilero', travel_style_key: 'mochilero', companion_style: 'aventura',
+                avatar: 'https://i.pravatar.cc/150?img=12', budget: 'medio', regions: ['norte'],
+                destination: 'Tailandia', start_date: '2026-06-01', end_date: '2026-06-20',
+                interests: 'Trekking, Fotografía', languages: 'Español'
+            },
+            'caro@mate.com': {
+                name: 'Caro', age: '27', hometown: 'Rosario',
+                bio: 'Me encanta descubrir ruinas históricas y museos.',
+                travel_style: 'Exploradora Cultural', travel_style_key: 'cultural', companion_style: 'cultura',
+                avatar: 'https://i.pravatar.cc/150?img=47', budget: 'medio', regions: ['litoral'],
+                destination: 'Misiones', start_date: '2026-08-15', end_date: '2026-08-25',
+                interests: 'Historia, Museos, Selva', languages: 'Español, Portugués'
+            },
+            'martin@mate.com': {
+                name: 'Martín', age: '31', hometown: 'Mendoza',
+                bio: 'Fan de la naturaleza salvaje, peñas folclóricas y acampar.',
+                travel_style: 'Aventurero Gasolero', travel_style_key: 'mochilero', companion_style: 'fiesta',
+                avatar: 'https://i.pravatar.cc/150?img=60', budget: 'economico', regions: ['norte'],
+                destination: 'Salta', start_date: '2026-06-10', end_date: '2026-06-25',
+                interests: 'Camping, Folclore', languages: 'Español'
+            },
+            'lucia@mate.com': {
+                name: 'Lucía', age: '24', hometown: 'Santa Fe',
+                bio: 'Viajera espontánea. Me gusta dejarme llevar por la ruta.',
+                travel_style: 'Espontánea', travel_style_key: 'mochilero', companion_style: 'relax',
+                avatar: 'https://i.pravatar.cc/150?img=20', budget: 'economico', regions: ['centro'],
+                destination: 'Córdoba', start_date: '2026-09-01', end_date: '2026-09-15',
+                interests: 'Música, Yoga', languages: 'Español'
+            },
+            'juan@mate.com': {
+                name: 'Juan', age: '35', hometown: 'Neuquén',
+                bio: 'Amante del buen vino y la gastronomía local.',
+                travel_style: 'Viajero Gourmet', travel_style_key: 'confort', companion_style: 'cultura',
+                avatar: 'https://i.pravatar.cc/150?img=33', budget: 'premium', regions: ['cuyo'],
+                destination: 'Mendoza', start_date: '2026-10-01', end_date: '2026-10-10',
+                interests: 'Vino, Gastronomía', languages: 'Español, Inglés'
+            },
+            'nico@mate.com': {
+                name: 'Nico', age: '29', hometown: 'Tucumán',
+                bio: 'Fotógrafo aficionado. Busco los mejores paisajes.',
+                travel_style: 'Cazador de Paisajes', travel_style_key: 'cultural', companion_style: 'aventura',
+                avatar: 'https://i.pravatar.cc/150?img=52', budget: 'medio', regions: ['patagonia'],
+                destination: 'Ushuaia', start_date: '2026-12-01', end_date: '2026-12-15',
+                interests: 'Fotografía, Naturaleza', languages: 'Español'
+            },
+            'vale@mate.com': {
+                name: 'Valentina', age: '26', hometown: 'La Plata',
+                bio: 'Me encanta la playa, el surf y conocer gente de todo el mundo.',
+                travel_style: 'Playera', travel_style_key: 'confort', companion_style: 'fiesta',
+                avatar: 'https://i.pravatar.cc/150?img=43', budget: 'medio', regions: ['buenosaires'],
+                destination: 'Mar del Plata', start_date: '2026-01-10', end_date: '2026-01-20',
+                interests: 'Surf, Playa, Fiesta', languages: 'Español, Portugués'
+            },
+            'agos@mate.com': {
+                name: 'Agostina', age: '27', hometown: 'San Juan',
+                bio: 'Buscando desconectar de la ciudad y conectar con la montaña.',
+                travel_style: 'Aventurera Zen', travel_style_key: 'mochilero', companion_style: 'relax',
+                avatar: 'https://i.pravatar.cc/150?img=1', budget: 'economico', regions: ['cuyo', 'norte'],
+                destination: 'Jujuy', start_date: '2026-05-01', end_date: '2026-05-15',
+                interests: 'Montaña, Meditación', languages: 'Español'
+            }
+        };
+
+        const user = validLogins[email];
+        
+        if (!user || password !== '1234') {
+            alert('Credenciales incorrectas. Verificá tu correo o contraseña.');
             return; // Abort login
         }
-        // Load mock user data
-        localStorage.setItem('user_name', 'Mateo Viajero');
-        localStorage.setItem('user_age', '28');
-        localStorage.setItem('user_hometown', 'San Carlos de Bariloche, Río Negro');
-        localStorage.setItem('user_bio', '¡Hola! Soy Mateo. Me apasiona viajar por Argentina con el mate en la mano. Busco compañeres para recorrer senderos de la Patagonia y compartir buenos momentos.');
-        localStorage.setItem('user_travel_style', 'Aventurero Indómito');
-        localStorage.setItem('user_travel_style_key', 'mochilero');
-        localStorage.setItem('user_companion_style', 'aventura');
-        localStorage.setItem('user_avatar', 'https://i.pravatar.cc/150?img=11');
-        localStorage.setItem('user_budget', 'economico');
-        localStorage.setItem('user_regions', JSON.stringify(['cuyo', 'patagonia']));
+
+        // Load mock user data dynamically based on the matched user
+        localStorage.setItem('user_name', user.name);
+        localStorage.setItem('user_age', user.age);
+        localStorage.setItem('user_hometown', user.hometown);
+        localStorage.setItem('user_bio', user.bio);
+        localStorage.setItem('user_travel_style', user.travel_style);
+        localStorage.setItem('user_travel_style_key', user.travel_style_key);
+        localStorage.setItem('user_companion_style', user.companion_style);
+        localStorage.setItem('user_avatar', user.avatar);
+        localStorage.setItem('user_budget', user.budget);
+        localStorage.setItem('user_regions', JSON.stringify(user.regions));
         
-        // New simulated fields
-        localStorage.setItem('user_destination', 'Patagonia');
-        localStorage.setItem('user_start_date', '2026-11-10');
-        localStorage.setItem('user_end_date', '2026-11-25');
-        localStorage.setItem('user_interests', 'Trekking, Fotografía, Comida local');
-        localStorage.setItem('user_languages', 'Español, Inglés');
+        localStorage.setItem('user_destination', user.destination);
+        localStorage.setItem('user_start_date', user.start_date);
+        localStorage.setItem('user_end_date', user.end_date);
+        localStorage.setItem('user_interests', user.interests);
+        localStorage.setItem('user_languages', user.languages);
         
         localStorage.setItem('user_profile_progress', '100');
     } else {
