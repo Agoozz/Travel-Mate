@@ -165,7 +165,7 @@ window.handleAuthSubmit = function(event, type) {
         </div>
     `;
     setTimeout(() => {
-        window.location.href = "inicio.html";
+        window.location.replace("inicio.html");
     }, 1500);
 }
 
@@ -207,3 +207,10 @@ window.autofillMockCredentials = function() {
         toggleAuthMode('register');
     }
 })();
+
+// Reload page if restored from bfcache (e.g. user pressed back button and sees spinner)
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+});
